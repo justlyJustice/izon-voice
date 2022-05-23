@@ -12,8 +12,10 @@ import {
   FormContainer,
   Group,
 } from "../../styles/blogUploadStyles";
+import StatusPlaceholder from "../../components/common/StatusPlaceholder";
 
 const initialValues = {
+  author: "",
   title: "",
   description: "",
   quote: "",
@@ -23,9 +25,10 @@ const initialValues = {
 const BlogUpload = () => {
   const [values, setValues] = useState(initialValues);
   const [file, setFile] = useState(null);
-  const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+
   const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,37 +46,49 @@ const BlogUpload = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (values.description === "") {
-      return setError(true);
-    }
-
-    const data = {
+    const postData = {
       ...values,
       file,
     };
 
-    try {
-      await uploadBlogPost(data);
-      toast.success("Post upload successful");
-      setSuccess(true);
+    setLoading(true);
+    const res = await uploadBlogPost(postData);
+    setLoading(false);
 
-      setValues(initialValues);
-      setFile(null);
-    } catch (ex) {
-      toast.error("Post upload failed!");
-      console.log(ex);
+    // Setting the status
+    setSuccess(true);
+
+    // Clearing the state
+    setValues(initialValues);
+    setFile(null);
+
+    if (!res.ok) {
+      console.log(res.problem);
+      setLoading(false);
+
+      // Setting the status
+      setError(true);
     }
+
+    /*  try {
+     
+      await uploadBlogPost(postData);
+      
+
+     
+
+      // Clearing the state
+     
+    } catch (ex) {
+      
+    } */
   };
 
   return (
     <>
       <FormContainer>
         <Form onSubmit={handleSubmit} encType="muiltipart/form-data">
-          {error && (
-            <div>
-              <span className="error"></span>
-            </div>
-          )}
+          <StatusPlaceholder error={error} success={success} />
 
           <h2>Create a post</h2>
 
@@ -134,6 +149,16 @@ const BlogUpload = () => {
           </Contain>
 
           <Group>
+            <label htmlFor="author">Author</label>
+            <input
+              type="text"
+              name="author"
+              id="author"
+              onChange={handleChange}
+            />
+          </Group>
+
+          <Group>
             <label htmlFor="description">Description</label>
             <textarea
               type="text"
@@ -144,14 +169,16 @@ const BlogUpload = () => {
             />
           </Group>
 
-          <Button
-            disabled={loading || values.description === ""}
-            type="submit"
-            style={{
-              backgroundColor: success ? "#26fc05" : "",
-            }}
-          >
-            {success ? "Upload Successful!" : "Submit"}
+          <Button type="submit" disabled={loading}>
+            {loading ? (
+              <>
+                Uploading <i className="fa-solid fa-spinner fa-spin"></i>
+              </>
+            ) : (
+              <>
+                Upload Post <i className="fa-solid fa-upload"></i>
+              </>
+            )}
           </Button>
         </Form>
       </FormContainer>

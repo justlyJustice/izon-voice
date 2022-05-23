@@ -69,7 +69,7 @@ const Main = () => {
                   image={post.image || post.urlToImage}
                   title={post.title}
                   paraText={post.description}
-                  slug={post.slug}
+                  slug={post.slug || post._id}
                 />
               ))
             ) : (

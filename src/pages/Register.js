@@ -147,7 +147,7 @@ const Register = () => {
 
       setTimeout(() => {
         window.location.href = "/home";
-      }, 3000);
+      }, 5000);
 
       resetForm();
     } catch (ex) {

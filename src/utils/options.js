@@ -39,4 +39,8 @@ export const categories = [
     title: "Entertaiment",
     value: "entertainment",
   },
+  {
+    title: "Articles",
+    value: "articles",
+  },
 ];

@@ -17,10 +17,6 @@ const Wrapper = styled.div`
   justify-content: space-around;
   top: 35%;
   position: fixed;
-
-  @media screen and (max-width: 768px) {
-    left: 3px;
-  }
 `;
 
 function PostShare({ url, title, hashtags }) {

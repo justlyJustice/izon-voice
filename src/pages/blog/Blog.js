@@ -32,8 +32,6 @@ const Blog = () => {
     retrievePost();
   }, []);
 
-  const date = post && new Date(post.createdAt || post.createdAt);
-
   return (
     <section>
       <Head title={`Izon Voice| ${post ? post.title : "Loading..."}`} />
@@ -58,7 +56,8 @@ const Blog = () => {
                     </span>
 
                     <span className="time">
-                      <i className="fa-solid fa-calendar"></i> {timeSince(date)}
+                      <i className="fa-solid fa-calendar"></i>{" "}
+                      {timeSince(new Date(post.createdAt || post.publishedAt))}
                     </span>
 
                     <span className="category">

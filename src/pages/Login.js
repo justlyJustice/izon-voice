@@ -43,7 +43,7 @@ const Login = () => {
 
       setTimeout(() => {
         navigate("/home");
-      }, 3000);
+      }, 5000);
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         Alert.error("Error logging in user!", ex.response.data.message);

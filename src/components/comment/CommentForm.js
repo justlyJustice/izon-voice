@@ -104,6 +104,14 @@ const CommentForm = ({ postId, user }) => {
 
   return (
     <>
+      <style jsx>
+        {`
+          .to_login {
+            color: red;
+          }
+        `}
+      </style>
+
       <StatusAnimation failed={failed} success={success} />
 
       <div className="comment-box">
@@ -115,14 +123,14 @@ const CommentForm = ({ postId, user }) => {
           validationSchema={validationSchema}
         >
           <CustomTextArea
-            placeholder="What are your thoughts..."
+            placeholder="What are your thoughts?"
             name="message"
             /*  disabled={!user} */
             onClick={() => verifyUser()}
           />
 
           {shown ? (
-            <Link to="/login" style={{ color: "red !important" }}>
+            <Link to="/login" className="to_login">
               <span>You must login to comment.</span>
             </Link>
           ) : null}
