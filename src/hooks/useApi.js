@@ -1,23 +1,24 @@
+/* eslint-disable no-unused-vars */
 import { useState } from "react";
 
 const useApi = (apiFunc) => {
   const [data, setData] = useState([]);
-  const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   const request = async (...args) => {
-    try {
-      setLoading(true);
-      const response = await apiFunc(...args);
-      setLoading(false);
+    setLoading(true);
+    const response = await apiFunc(...args);
+    setLoading(false);
 
-      return setData(response.data);
-    } catch (ex) {
+    setData(response.data);
+
+    if (!response.ok) {
       return setError(true);
     }
   };
 
-  return { data, error, loading, request };
+  return { data, error, loading, request, setData };
 };
 
 export default useApi;

@@ -69,19 +69,6 @@ const BlogUpload = () => {
       // Setting the status
       setError(true);
     }
-
-    /*  try {
-     
-      await uploadBlogPost(postData);
-      
-
-     
-
-      // Clearing the state
-     
-    } catch (ex) {
-      
-    } */
   };
 
   return (

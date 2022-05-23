@@ -2,7 +2,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const CardContainer = styled.div`
-  height: 250px;
+  // height: 250px;
+
   width: 350px;
   margin: 20px;
 
@@ -20,6 +21,10 @@ const CardContainer = styled.div`
     font-size: 20px;
     line-height: 24px;
     color: #000000 !important;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
   }
 
   .link {
@@ -78,17 +83,14 @@ const CardContainer = styled.div`
 const Card = ({ title, paraText, image, slug }) => {
   return (
     <CardContainer>
-      <img className="card-image" src={image} alt={image} />
+      <Link to={`/${slug}`}>
+        <img className="card-image" src={image} alt={image} />
+        <div>
+          <h3 className="title">{title}</h3>
 
-      <div>
-        <h3 className="title">
-          <Link className="link" to={`/${slug}`}>
-            {title}
-          </Link>
-        </h3>
-
-        <p className="para-text">{paraText}</p>
-      </div>
+          <p className="para-text">{paraText}</p>
+        </div>
+      </Link>
     </CardContainer>
   );
 };

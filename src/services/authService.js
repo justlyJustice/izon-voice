@@ -31,6 +31,11 @@ export function setGoogleUser() {
       Accept: "application/json",
       "Content-Type": "application/json",
       "Access-Control-Allow-Crendentials": true,
+      "Allow-Crendentials": true,
+      "Access-Control-Allow-Origin":
+        process.env.NODE_ENV === "development"
+          ? "http://localhost:8000/"
+          : "https://izonvoice.ng/",
     },
   })
     .then((res) => {

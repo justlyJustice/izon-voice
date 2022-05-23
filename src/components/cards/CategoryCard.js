@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const CardContainer = styled.div`
@@ -21,11 +21,16 @@ const CardContainer = styled.div`
   }
 
   .title {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
     font-style: normal;
     font-weight: 800;
     font-size: 20px;
     line-height: 24px;
     color: #000000;
+    transition: ease 0.5s all;
   }
 
   .para-text {
@@ -71,37 +76,29 @@ const CardContainer = styled.div`
 `;
 
 const CategoryCard = ({ data }) => {
-  const navigate = useNavigate();
-
-  const handleNavigateBlogPage = (name) => {
-    navigate(`/${name}`);
-  };
-
   return (
-    <CardContainer
-      onClick={() => handleNavigateBlogPage(data.slug || data._id)}
-    >
-      <img
-        className="card-image"
-        src={data.image || data.urlToImage}
-        alt="Category"
-      />
-
-      <div>
-        <h3 className="title">{data.title}</h3>
-
-        <p className="para-text">{data.paraText}</p>
-      </div>
-
-      <div className="bottom-content">
-        <div className="content">
-          <i className="fa fa-comment"></i> <span>{data.comments.length}</span>
+    <CardContainer>
+      <Link to={`/${data.slug || data._id}`}>
+        <img
+          className="card-image"
+          src={data.image || data.urlToImage}
+          alt="Category"
+        />
+        <div>
+          <h3 className="title">{data.title}</h3>
+          <p className="para-text">{data.paraText}</p>
         </div>
 
-        <div className="content">
-          <i className="fa fa-heart"></i> <span>{data.likes}</span>
+        <div className="bottom-content">
+          <div className="content">
+            <i className="fa fa-comment"></i>{" "}
+            <span>{data.comments.length}</span>
+          </div>
+          <div className="content">
+            <i className="fa fa-heart"></i> <span>{data.likes}</span>
+          </div>
         </div>
-      </div>
+      </Link>
     </CardContainer>
   );
 };

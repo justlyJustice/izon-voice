@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import { useEffect } from "react";
-import { Navigate, useLocation, useParams } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import PostShare from "../../components/common/PostShare";
 
 import Header from "../../components/common/Header";
@@ -15,17 +15,23 @@ import useApi from "../../hooks/useApi";
 
 const Blog = () => {
   const {
-    loading,
+    error,
     data: { post },
-    request: loadPost,
+    loading,
+    request,
   } = useApi(getPost);
 
   const location = useLocation();
   location.pathname = "/home";
   const { name } = useParams();
+  const navigate = useNavigate();
 
   const retrievePost = async () => {
-    loadPost(name);
+    const response = await request(name);
+
+    if (response && response.status === 404) {
+      navigate(`*`);
+    }
   };
 
   useEffect(() => {
