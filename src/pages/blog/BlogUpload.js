@@ -51,23 +51,22 @@ const BlogUpload = () => {
       file,
     };
 
-    setLoading(true);
-    const res = await uploadBlogPost(postData);
-    setLoading(false);
-
-    // Setting the status
-    setSuccess(true);
-
-    // Clearing the state
-    setValues(initialValues);
-    setFile(null);
-
-    if (!res.ok) {
-      console.log(res.problem);
+    try {
+      setLoading(true);
+      const res = await uploadBlogPost(postData);
       setLoading(false);
 
-      // Setting the status
-      setError(true);
+      if (res.status === 200) {
+        setValues(initialValues);
+        setFile(null);
+
+        setSuccess(true);
+      }
+    } catch (ex) {
+      if (ex.response && !ex.response.ok) {
+        setLoading(false);
+        return setError(true);
+      }
     }
   };
 
