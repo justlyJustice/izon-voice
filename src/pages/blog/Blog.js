@@ -2,16 +2,16 @@
 /* eslint-disable no-unused-vars */
 import { useEffect } from "react";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
-import PostShare from "../../components/common/PostShare";
+import PostShare from "components/common/PostShare";
 
-import Header from "../../components/common/Header";
-import Head from "../../components/common/Head";
-import CommentSection from "../../components/comment/CommentSection";
-import LoadingAnimation from "../../components/common/LoadingAnimation";
+import Header from "components/common/Header";
+import Head from "components/common/Head";
+import CommentSection from "components/comment/CommentSection";
+import LoadingAnimation from "components/common/LoadingAnimation";
 
-import { timeSince } from "../../utils/helpers.js";
-import { getPost } from "../../services/postService";
-import useApi from "../../hooks/useApi";
+import { timeSince } from "utils/helpers.js";
+import { getPost } from "services/postService";
+import useApi from "hooks/useApi";
 
 const Blog = () => {
   const {
@@ -74,13 +74,15 @@ const Blog = () => {
                     </span>
                   </div>
 
-                  <div className="quote-div">
-                    <h3 className="quote">
-                      <span className="quote-sign">"</span>
-                      {post.quote}
-                      <span className="quote-sign">"</span>
-                    </h3>
-                  </div>
+                  {post.quote && (
+                    <div className="quote-div">
+                      <h3 className="quote">
+                        <span className="quote-sign">"</span>
+                        {post.quote}
+                        <span className="quote-sign">"</span>
+                      </h3>
+                    </div>
+                  )}
                 </div>
               </div>
 

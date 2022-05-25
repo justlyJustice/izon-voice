@@ -49,7 +49,7 @@ class ErrorBoundary extends React.Component {
           <div id="animation_container">
             <Lottie
               autoPlay
-              animationData={require("../assets/animations/service_unavailable.json")}
+              animationData={require("assets/animations/service_unavailable.json")}
               className="animation"
               loop
             />

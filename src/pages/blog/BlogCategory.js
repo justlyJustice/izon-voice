@@ -4,13 +4,13 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import CategoryCard from "../../components/cards/CategoryCard";
-import useApi from "../../hooks/useApi";
-import Header from "../../components/common/Header";
-import { getPostsCategory } from "../../services/postService";
-import LoadingAnimation from "../../components/common/LoadingAnimation";
-import NoResults from "../../components/common/NoResults";
-import Head from "../../components/common/Head";
+import CategoryCard from "components/cards/CategoryCard";
+import useApi from "hooks/useApi";
+import Header from "components/common/Header";
+import { getPostsCategory } from "services/postService";
+import LoadingAnimation from "components/common/LoadingAnimation";
+import NoResults from "components/common/NoResults";
+import Head from "components/common/Head";
 
 const BlogCategory = () => {
   const { name } = useParams();

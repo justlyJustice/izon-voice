@@ -2,8 +2,8 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 
-import { uploadBlogPost } from "../../services/postService";
-import { categories } from "../../utils/options";
+import { uploadBlogPost } from "services/postService";
+import { categories } from "utils/options";
 
 import {
   Button,
@@ -12,7 +12,7 @@ import {
   FormContainer,
   Group,
 } from "../../styles/blogUploadStyles";
-import StatusPlaceholder from "../../components/common/StatusPlaceholder";
+import StatusPlaceholder from "components/common/StatusPlaceholder";
 
 const initialValues = {
   author: "",

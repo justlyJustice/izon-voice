@@ -30,7 +30,7 @@ const StatusAnimation = ({ failed, success, loading }) => {
         <AnimationContainer>
           <Lottie
             autoPlay
-            animationData={require("../../assets/animations/failed_animation.json")}
+            animationData={require("assets/animations/failed_animation.json")}
             className={`animation`}
           />
         </AnimationContainer>
@@ -40,7 +40,7 @@ const StatusAnimation = ({ failed, success, loading }) => {
         <AnimationContainer>
           <Lottie
             autoPlay
-            animationData={require("../../assets/animations/loading.json")}
+            animationData={require("assets/animations/loading.json")}
             className={`animation`}
             loop
           />
@@ -51,7 +51,7 @@ const StatusAnimation = ({ failed, success, loading }) => {
         <AnimationContainer>
           <Lottie
             autoPlay
-            animationData={require("../../assets/animations/success_animation.json")}
+            animationData={require("assets/animations/success_animation.json")}
             className={`animation`}
           />
         </AnimationContainer>

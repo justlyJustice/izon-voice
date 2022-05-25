@@ -21,7 +21,7 @@ const NoResults = () => {
     <Container>
       <Lottie
         autoPlay
-        animationData={require("../../assets/animations/no-result.json")}
+        animationData={require("assets/animations/no-result.json")}
         className="animation"
         loop
       />

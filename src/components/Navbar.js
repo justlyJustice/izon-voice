@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { logo } from "../assets/images";
+import { logo } from "assets/images";
 
 const Navbar = ({ fixed }) => {
   const [shown, setShown] = useState(false);

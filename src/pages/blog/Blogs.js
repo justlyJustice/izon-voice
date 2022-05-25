@@ -1,15 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
-import { markusSpiske, kateTrysh, huntersRace } from "../../assets/images";
-import BlogCarousel from "../../components/BlogCarousel";
-import Header from "../../components/common/Header";
-import Icon from "../../components/common/Icon";
+import { markusSpiske, kateTrysh, huntersRace } from "assets/images";
+import BlogCarousel from "components/BlogCarousel";
+import Header from "components/common/Header";
+import Icon from "components/common/Icon";
 
-import { getPosts } from "../../services/postService";
-import useApi from "../../hooks/useApi";
-import LoadingAnimation from "../../components/common/LoadingAnimation";
-import Head from "../../components/common/Head";
-import ErrorBoundaryComponent from "../../components/ErrorBoundaryComponent";
+import { getPosts } from "services/postService";
+import useApi from "hooks/useApi";
+import LoadingAnimation from "components/common/LoadingAnimation";
+import Head from "components/common/Head";
+import ErrorBoundaryComponent from "components/ErrorBoundaryComponent";
 
 const Blogs = () => {
   const {

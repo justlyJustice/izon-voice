@@ -3,16 +3,16 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { logo } from "../assets/images";
+import { logo } from "assets/images";
 
-import Card from "../components/cards/Card";
-import CategoryButtonsSlide from "../components/CategoryButtonsSlide";
-import Head from "../components/common/Head";
-import LoadingAnimation from "../components/common/LoadingAnimation";
-import NoResults from "../components/common/NoResults";
+import Card from "components/cards/Card";
+import CategoryButtonsSlide from "components/CategoryButtonsSlide";
+import Head from "components/common/Head";
+import LoadingAnimation from "components/common/LoadingAnimation";
+import NoResults from "components/common/NoResults";
 
 import useApi from "../hooks/useApi";
-import { getWelcomePageStories } from "../services/postService";
+import { getWelcomePageStories } from "services/postService";
 import { Btn } from "../styles/loginStyles";
 
 const Main = () => {

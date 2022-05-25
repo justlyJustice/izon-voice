@@ -4,15 +4,15 @@ import styled from "styled-components";
 import * as Yup from "yup";
 
 import Alert from "../utils/Alert";
-import AppLink from "../components/common/AppLink";
-import { logo } from "../assets/images";
-import { Form, Input, SubmitButton } from "../components/forms";
-import Icon from "../components/common/Icon";
+import AppLink from "components/common/AppLink";
+import { logo } from "assets/images";
+import { Form, Input, SubmitButton } from "components/forms";
+import Icon from "components/common/Icon";
 
-import { register } from "../services/userService";
-import auth from "../services/authService";
-import StatusAnimation from "../components/common/StatusAnimation";
-import Head from "../components/common/Head";
+import { register } from "services/userService";
+import auth from "services/authService";
+import StatusAnimation from "components/common/StatusAnimation";
+import Head from "components/common/Head";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().label("Email"),

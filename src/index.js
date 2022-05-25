@@ -7,7 +7,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import LogRocket from "logrocket";
 
 import App from "./App";
-import ErrorBoundary from "./components/ErrorBoundaryComponent";
+import ErrorBoundary from "components/ErrorBoundaryComponent";
 
 import "./index.css";
 import "./styles/styles.css";
@@ -30,6 +30,7 @@ Sentry.init({
   tracesSampleRate: process.env.NODE_ENV === "development" ? 1.0 : 2.0,
 });
  */
+
 ReactDOM.render(
   <>
     <React.StrictMode>

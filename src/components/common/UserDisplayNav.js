@@ -2,8 +2,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import useUser from "../../hooks/useUser";
-import auth from "../../services/authService";
+import useUser from "hooks/useUser";
+import auth from "services/authService";
 
 const UserDisplayNav = () => {
   const [shown, setShown] = useState(false);

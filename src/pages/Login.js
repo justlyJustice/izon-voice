@@ -4,10 +4,10 @@ import { useNavigate, useLocation, Navigate } from "react-router-dom";
 import * as Yup from "yup";
 
 import Alert from "../utils/Alert";
-import AppLink from "../components/common/AppLink";
-import Icon from "../components/common/Icon";
-import { Form, Input, SubmitButton } from "../components/forms";
-import StatusAnimation from "../components/common/StatusAnimation";
+import AppLink from "components/common/AppLink";
+import Icon from "components/common/Icon";
+import { Form, Input, SubmitButton } from "components/forms";
+import StatusAnimation from "components/common/StatusAnimation";
 import useUser from "../hooks/useUser";
 
 import {
@@ -16,8 +16,8 @@ import {
   ButtonGroup,
   Button,
 } from "../styles/loginStyles";
-import auth from "../services/authService";
-import { logo } from "../assets/images";
+import auth from "services/authService";
+import { logo } from "assets/images";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().label("User name"),

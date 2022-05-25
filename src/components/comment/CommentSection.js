@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
-import CustomIcon from "../common/CustomIcon";
+import CustomIcon from "components/common/CustomIcon";
 import CommentForm from "./CommentForm";
-import { likePost } from "../../services/postService";
-import { timeSince } from "../../utils/helpers.js";
+import { likePost } from "services/postService";
+import { timeSince } from "utils/helpers.js";
 
-import useUser from "../../hooks/useUser";
+import useUser from "hooks/useUser";
 
 const CommentSection = ({ postId, comments, likes }) => {
   const [isLiked, setIsLiked] = useState(false);

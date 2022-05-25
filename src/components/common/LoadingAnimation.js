@@ -35,7 +35,7 @@ const LoadingAnimation = ({ loading }) => {
           <Lottie
             className="animation"
             autoPlay
-            animationData={require("../../assets/animations/loading.json")}
+            animationData={require("assets/animations/loading.json")}
             loop
           />
         </AnimationContainer>

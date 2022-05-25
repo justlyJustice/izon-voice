@@ -4,12 +4,12 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { UserProvider } from "./context/UserContext";
-import { Blog, BlogCategory, Blogs, BlogUpload } from "./pages/blog";
-import Login from "./pages/Login";
-import Main from "./pages/Main";
-import Register from "./pages/Register";
-import NotFound from "./pages/NotFound";
-import UserDisplayNav from "./components/common/UserDisplayNav";
+import { Blog, BlogCategory, Blogs, BlogUpload } from "pages/blog";
+import Login from "pages/Login";
+import Main from "pages/Main";
+import Register from "pages/Register";
+import NotFound from "pages/NotFound";
+import UserDisplayNav from "components/common/UserDisplayNav";
 
 const App = () => {
   return (
