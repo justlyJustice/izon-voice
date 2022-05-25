@@ -35,7 +35,7 @@ export function setGoogleUser() {
       "Access-Control-Allow-Origin":
         process.env.NODE_ENV === "development"
           ? "http://localhost:8000/"
-          : "https://izonvoice.ng/",
+          : "http://izonvoice.ng/",
     },
   })
     .then((res) => {
