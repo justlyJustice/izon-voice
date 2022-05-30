@@ -152,7 +152,7 @@ const Register = () => {
       resetForm();
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
-        Alert.error("Error register user!", ex.response.data.message);
+        Alert.error("Error registering user!", ex.response.data.message);
       }
 
       setSuccess(false);
