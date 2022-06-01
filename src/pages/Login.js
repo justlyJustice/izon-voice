@@ -1,21 +1,15 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
-import { useNavigate, useLocation, Navigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import * as Yup from "yup";
 
 import Alert from "../utils/Alert";
 import AppLink from "components/common/AppLink";
-import Icon from "components/common/Icon";
 import { Form, Input, SubmitButton } from "components/forms";
 import StatusAnimation from "components/common/StatusAnimation";
-import useUser from "../hooks/useUser";
+import useUser from "hooks/useUser";
 
-import {
-  LoginContainer,
-  Rule,
-  ButtonGroup,
-  Button,
-} from "../styles/loginStyles";
+import { LoginContainer, Button } from "styles/loginStyles";
 import auth from "services/authService";
 import { logo } from "assets/images";
 
@@ -36,6 +30,8 @@ const Login = () => {
       setIsLoading(true);
       const user = await auth.login(values);
       setUser(user);
+
+      Alert.success("Login", "Was successful, redirecting...");
 
       setSuccess(true);
       setIsLoading(false);
@@ -64,83 +60,78 @@ const Login = () => {
     <>
       <StatusAnimation success={success} />
 
-      <section className="container">
+      <>
         <LoginContainer>
-          <div className="left-container">
-            <img src={logo} alt="Izon voice logo" className="logo" />
+          <div className="container grid">
+            <div className="left-div">
+              <img src={logo} alt="Izon voice logo" className="logo" />
 
-            <div className="left_para_contain">
-              <p className="para">
-                <span>Return right in</span> and hear from some cool voices
-                around the globe
-              </p>
+              <div className="left-para-contain">
+                <p className="para">
+                  <span>Return right in</span> and hear from some cool voices
+                  around the globe
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="right-container">
-            <div className="form-contain">
-              <Form
-                initialValues={{
-                  email: "",
-                  password: "",
-                }}
-                onSubmit={loginUser}
-                validationSchema={validationSchema}
-              >
-                <Input
-                  name="email"
-                  label="Username"
-                  placeholder="Provide username"
-                />
-
-                <Input
-                  name="password"
-                  label="Password"
-                  placeholder="Provide password"
-                  type="password"
-                />
-
-                <SubmitButton
-                  style={{
-                    cursor: isLoading ? "not-allowed" : "",
-                    position: "relative",
-                    top: "40px",
-                    left: "130px",
-                    wdith: "50%",
+            <div className="right-div flex">
+              <div className="form">
+                <Form
+                  initialValues={{
+                    email: "",
+                    password: "",
                   }}
+                  onSubmit={loginUser}
+                  validationSchema={validationSchema}
                 >
-                  {isLoading ? (
-                    <Icon name="spinner" className="fa-spin" />
-                  ) : (
-                    "LOGIN"
-                  )}
-                </SubmitButton>
-              </Form>
-            </div>
-
-            <div
-              style={{
-                marginTop: "50px",
-              }}
-            >
-              <Rule />
-              <ButtonGroup>
-                <Button to="#" onClick={googleAuth}>
-                  Login With{" "}
-                  <i
-                    className="fa-brands fa-google"
-                    style={{ color: "#EA1919" }}
+                  <Input
+                    name="email"
+                    label="Username"
+                    placeholder="Provide username"
                   />
-                </Button>
-              </ButtonGroup>
 
-              <AppLink to="/register">
-                Don’t own an account yet? Register
-              </AppLink>
+                  <Input
+                    name="password"
+                    label="Password"
+                    placeholder="Provide password"
+                    type="password"
+                  />
+
+                  <SubmitButton
+                    style={{
+                      cursor: isLoading && "not-allowed",
+                    }}
+                  >
+                    {isLoading ? (
+                      <i className="fa fa-spiner fa-spin"></i>
+                    ) : (
+                      "LOGIN"
+                    )}
+                  </SubmitButton>
+                </Form>
+              </div>
+
+              <div className="right-bottom-div">
+                <hr className="rule" />
+
+                <div className="button-group flex">
+                  <Button to="#" onClick={googleAuth}>
+                    Login With{" "}
+                    <i
+                      className="fa-brands fa-google"
+                      style={{ color: "#EA1919" }}
+                    />
+                  </Button>
+                </div>
+
+                <AppLink to="/register">
+                  Don’t own an account yet? Register
+                </AppLink>
+              </div>
             </div>
           </div>
         </LoginContainer>
-      </section>
+      </>
     </>
   );
 };

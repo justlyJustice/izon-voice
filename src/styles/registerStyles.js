@@ -1,89 +1,127 @@
-import styled from "styled-components";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
-export const Container = styled.div`
-  display: grid;
-  grid-template-columns: 1.5fr 2fr;
-  height: 100vh;
+export const Btn = styled.button``;
 
-  .left-container {
-    display: flex;
-    flex-direction: column;
+export const Container = styled.section`
+  .grid {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: repeat(2, 1fr);
     justify-content: center;
-    padding-left: 80px;
-  }
-
-  .left-container .logo {
-    height: 200px;
-    width: 200px;
-    border-radius: 0px;
-  }
-
-  .left-container .para {
-    font-family: Playfair Display;
-    font-size: 30px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 30px;
-    letter-spacing: 0em;
-    text-align: left;
-    width: 430px;
-  }
-
-  .right-container {
     align-items: center;
+  }
+
+  .flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Left Div */
+  .left-div {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: flex-start;
+
+    img {
+      margin: 0 20px;
+      width: 200px;
+      height: 200px;
+    }
+
+    .left-para-contain {
+      width: 430px;
+
+      .para {
+        font-family: "Playfair Display";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 40px;
+      }
+
+      span {
+        font-weight: 800;
+      }
+    }
   }
 
-  .right-container .form-contain {
-    height: fit-content;
-    padding-left: 25px;
-    padding-right: 25px;
-    border-radius: 20px;
-    padding-top: 20px;
-    background-color: rgba(17, 55, 254, 0.7);
-    box-shadow: 0px 20px 50px #dbdbdb;
+  /* Right Div */
+  .right-div {
+    /* height: 320px; */
+    /* height: fit-content; */
+    flex-direction: column;
+    justify-content: space-between;
+
+    .form {
+      position: relative;
+      padding: 30px;
+      background: rgba(17, 55, 254, 0.7);
+      box-shadow: 0px 20px 50px #dbdbdb;
+      border-radius: 20px;
+      width: 100%;
+    }
+
+    .right-bottom-div {
+      .rule {
+        width: 300px;
+        height: 4px;
+        background: #f2f2f2;
+        border-radius: 20px;
+        margin: 40px auto;
+      }
+
+      .button-group {
+        margin: 20px 0;
+        width: 100%;
+      }
+    }
   }
 
-  @media only screen and (max-width: 768px) {
-    display: block;
-    height: 100%;
-    padding: 50px;
-    background-color: dodgerblue;
+  @media (max-width: 768px) {
+    padding: 20px;
+
+    .grid {
+      grid-template-columns: 1fr;
+    }
+
+    .left-div {
+      margin: 0 auto;
+
+      img {
+        align-self: center;
+        width: 100px;
+        height: 100px;
+      }
+
+      .left-para-contain {
+        width: 210px;
+        text-align: center;
+
+        .para {
+          font-family: "Playfair Display";
+          font-style: normal;
+          font-size: 15px;
+          line-height: 19px;
+          text-align: center;
+          color: #393939;
+        }
+      }
+    }
   }
-`;
-
-export const Rule = styled.hr`
-  margin: 18px auto;
-  width: 300px;
-  height: 4px;
-  background: #f2f2f2;
-  border: none;
-  border-radius: 20px;
-`;
-
-export const ButtonGroup = styled.div`
-  align-items: center;
-  display: flex;
-  width: 471px;
-  margin: 30px 0px;
 `;
 
 export const Button = styled(Link)`
-  font-family: Playfair Display;
-  text-align: center !important;
-  color: #393939;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 32px;
-  letter-spacing: 0em;
-  text-align: left;
   width: 230px;
   padding: 10px;
   background: #f2f2f2;
-  margin: 0px 5px;
   border-radius: 20px;
+  text-align: center;
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 32px;
+  color: #393939;
 `;

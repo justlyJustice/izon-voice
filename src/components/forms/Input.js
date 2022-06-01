@@ -27,7 +27,7 @@ const InputGroup = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin: 8px 0px;
+  margin: 10px 0px;
 
   .label {
     color: white;

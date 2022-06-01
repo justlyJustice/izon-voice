@@ -1,155 +1,127 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const Btn = styled.button`
-  color: #fff;
-  cursor: pointer;
-  height: 56px;
-  width: 180px;
-  border-radius: 20px;
-  background: #1137fe;
-  font-family: Montserrat;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 800;
-  letter-spacing: 0em;
-  text-align: center;
-
-  @media screen and (max-width: 768px) {
-    width: 50%;
-  }
-`;
+export const Btn = styled.button``;
 
 export const LoginContainer = styled.section`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  height: 100vh !important;
-  padding: 30px;
-  width: 100% !important;
+  .grid {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+  }
 
-  .left-container {
+  .flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Left Div */
+  .left-div {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: flex-start;
+
+    img {
+      margin: 0 20px;
+      width: 200px;
+      height: 200px;
+    }
+
+    .left-para-contain {
+      width: 430px;
+
+      .para {
+        font-family: "Playfair Display";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 40px;
+      }
+
+      span {
+        font-weight: 800;
+      }
+    }
   }
 
-  .left-container .logo {
-    height: 200px;
-    width: 200px;
-    border-radius: 0px;
-  }
-
-  .left-container .left_para_contain {
-    width: 430px;
-  }
-
-  .left-container .para {
-    font-family: Playfair Display;
-    font-size: 30px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 30px;
-    letter-spacing: 0em;
-    text-align: left;
-  }
-
-  .left-container .para span {
-    font-weight: 600;
-  }
-
-  .right-container {
-    display: flex;
+  /* Right Div */
+  .right-div {
+    /* height: 320px; */
+    /* height: fit-content; */
     flex-direction: column;
-    justify-content: center;
-  }
+    justify-content: space-between;
 
-  .right-container .form-contain {
-    background-color: rgba(17, 55, 254, 0.7);
-    box-shadow: 0px 20px 50px #dbdbdb;
-    border-radius: 20px;
-    height: fit-content;
-    padding: 25px;
-    width: 100%;
-  }
-
-  @media screen and (max-width: 768px) {
-    grid-template-columns: 1fr;
-    padding: 30px;
-    height: 100vh;
-    width: 100% !important;
-    /* flex-direction: column; */
-
-    .left-container {
-      height: fit-content;
-      margin-bottom: 20px;
+    .form {
+      position: relative;
+      padding: 30px;
+      background: rgba(17, 55, 254, 0.7);
+      box-shadow: 0px 20px 50px #dbdbdb;
+      border-radius: 20px;
+      width: 100%;
     }
 
-    .left-container .logo {
-      align-self: center;
-      height: 120px;
-      width: 120px;
-    }
+    .right-bottom-div {
+      .rule {
+        width: 300px;
+        height: 4px;
+        background: #f2f2f2;
+        border-radius: 20px;
+        margin: 40px auto;
+      }
 
-    .left-container .left_para_contain {
-      margin: auto auto;
-    }
-
-    .left-container .para {
-      align-self: center;
-      margin: auto auto;
-      width: 250px;
-      font-family: "Playfair Display";
-      font-style: normal;
-      font-weight: 800;
-      font-size: 18px;
-      line-height: 22px;
-      text-align: center;
+      .button-group {
+        margin: 20px 0;
+        width: 100%;
+      }
     }
   }
-`;
 
-export const Rule = styled.hr`
-  margin: 18px auto;
-  width: 300px;
-  height: 4px;
-  background: #f2f2f2;
-  border: none;
-  border-radius: 20px;
+  @media (max-width: 768px) {
+    padding: 20px;
 
-  @media screen and (max-width: 768px) {
-    margin: 2px auto;
-  }
-`;
+    .grid {
+      grid-template-columns: 1fr;
+    }
 
-export const ButtonGroup = styled.div`
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  margin: 30px 0px;
-  width: 471px;
+    .left-div {
+      margin: 0 auto;
 
-  @media screen and (max-width: 768px) {
-    flex-direction: column;
+      img {
+        align-self: center;
+        width: 100px;
+        height: 100px;
+      }
+
+      .left-para-contain {
+        width: 210px;
+        text-align: center;
+
+        .para {
+          font-family: "Playfair Display";
+          font-style: normal;
+          font-size: 15px;
+          line-height: 19px;
+          text-align: center;
+          color: #393939;
+        }
+      }
+    }
   }
 `;
 
 export const Button = styled(Link)`
-  font-family: Playfair Display;
-  text-align: center !important;
-  color: #393939;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 32px;
-  letter-spacing: 0em;
-  text-align: left;
   width: 230px;
   padding: 10px;
   background: #f2f2f2;
-  margin: 0px 5px;
   border-radius: 20px;
-
-  @media screen and (max-width: 768px) {
-    width: 50%;
-  }
+  text-align: center;
+  font-family: "Playfair Display";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 32px;
+  color: #393939;
 `;

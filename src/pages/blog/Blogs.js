@@ -39,6 +39,7 @@ const Blogs = () => {
           <div className="carousel_contain">
             <BlogCarousel posts={posts} />
           </div>
+
           <div className="news_feed_contain">
             <div className="head">
               <h2>NEWS FEED</h2>

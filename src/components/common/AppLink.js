@@ -10,7 +10,6 @@ const TextLink = styled(Link)`
   letter-spacing: 0em;
   color: #000000;
   text-decoration: underline;
-  margin-left: 80px;
 
   @media screen and (max-width: 768px) {
     font-size: 18px;
