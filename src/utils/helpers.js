@@ -24,3 +24,7 @@ export function timeSince(date) {
   }
   return Math.floor(seconds) + " seconds ago";
 }
+
+export const checkCurrentEnv = (object) => {
+  return process.env.NODE_ENV === "development" ? object._id : object.slug;
+};

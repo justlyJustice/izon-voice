@@ -6,13 +6,13 @@ import * as Yup from "yup";
 import Alert from "../utils/Alert";
 import AppLink from "components/common/AppLink";
 import { logo } from "assets/images";
-import { Form, Input, SubmitButton } from "components/forms";
+import { Form, Input } from "components/forms";
 
 import { register } from "services/userService";
 import auth from "services/authService";
 import StatusAnimation from "components/common/StatusAnimation";
 import Head from "components/common/Head";
-import { Container, Button } from "styles/registerStyles";
+import { Container, Button, Btn as SubmitButton } from "styles/registerStyles";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().label("Email"),

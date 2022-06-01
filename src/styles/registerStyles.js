@@ -1,7 +1,23 @@
+import { SubmitButton } from "components/forms";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const Btn = styled.button``;
+export const Btn = styled(SubmitButton)`
+  cursor: pointer;
+  color: #fff;
+  position: absolute;
+  width: 180px;
+  background: #1137fe;
+  border-radius: 10px;
+  padding: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  /*   margin-top: 10px; */
+  font-family: "Montserrat";
+  font-weight: 800;
+  font-size: 18px;
+  text-transform: uppercase;
+`;
 
 export const Container = styled.section`
   .grid {

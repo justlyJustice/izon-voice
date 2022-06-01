@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
+import { checkCurrentEnv } from "utils/helpers";
 
 const BlogCarousel = ({ posts }) => {
   const CustomNextArrow = (props) => {
@@ -62,30 +63,31 @@ const BlogCarousel = ({ posts }) => {
     <>
       <Slider {...settings}>
         {posts && posts !== []
-          ? posts
-              .filter((post) => post.slug)
-              .map((post) => (
-                <div key={post.title} className="blog-slider">
-                  <img
-                    className="blog-image"
-                    src={post.image || post.urlToImage}
-                    alt={post.image || post.urlToImage}
-                  />
+          ? posts.map((post) => (
+              <div key={post.title} className="blog-slider">
+                <img
+                  className="blog-image"
+                  src={post.image || post.urlToImage}
+                  alt={post.image || post.urlToImage}
+                />
 
-                  <div className="text-div">
-                    <h2 className="carousel-text">
-                      <Link style={{ color: "black" }} to={`/${post.slug}`}>
-                        {post.title}
-                      </Link>
-                    </h2>
-                    <hr className="slide-rule" />
+                <div className="text-div">
+                  <h2 className="carousel-text">
+                    <Link
+                      style={{ color: "black" }}
+                      to={`/${checkCurrentEnv(post)}`}
+                    >
+                      {post.title}
+                    </Link>
+                  </h2>
+                  <hr className="slide-rule" />
 
-                    <div>
-                      <p className="slide-para">{post.description}</p>
-                    </div>
+                  <div>
+                    <p className="slide-para">{post.description}</p>
                   </div>
                 </div>
-              ))
+              </div>
+            ))
           : null}
       </Slider>
     </>

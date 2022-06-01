@@ -60,8 +60,8 @@ const Main = () => {
           </div>
         </div>
 
-        <>
-          <div className="content_div">
+        <div className="content_div">
+          <div className="cards-contain">
             {posts && posts.length > 0 ? (
               posts.map((post, index) => (
                 <Card
@@ -75,20 +75,20 @@ const Main = () => {
             ) : (
               <NoResults />
             )}
-
-            <div className="divider"></div>
-
-            <div className="bottom-group">
-              <div>
-                <p className="more-para">
-                  MORE STORIES <i className="fa fa-send"></i>
-                </p>
-              </div>
-
-              <CategoryButtonsSlide />
-            </div>
           </div>
-        </>
+
+          <div className="divider"></div>
+
+          <div className="bottom-group">
+            <div>
+              <p className="more-para">
+                MORE STORIES <i className="fa fa-send"></i>
+              </p>
+            </div>
+
+            <CategoryButtonsSlide />
+          </div>
+        </div>
       </div>
     </>
   );

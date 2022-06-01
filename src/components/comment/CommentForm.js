@@ -49,11 +49,10 @@ const Button = styled(SubmitButton)`
   line-height: 20px;
   text-transform: uppercase;
   color: #ffffff;
-  width: 119px;
-  height: 30px;
+  width: 240px;
   background: rgba(17, 55, 254, 0.7);
   border-radius: 20px;
-  margin-top: 10px;
+  padding: 17px;
   transition: ease all 0.3s;
 
   &:hover {
@@ -78,6 +77,7 @@ const CommentForm = ({ postId, user }) => {
 
       if (res.status === 201) {
         setSuccess(true);
+
         setTimeout(() => {
           setSuccess(false);
           window.location.reload();

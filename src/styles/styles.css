@@ -210,7 +210,7 @@
 /* Landing page */
 .main-grid {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: repeat(2, 1fr);
   height: 100vh;
 }
 
@@ -231,8 +231,14 @@
 .content_div {
   display: flex;
   justify-content: space-around;
+  flex-direction: column;
   padding: 20px;
   width: 100%;
+}
+
+.content_div .cards-contain {
+  display: flex;
+  justify-content: space-around;
   flex-wrap: wrap !important;
 }
 
@@ -687,6 +693,7 @@
 
 .comment-section .comment-box {
   margin-top: 30px;
+  position: relative;
 }
 
 /* Blog on Category */

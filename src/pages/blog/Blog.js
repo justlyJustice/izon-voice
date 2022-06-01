@@ -100,7 +100,7 @@ const Blog = () => {
 
             <CommentSection
               comments={post.comments}
-              postId={post.slug}
+              postId={post._id}
               likes={post.likes}
             />
           </div>
