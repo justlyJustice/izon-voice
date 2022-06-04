@@ -22,38 +22,6 @@ export const login = async (user) => {
   return data;
 };
 
-// Google user function
-export function setGoogleUser() {
-  fetch(`${process.env.REACT_APP_API_URL}auth/login/success`, {
-    method: "GET",
-    credentials: "include",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Crendentials": true,
-      "Allow-Crendentials": true,
-      "Access-Control-Allow-Origin":
-        process.env.NODE_ENV === "development"
-          ? "http://localhost:8000/"
-          : "http://izonvoice.ng/",
-    },
-  })
-    .then((res) => {
-      if (res.status === 200) return res.json();
-      else {
-        return;
-      }
-    })
-    .then(({ token }) => {
-      if (!token) return null;
-
-      localStorage.setItem(tokenKey, token);
-    })
-    .catch((ex) => {});
-}
-
-setGoogleUser();
-
 // Getting the current user
 function getCurrentUser() {
   try {
@@ -74,13 +42,15 @@ export const logout = () => {
   localStorage.removeItem(tokenKey);
 };
 
-export const loginWithGoogle = () => {
-  window.open(process.env.REACT_APP_API_URL + "auth/google", "_self");
+export const googleAuth = (tokenId) => {
+  return http.post("/google-auth", {
+    token: tokenId,
+  });
 };
 
 export default {
   login,
-  loginWithGoogle,
+  googleAuth,
   loginWithJwt,
   logout,
   currentUser,

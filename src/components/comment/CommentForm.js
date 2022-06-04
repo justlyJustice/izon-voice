@@ -104,7 +104,7 @@ const CommentForm = ({ postId, user }) => {
 
   return (
     <>
-      <style jsx>
+      <style>
         {`
           .to_login {
             color: red;

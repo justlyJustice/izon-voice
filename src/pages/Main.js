@@ -36,13 +36,6 @@ const Main = () => {
       <Head title={`Izon Voice | Home`} description="Izon Voice Homepage" />
       <LoadingAnimation loading={loading} />
 
-      {error && posts === null && (
-        <div>
-          <h2>Could not get posts!</h2>
-          <Btn title="Try Again" onClick={loadPosts} />
-        </div>
-      )}
-
       <div className="main-grid">
         <div className="left_div">
           <img className="logo" src={logo} alt="Izon voice logo" />

@@ -15,6 +15,8 @@ import {
 } from "styles/loginStyles";
 import auth from "services/authService";
 import { logo } from "assets/images";
+import GoogleLogin from "react-google-login";
+import GoogleButon from "components/common/GoogleButton";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().label("User name"),
@@ -50,8 +52,24 @@ const Login = () => {
     }
   };
 
-  const googleAuth = () => {
-    window.open(`${process.env.REACT_APP_API_URL}auth/google`, "_self");
+  const onSuccess = async (res) => {
+    try {
+      const result = await auth.googleAuth(res?.tokenId);
+
+      console.log(result);
+      /* 
+      if (result.ok) {
+        auth.loginWithJwt(result.token);
+
+        setTimeout(() => {
+          navigate("/home");
+        }, 3000);
+      } */
+
+      /*  setUser(result.data.user); */
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   if (user) return <Navigate to="/home" />;
@@ -107,13 +125,13 @@ const Login = () => {
             <hr className="rule" />
 
             <div className="button-group flex">
-              <Button to="#" onClick={googleAuth}>
+              <GoogleButon onSuccess={onSuccess}>
                 Login With{" "}
                 <i
                   className="fa-brands fa-google"
                   style={{ color: "#EA1919" }}
                 />
-              </Button>
+              </GoogleButon>
             </div>
 
             <AppLink to="/register">Don’t own an account yet? Register</AppLink>

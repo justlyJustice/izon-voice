@@ -62,7 +62,7 @@ const BlogCarousel = ({ posts }) => {
   return (
     <>
       <Slider {...settings}>
-        {posts && posts !== []
+        {posts && posts.length > 0
           ? posts.map((post) => (
               <div key={post.title} className="blog-slider">
                 <img
@@ -73,10 +73,7 @@ const BlogCarousel = ({ posts }) => {
 
                 <div className="text-div">
                   <h2 className="carousel-text">
-                    <Link
-                      style={{ color: "black" }}
-                      to={`/${checkCurrentEnv(post)}`}
-                    >
+                    <Link style={{ color: "black" }} to={`/${post.slug}`}>
                       {post.title}
                     </Link>
                   </h2>

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import { useEffect } from "react";
-import { useNavigate, useLocation, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
 import PostShare from "components/common/PostShare";
 
 import Header from "components/common/Header";
@@ -14,8 +14,9 @@ import { getPost } from "services/postService";
 import useApi from "hooks/useApi";
 
 const Blog = () => {
+  const [comments, setComments] = useState([]);
+
   const {
-    error,
     data: { post },
     loading,
     request,
@@ -24,18 +25,17 @@ const Blog = () => {
   const location = useLocation();
   location.pathname = "/home";
   const { name } = useParams();
-  const navigate = useNavigate();
 
   const retrievePost = async () => {
-    const response = await request(name);
-
-    if (response && response.status === 404) {
-      navigate(`*`);
-    }
+    await request(name);
   };
 
   useEffect(() => {
     retrievePost();
+
+    if (post && post !== []) {
+      console.log(post.comments);
+    }
   }, []);
 
   return (
@@ -87,8 +87,10 @@ const Blog = () => {
               </div>
 
               <div className="blog-content">
-                {post.description.split("\n").map((des) => (
-                  <p className="para">{des}</p>
+                {post.description.split("\n").map((des, i) => (
+                  <p className="para" key={i}>
+                    {des}
+                  </p>
                 ))}
 
                 {/*     <p className="para">
@@ -99,7 +101,7 @@ const Blog = () => {
             </div>
 
             <CommentSection
-              comments={post.comments}
+              comments={comments}
               postId={post._id}
               likes={post.likes}
             />

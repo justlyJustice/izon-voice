@@ -1,5 +1,4 @@
 import { SubmitButton } from "components/forms";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Btn = styled(SubmitButton)`
@@ -128,7 +127,8 @@ export const LoginContainer = styled.section`
   }
 `;
 
-export const Button = styled(Link)`
+export const Button = styled.button`
+  cursor: pointer;
   width: 230px;
   padding: 10px;
   background: #f2f2f2;
@@ -140,4 +140,8 @@ export const Button = styled(Link)`
   font-size: 18px;
   line-height: 32px;
   color: #393939;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;

@@ -3,14 +3,13 @@ import { useState } from "react";
 import CustomIcon from "components/common/CustomIcon";
 import CommentForm from "./CommentForm";
 import { likePost } from "services/postService";
-import { timeSince } from "utils/helpers.js";
+import { timeSince } from "utils/helpers";
 
 import useUser from "hooks/useUser";
 
 const CommentSection = ({ postId, comments, likes }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [likesCount, setLikesCount] = useState(likes ? likes.length : 0);
-
   const { user } = useUser();
 
   const handleLikePost = async () => {
@@ -40,7 +39,7 @@ const CommentSection = ({ postId, comments, likes }) => {
 
           <div className="item">
             <i
-              className={`fa fa-${isLiked ? "heart" : "heart-o"} icon`}
+              className={`fa-solid fa-${isLiked ? "heart" : "heart-o"} icon`}
               onClick={handleLikePost}
               style={{ cursor: !user && "not-allowed" }}
             ></i>
@@ -53,7 +52,7 @@ const CommentSection = ({ postId, comments, likes }) => {
 
       {comments &&
         comments.map((comment, i) => (
-          <div className="user_contain" key={i}>
+          <div className="user_contain" key={comment._id}>
             <div className="user">
               <CustomIcon />
 

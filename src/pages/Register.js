@@ -12,7 +12,8 @@ import { register } from "services/userService";
 import auth from "services/authService";
 import StatusAnimation from "components/common/StatusAnimation";
 import Head from "components/common/Head";
-import { Container, Button, Btn as SubmitButton } from "styles/registerStyles";
+import { Container, Btn as SubmitButton } from "styles/registerStyles";
+import GoogleButon from "components/common/GoogleButton";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().label("Email"),
@@ -54,11 +55,27 @@ const Register = () => {
     }
   };
 
-  if (auth.currentUser) return <Navigate to="/blog" />;
+  const onSuccess = async (res) => {
+    try {
+      const result = await auth.googleAuth(res?.tokenId);
 
-  const googleAuth = () => {
-    window.open(`${process.env.REACT_APP_API_URL}auth/google`, "_self");
+      console.log(result);
+      /* 
+      if (result.ok) {
+        auth.loginWithJwt(result.token);
+
+        setTimeout(() => {
+          navigate("/home");
+        }, 3000);
+      } */
+
+      /*  setUser(result.data.user); */
+    } catch (err) {
+      console.log(err);
+    }
   };
+
+  if (auth.currentUser) return <Navigate to="/blog" />;
 
   return (
     <>
@@ -128,13 +145,13 @@ const Register = () => {
               <hr className="rule" />
 
               <div className="button-group flex">
-                <Button to="#" onClick={googleAuth}>
+                <GoogleButon onSuccess={onSuccess}>
                   Register With{" "}
                   <i
                     className="fa-brands fa-google"
                     style={{ color: "#EA1919" }}
                   />
-                </Button>
+                </GoogleButon>
               </div>
 
               <AppLink to="/login">Have an account already? Login</AppLink>
