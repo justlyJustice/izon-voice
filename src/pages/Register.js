@@ -59,17 +59,15 @@ const Register = () => {
     try {
       const result = await auth.googleAuth(res?.tokenId);
 
-      console.log(result);
-      /* 
       if (result.ok) {
-        auth.loginWithJwt(result.token);
+        auth.loginWithJwt(result.data.token);
+
+        Alert.success("Registration", "Was successful, redirecting...");
 
         setTimeout(() => {
-          navigate("/home");
+          window.location.href = "/home";
         }, 3000);
-      } */
-
-      /*  setUser(result.data.user); */
+      }
     } catch (err) {
       console.log(err);
     }
@@ -146,11 +144,7 @@ const Register = () => {
 
               <div className="button-group flex">
                 <GoogleButon onSuccess={onSuccess}>
-                  Register With{" "}
-                  <i
-                    className="fa-brands fa-google"
-                    style={{ color: "#EA1919" }}
-                  />
+                  Register With <i className="icon fa-brands fa-google" />
                 </GoogleButon>
               </div>
 

@@ -56,17 +56,15 @@ const Login = () => {
     try {
       const result = await auth.googleAuth(res?.tokenId);
 
-      console.log(result);
-      /* 
       if (result.ok) {
-        auth.loginWithJwt(result.token);
+        auth.loginWithJwt(result.data.token);
+
+        Alert.success("Login", "Was successful, redirecting...");
 
         setTimeout(() => {
-          navigate("/home");
+          window.location.href = "/home";
         }, 3000);
-      } */
-
-      /*  setUser(result.data.user); */
+      }
     } catch (err) {
       console.log(err);
     }
@@ -126,11 +124,7 @@ const Login = () => {
 
             <div className="button-group flex">
               <GoogleButon onSuccess={onSuccess}>
-                Login With{" "}
-                <i
-                  className="fa-brands fa-google"
-                  style={{ color: "#EA1919" }}
-                />
+                Login With <i className="icon fa-brands fa-google" />
               </GoogleButon>
             </div>
 

@@ -22,17 +22,15 @@ const UserDisplayNav = () => {
   return (
     <div className="user-nav">
       <div className="icon-container" onClick={() => setShown((prev) => !prev)}>
-        {!user.picture && <i className="fa-solid fa-user-circle icon" />}
-
-        {user.picture && (
+        <i className="fa-solid fa-user-circle icon" />
+        {/*   {user.picture && (
           <img
             src={user.picture}
             alt={user.picture}
             width={40}
             style={{ borderRadius: "50%" }}
           />
-        )}
-
+        )} */}
         <i className="fa-solid fa-chevron-down chevron" />
       </div>
 

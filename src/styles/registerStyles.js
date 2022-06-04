@@ -140,4 +140,12 @@ export const Button = styled(Link)`
   font-size: 18px;
   line-height: 32px;
   color: #393939;
+
+  .icon {
+    color: #ea1919;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;

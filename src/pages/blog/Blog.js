@@ -101,7 +101,7 @@ const Blog = () => {
             </div>
 
             <CommentSection
-              comments={comments}
+              comments={post.comments}
               postId={post._id}
               likes={post.likes}
             />

@@ -39,7 +39,7 @@ const CommentSection = ({ postId, comments, likes }) => {
 
           <div className="item">
             <i
-              className={`fa-solid fa-${isLiked ? "heart" : "heart-o"} icon`}
+              className={`fa-solid fa-heart icon`}
               onClick={handleLikePost}
               style={{ cursor: !user && "not-allowed" }}
             ></i>
