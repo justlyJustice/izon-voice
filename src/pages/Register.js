@@ -13,7 +13,8 @@ import auth from "services/authService";
 import StatusAnimation from "components/common/StatusAnimation";
 import Head from "components/common/Head";
 import { Container, Btn as SubmitButton } from "styles/registerStyles";
-import GoogleButon from "components/common/GoogleButton";
+
+import GoogleAuth from "components/GoogleAuth";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().label("Email"),
@@ -52,24 +53,6 @@ const Register = () => {
 
       setSuccess(false);
       setIsLoading(false);
-    }
-  };
-
-  const onSuccess = async (res) => {
-    try {
-      const result = await auth.googleAuth(res?.tokenId);
-
-      if (result.ok) {
-        auth.loginWithJwt(result.data.token);
-
-        Alert.success("Registration", "Was successful, redirecting...");
-
-        setTimeout(() => {
-          window.location.href = "/home";
-        }, 3000);
-      }
-    } catch (err) {
-      console.log(err);
     }
   };
 
@@ -143,9 +126,7 @@ const Register = () => {
               <hr className="rule" />
 
               <div className="button-group flex">
-                <GoogleButon onSuccess={onSuccess}>
-                  Register With <i className="icon fa-brands fa-google" />
-                </GoogleButon>
+                <GoogleAuth text="Register With" />
               </div>
 
               <AppLink to="/login">Have an account already? Login</AppLink>

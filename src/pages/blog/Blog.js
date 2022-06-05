@@ -40,7 +40,7 @@ const Blog = () => {
 
   return (
     <section>
-      <Head title={`Izon Voice| ${post ? post.title : "Loading..."}`} />
+      <Head title={`Izon Voice| ${post.title}`} />
       <LoadingAnimation loading={loading} />
 
       {post && (

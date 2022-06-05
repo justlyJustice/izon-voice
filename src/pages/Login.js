@@ -8,15 +8,11 @@ import AppLink from "components/common/AppLink";
 import { Form, Input } from "components/forms";
 import useUser from "hooks/useUser";
 
-import {
-  LoginContainer,
-  Button,
-  Btn as SubmitButton,
-} from "styles/loginStyles";
+import { LoginContainer, Btn as SubmitButton } from "styles/loginStyles";
 import auth from "services/authService";
 import { logo } from "assets/images";
-import GoogleLogin from "react-google-login";
-import GoogleButon from "components/common/GoogleButton";
+
+import GoogleAuth from "components/GoogleAuth";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().label("User name"),
@@ -49,24 +45,6 @@ const Login = () => {
       }
 
       setIsLoading(false);
-    }
-  };
-
-  const onSuccess = async (res) => {
-    try {
-      const result = await auth.googleAuth(res?.tokenId);
-
-      if (result.ok) {
-        auth.loginWithJwt(result.data.token);
-
-        Alert.success("Login", "Was successful, redirecting...");
-
-        setTimeout(() => {
-          window.location.href = "/home";
-        }, 3000);
-      }
-    } catch (err) {
-      console.log(err);
     }
   };
 
@@ -123,9 +101,7 @@ const Login = () => {
             <hr className="rule" />
 
             <div className="button-group flex">
-              <GoogleButon onSuccess={onSuccess}>
-                Login With <i className="icon fa-brands fa-google" />
-              </GoogleButon>
+              <GoogleAuth text="Login With" />
             </div>
 
             <AppLink to="/register">Don’t own an account yet? Register</AppLink>

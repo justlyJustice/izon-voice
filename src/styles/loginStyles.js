@@ -18,6 +18,19 @@ export const Btn = styled(SubmitButton)`
   text-transform: uppercase;
 `;
 
+export const SuccessButton = styled.button`
+  cursor: pointer;
+  color: #fff;
+  width: 230px;
+  background: #36cd01;
+  border-radius: 10px;
+  padding: 15px;
+  font-family: "Montserrat";
+  font-weight: 800;
+  font-size: 18px;
+  text-transform: uppercase;
+`;
+
 export const LoginContainer = styled.section`
   .grid {
     display: grid;
