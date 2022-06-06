@@ -11,15 +11,17 @@ export const getJwt = () => {
 http.setJwt(getJwt());
 
 export const login = async (user) => {
-  const { data } = await http.post(`/auth/signin`, {
+  const res = await http.post(`/auth/signin`, {
     email: user.email,
     password: user.password,
   });
 
+  const { data } = res;
+
   const jwt = data.token;
   localStorage.setItem(tokenKey, jwt);
 
-  return data;
+  return res;
 };
 
 // Getting the current user

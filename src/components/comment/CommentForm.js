@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import * as Yup from "yup";
 
@@ -8,7 +8,7 @@ import comment from "services/commentService";
 import StatusAnimation from "components/common/StatusAnimation";
 
 const validationSchema = Yup.object().shape({
-  message: Yup.string().required().label("Comment"),
+  message: Yup.string().required().min(8).label("Comment"),
 });
 
 const CustomTextArea = styled(TextArea)`
@@ -68,6 +68,8 @@ const CommentForm = ({ postId, user }) => {
   const [loading, setLoading] = useState(false);
   const [shown, setShown] = useState(false);
 
+  const location = useLocation();
+
   const handleSubmit = async ({ message }, { resetForm }) => {
     try {
       setLoading(true);
@@ -125,12 +127,15 @@ const CommentForm = ({ postId, user }) => {
           <CustomTextArea
             placeholder="What are your thoughts?"
             name="message"
-            /*  disabled={!user} */
             onClick={() => verifyUser()}
           />
 
           {shown ? (
-            <Link to="/login" className="to_login">
+            <Link
+              to="/login"
+              className="to_login"
+              state={{ from: location.pathname }}
+            >
               <span>You must login to comment.</span>
             </Link>
           ) : null}

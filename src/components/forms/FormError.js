@@ -5,8 +5,10 @@ const Text = styled.small`
   display: block !important;
 `;
 
-const FormError = ({ error, visible }) => {
-  if (!error || !visible) return null;
+const FormError = ({ error }) => {
+  if (!error) return null;
+
+  console.log(error);
 
   return <Text>{error}</Text>;
 };

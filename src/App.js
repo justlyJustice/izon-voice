@@ -10,6 +10,7 @@ import Main from "pages/Main";
 import Register from "pages/Register";
 import NotFound from "pages/NotFound";
 import UserDisplayNav from "components/common/UserDisplayNav";
+import ProtectedRoute from "components/common/ProtectedRoute";
 
 const App = () => {
   return (
@@ -18,7 +19,15 @@ const App = () => {
       <UserDisplayNav />
 
       <Routes>
-        <Route exact path="/upload/post" element={<BlogUpload />} />
+        <Route
+          exact
+          path="/upload/post"
+          element={
+            <ProtectedRoute>
+              <BlogUpload />
+            </ProtectedRoute>
+          }
+        />
         <Route exact path="/" element={<Main />} />
         <Route exact path="/:name" element={<Blog />} />
         <Route exact path="/category/:name" element={<BlogCategory />} />

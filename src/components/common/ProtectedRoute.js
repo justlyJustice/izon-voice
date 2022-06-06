@@ -10,7 +10,7 @@ const ProtectedRoute = ({ children }) => {
       {user.isAdmin ? (
         children
       ) : (
-        <Navigate state={{ from: location.pathname }} to="/blog" />
+        <Navigate state={{ from: location.pathname }} to="/home" />
       )}
     </div>
   );

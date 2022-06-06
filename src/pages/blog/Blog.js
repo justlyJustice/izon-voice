@@ -23,7 +23,7 @@ const Blog = () => {
   } = useApi(getPost);
 
   const location = useLocation();
-  location.pathname = "/home";
+  /* location.pathname = "/home"; */
   const { name } = useParams();
 
   const retrievePost = async () => {
@@ -32,15 +32,11 @@ const Blog = () => {
 
   useEffect(() => {
     retrievePost();
-
-    if (post && post !== []) {
-      console.log(post.comments);
-    }
   }, []);
 
   return (
     <section>
-      <Head title={`Izon Voice| ${post.title}`} />
+      <Head title={`Izon Voice| ${post && post.title}`} />
       <LoadingAnimation loading={loading} />
 
       {post && (
@@ -92,11 +88,6 @@ const Blog = () => {
                     {des}
                   </p>
                 ))}
-
-                {/*     <p className="para">
-                  {post.description.split('"')[1]}
-                  {post.description.split('"')[2]}
-                </p> */}
               </div>
             </div>
 
