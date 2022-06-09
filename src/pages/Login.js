@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
-import { useNavigate, Navigate, useLocation } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import * as Yup from "yup";
 
-import Alert from "../utils/Alert";
+import Alert from "utils/Alert";
 import AppLink from "components/common/AppLink";
 import { Form, Input } from "components/forms";
 import useUser from "hooks/useUser";
@@ -27,7 +27,6 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const { state } = useLocation();
-
   const { setUser, user } = useUser();
 
   const loginUser = async (values, { resetForm }) => {
@@ -99,7 +98,7 @@ const Login = () => {
                   }}
                 >
                   {isLoading ? (
-                    <i className="fa-solid fa-spiner fa-spin"></i>
+                    <i className="fa-solid fa-spinner fa-spin"></i>
                   ) : (
                     "LOGIN"
                   )}
@@ -115,7 +114,7 @@ const Login = () => {
               <GoogleAuth text="Login With" state={state} />
             </div>
 
-            <AppLink to="/register" state={{ from: state.from }}>
+            <AppLink to="/register" state={{ from: state?.from }}>
               Don’t own an account yet? Register
             </AppLink>
           </div>

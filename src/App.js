@@ -9,7 +9,7 @@ import Login from "pages/Login";
 import Main from "pages/Main";
 import Register from "pages/Register";
 import NotFound from "pages/NotFound";
-import UserDisplayNav from "components/common/UserDisplayNav";
+/* import UserDisplayNav from "components/common/UserDisplayNav"; */
 import ProtectedRoute from "components/common/ProtectedRoute";
 
 const App = () => {
@@ -28,12 +28,13 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route exact path="/" element={<Main />} />
-        <Route exact path="/:name" element={<Blog />} />
-        <Route exact path="/category/:name" element={<BlogCategory />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/home" element={<Blogs />} />
+        <Route exact path="/" element={<Main />} />
+        <Route exact path="/:name" element={<Blog />} />
+        <Route exact path="/category/:name" element={<BlogCategory />} />
+
         <Route exact path="*" element={<NotFound />} />
       </Routes>
     </UserProvider>

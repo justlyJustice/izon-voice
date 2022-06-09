@@ -13,7 +13,6 @@ import NoResults from "components/common/NoResults";
 
 import useApi from "../hooks/useApi";
 import { getWelcomePageStories } from "services/postService";
-import { Btn } from "../styles/loginStyles";
 
 const Main = () => {
   const {
@@ -30,6 +29,10 @@ const Main = () => {
   useEffect(() => {
     loadPosts();
   }, []);
+
+  if (error) {
+    return <h2>Error Occurred!</h2>;
+  }
 
   return (
     <>
@@ -55,7 +58,8 @@ const Main = () => {
 
         <div className="content_div">
           <div className="cards-contain">
-            {posts && posts.length > 0 ? (
+            {posts &&
+              posts.length > 0 &&
               posts.map((post, index) => (
                 <Card
                   key={index}
@@ -64,10 +68,7 @@ const Main = () => {
                   paraText={post.description}
                   slug={post.slug || post._id}
                 />
-              ))
-            ) : (
-              <NoResults />
-            )}
+              ))}
           </div>
 
           <div className="divider"></div>

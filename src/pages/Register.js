@@ -94,13 +94,16 @@ const Register = () => {
                 validationSchema={validationSchema}
               >
                 <Input name="name" label="Name" placeholder="Provide name" />
+
                 <Input name="email" label="Email" placeholder="Provide email" />
+
                 <Input
                   name="password"
                   label="Password"
                   placeholder="Provide password"
                   type="password"
                 />
+
                 <Input
                   name="confirm_password"
                   label="Confirm password"
@@ -115,7 +118,7 @@ const Register = () => {
                   }}
                 >
                   {isLoading ? (
-                    <i className="fa fa-spiner fa-spin"></i>
+                    <i className="fa-solid fa-spinner fa-spin"></i>
                   ) : (
                     "REGISTER"
                   )}
