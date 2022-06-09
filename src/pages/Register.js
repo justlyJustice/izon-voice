@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 import * as Yup from "yup";
 
@@ -29,6 +29,7 @@ const validationSchema = Yup.object().shape({
 const Register = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const { state } = useLocation();
 
   const handleSubmit = async (values, { resetForm }) => {
     try {
@@ -42,7 +43,7 @@ const Register = () => {
       setIsLoading(false);
 
       setTimeout(() => {
-        window.location.href = "/home";
+        window.location = state ? state.from : "/home";
       }, 5000);
 
       resetForm();
@@ -126,7 +127,7 @@ const Register = () => {
               <hr className="rule" />
 
               <div className="button-group flex">
-                <GoogleAuth text="Register With" />
+                <GoogleAuth text="Register With" state={state} />
               </div>
 
               <AppLink to="/login">Have an account already? Login</AppLink>

@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
+
 import PostShare from "components/common/PostShare";
 
 import Header from "components/common/Header";
@@ -9,7 +10,7 @@ import Head from "components/common/Head";
 import CommentSection from "components/comment/CommentSection";
 import LoadingAnimation from "components/common/LoadingAnimation";
 
-import { timeSince } from "utils/helpers.js";
+import { timeSince } from "utils/helpers";
 import { getPost } from "services/postService";
 import useApi from "hooks/useApi";
 

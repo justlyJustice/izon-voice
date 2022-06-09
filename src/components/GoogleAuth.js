@@ -4,7 +4,7 @@ import GoogleLogin from "react-google-login";
 import { Button, SuccessButton } from "styles/loginStyles";
 import auth from "services/authService";
 
-const GoogleAuth = ({ text }) => {
+const GoogleAuth = ({ text, state }) => {
   const [success, setSuccess] = useState(false);
 
   const onSuccess = async (res) => {
@@ -16,7 +16,7 @@ const GoogleAuth = ({ text }) => {
         auth.loginWithJwt(resp.data.token);
 
         setTimeout(() => {
-          window.location.href = "/home";
+          window.location = state ? state.from : "/home";
 
           setSuccess(false);
         }, 3000);

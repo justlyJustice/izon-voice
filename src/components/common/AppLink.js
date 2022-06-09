@@ -16,9 +16,9 @@ const TextLink = styled(Link)`
   }
 `;
 
-const AppLink = ({ children, to, ...otherProps }) => {
+const AppLink = ({ children, to, state, ...otherProps }) => {
   return (
-    <TextLink to={to} {...otherProps}>
+    <TextLink to={to} {...otherProps} state={state}>
       {children}
     </TextLink>
   );

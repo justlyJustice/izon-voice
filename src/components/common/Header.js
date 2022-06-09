@@ -14,11 +14,10 @@ const Header = () => {
     }
   };
 
-  window.addEventListener("scroll", setNavbar);
+  window.addEventListener("scroll", () => setNavbar());
 
   return (
     <>
-      {/* <UserDisplayNav /> */}
       <header className={!navFixed ? "header" : "header fixed"}>
         <Search />
 
