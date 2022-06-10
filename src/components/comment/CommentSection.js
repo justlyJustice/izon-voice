@@ -26,6 +26,8 @@ const CommentSection = ({ postId, comments, likes }) => {
     return null;
   }
 
+  const handleReply = (comment) => {};
+
   return (
     <section className="comment-section">
       <div className="comment-detail">
@@ -67,7 +69,11 @@ const CommentSection = ({ postId, comments, likes }) => {
 
                   <div className="reply">
                     <small>
-                      <Link to={`#`} className="reply-link">
+                      <Link
+                        to={`#`}
+                        className="reply-link"
+                        onClick={() => handleReply(comment)}
+                      >
                         Reply <i className="fa-solid fa-reply"></i>
                       </Link>
                     </small>
