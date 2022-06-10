@@ -6,6 +6,7 @@ import { likePost } from "services/postService";
 import { timeSince } from "utils/helpers";
 
 import useUser from "hooks/useUser";
+import { Link } from "react-router-dom";
 
 const CommentSection = ({ postId, comments, likes }) => {
   const [isLiked, setIsLiked] = useState(false);
@@ -52,18 +53,31 @@ const CommentSection = ({ postId, comments, likes }) => {
 
       {comments &&
         comments.map((comment, i) => (
-          <div className="user_contain" key={comment._id}>
-            <div className="user">
-              <CustomIcon />
+          <div>
+            <div className="user_contain" key={i}>
+              <div className="user">
+                <CustomIcon />
 
-              <div className="name-contain">
-                <h2 className="username">{comment.user}</h2>
-                <p className="comment">{comment.message}</p>
+                <div className="name-contain">
+                  <div>
+                    <h2 className="username">{comment.user}</h2>
+
+                    <p className="comment">{comment.message}</p>
+                  </div>
+
+                  <div className="reply">
+                    <small>
+                      <Link to={`#`} className="reply-link">
+                        Reply <i className="fa-solid fa-reply"></i>
+                      </Link>
+                    </small>
+                  </div>
+                </div>
               </div>
-            </div>
 
-            <div className="time-stamp">
-              <span>{timeSince(new Date(comment.createdAt))}</span>
+              <div className="time-stamp">
+                <span>{timeSince(new Date(comment.createdAt))}</span>
+              </div>
             </div>
           </div>
         ))}

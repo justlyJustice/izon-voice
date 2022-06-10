@@ -40,7 +40,11 @@ const Login = () => {
 
       resetForm();
 
-      window.location = state ? state.from : "/home";
+      setTimeout(() => {
+        window.location = state ? state.from : "/home";
+
+        setSuccess(false);
+      }, 3000);
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         Alert.error("Error logging in user!", ex.response.data.message);

@@ -9,14 +9,12 @@ import Login from "pages/Login";
 import Main from "pages/Main";
 import Register from "pages/Register";
 import NotFound from "pages/NotFound";
-/* import UserDisplayNav from "components/common/UserDisplayNav"; */
 import ProtectedRoute from "components/common/ProtectedRoute";
 
 const App = () => {
   return (
     <UserProvider>
       <ToastContainer autoClose />
-      {/*  <UserDisplayNav /> */}
 
       <Routes>
         <Route

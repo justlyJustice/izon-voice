@@ -44,8 +44,9 @@ const Register = () => {
 
       setTimeout(() => {
         window.location = state ? state.from : "/home";
-      }, 5000);
 
+        setSuccess(false);
+      }, 3000);
       resetForm();
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
@@ -133,7 +134,9 @@ const Register = () => {
                 <GoogleAuth text="Register With" state={state} />
               </div>
 
-              <AppLink to="/login">Have an account already? Login</AppLink>
+              <AppLink to="/login" state={{ from: state?.from }}>
+                Have an account already? Login
+              </AppLink>
             </div>
           </div>
         </div>

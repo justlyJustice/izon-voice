@@ -9,9 +9,10 @@ import Card from "components/cards/Card";
 import CategoryButtonsSlide from "components/CategoryButtonsSlide";
 import Head from "components/common/Head";
 import LoadingAnimation from "components/common/LoadingAnimation";
-import NoResults from "components/common/NoResults";
 
 import useApi from "../hooks/useApi";
+import useUser from "../hooks/useUser";
+
 import { getWelcomePageStories } from "services/postService";
 
 const Main = () => {
@@ -21,6 +22,7 @@ const Main = () => {
     loading,
     request,
   } = useApi(getWelcomePageStories);
+  const { user } = useUser();
 
   const loadPosts = async () => {
     await request();
@@ -42,21 +44,41 @@ const Main = () => {
       <div className="main-grid">
         <div className="left_div">
           <img className="logo" src={logo} alt="Izon voice logo" />
-
-          <div className="top-links-contain" style={{ display: "none" }}>
-            <Link to="/login" style={{ color: "rgba(66, 232, 39, 0.7)" }}>
-              Login
-            </Link>
-
-            <hr />
-
-            <Link to="/register" style={{ color: "rgba(234, 25, 25, 0.7)" }}>
-              Register
-            </Link>
-          </div>
         </div>
 
         <div className="content_div">
+          <div className="top-links-contain">
+            {user ? (
+              <Link
+                to="#"
+                className="link"
+                style={{ color: "rgba(234, 25, 25, 0.7)" }}
+              >
+                <i className="fa-solid fa-user"></i> {user.name}
+              </Link>
+            ) : (
+              <>
+                <Link
+                  to="/login"
+                  className="link"
+                  style={{ color: "rgba(66, 232, 39, 0.7)" }}
+                >
+                  Login
+                </Link>
+
+                <hr className="rule" />
+
+                <Link
+                  to="/register"
+                  className="link"
+                  style={{ color: "rgba(234, 25, 25, 0.7)" }}
+                >
+                  Register
+                </Link>
+              </>
+            )}
+          </div>
+
           <div className="cards-contain">
             {posts &&
               posts.length > 0 &&
@@ -76,7 +98,7 @@ const Main = () => {
           <div className="bottom-group">
             <div>
               <p className="more-para">
-                MORE STORIES <i className="fa fa-send"></i>
+                MORE STORIES <i className="fa-solid fa-paper-plane"></i>
               </p>
             </div>
 

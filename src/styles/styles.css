@@ -7,14 +7,49 @@
 }
 
 .header.fixed {
+  background-color: #fff;
   position: fixed;
   left: 0;
   top: 0;
   z-index: 1000;
 }
 
+.header .user-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header .user-container .icon-contain {
+  position: relative;
+  cursor: pointer;
+  align-items: center;
+  display: flex;
+}
+
+.header .user-container .icon-contain .fa {
+  color: #dbdbdb;
+  margin: 0px 3px;
+  font-size: 30px;
+}
+
+.header .user-container .icon-contain .dropdown {
+  display: none;
+  top: 30px;
+  position: absolute;
+  background-color: #ffffff;
+  padding: 10px;
+  height: 100px;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  transition: 0.7s all ease-in-out;
+}
+
+.header .user-container .icon-contain:hover .dropdown {
+  display: block;
+}
+
 .navbar {
-  background: white;
   align-items: center;
   display: flex;
   justify-content: space-around !important;
@@ -209,7 +244,7 @@
 /* Landing page */
 .main-grid {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 2fr 2fr;
   height: 100vh;
 }
 
@@ -223,8 +258,8 @@
 }
 
 .left_div .logo {
-  width: 250px;
-  height: 250px;
+  width: 230px;
+  height: 230px;
 }
 
 .content_div {
@@ -234,18 +269,36 @@
   padding: 20px;
 }
 
+.content_div .top-links-contain {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 70px;
+}
+
+.content_div .top-links-contain .rule {
+  background: #dbdbdb;
+  width: 2px;
+  height: 18px;
+}
+
+.content_div .top-links-contain .link {
+  font-family: Playfair Display;
+  margin: 0 10px;
+}
+
 .content_div .cards-contain {
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap !important;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .divider {
-  width: inherit;
+  width: 900px;
   height: 2px;
   background: rgba(196, 196, 196, 0.3);
   border-radius: 10px;
-  margin: 25px 0px;
+  margin: 25px auto;
 }
 
 .bottom-group {
@@ -264,7 +317,7 @@
 .bottom-group .button-groups {
   display: flex;
   justify-content: space-between !important;
-  overflow-wrap: break-word;
+  /* overflow-wrap: break-word; */
 }
 
 .bottom-group .button-groups button {
@@ -654,23 +707,28 @@
 
 .comment-section .user_contain .user .name-contain .username {
   font-family: "Montserrat";
-
   font-weight: 700;
   font-size: 18px;
   line-height: 22px;
-
   color: rgba(17, 55, 254, 0.7);
 }
 
 .comment-section .user_contain .user .name-contain .comment {
   font-family: "Playfair Display";
-
   font-weight: 600;
   font-size: 14px;
   line-height: 19px;
   text-align: justify;
-
   color: #393939;
+}
+
+.comment-section .user_contain .user .name-contain .reply .reply-link {
+  color: #dbdbdb !important;
+  font-size: 12px;
+}
+
+.comment-section .user_contain .user .name-contain .reply .reply-link:hover {
+  text-decoration: underline;
 }
 
 .comment-section .user_contain .time-stamp {
