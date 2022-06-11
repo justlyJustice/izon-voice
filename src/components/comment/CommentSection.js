@@ -7,10 +7,13 @@ import { timeSince } from "utils/helpers";
 
 import useUser from "hooks/useUser";
 import { Link } from "react-router-dom";
+import { postReply } from "services/repliesService";
 
 const CommentSection = ({ postId, comments, likes }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [likesCount, setLikesCount] = useState(likes ? likes.length : 0);
+  const [showReply, setShowReply] = useState(false);
+  const [message, setMessage] = useState("");
   const { user } = useUser();
 
   const handleLikePost = async () => {
@@ -22,11 +25,25 @@ const CommentSection = ({ postId, comments, likes }) => {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   if (!comments) {
     return null;
   }
 
-  const handleReply = (comment) => {};
+  const handleReply = (commentId) => {
+    postReply(commentId, message)
+      .then((res) => {
+        if (res.ok) {
+          alert("Successful!");
+
+          console.log(res.data);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <section className="comment-section">
@@ -55,8 +72,8 @@ const CommentSection = ({ postId, comments, likes }) => {
 
       {comments &&
         comments.map((comment, i) => (
-          <div>
-            <div className="user_contain" key={i}>
+          <div key={i}>
+            <div className="user_contain">
               <div className="user">
                 <CustomIcon />
 
@@ -72,12 +89,27 @@ const CommentSection = ({ postId, comments, likes }) => {
                       <Link
                         to={`#`}
                         className="reply-link"
-                        onClick={() => handleReply(comment)}
+                        onClick={() => {
+                          setShowReply((prev) => !prev);
+                        }}
                       >
                         Reply <i className="fa-solid fa-reply"></i>
                       </Link>
                     </small>
                   </div>
+
+                  {showReply && (
+                    <form onSubmit={handleSubmit}>
+                      <input
+                        type="text"
+                        style={{ border: "1px solid orange" }}
+                        value={message}
+                        onChange={(e) => {
+                          setMessage(e.target.value);
+                        }}
+                      />
+                    </form>
+                  )}
                 </div>
               </div>
 

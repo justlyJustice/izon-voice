@@ -42,9 +42,8 @@ const Blog = () => {
 
       {post && (
         <>
+          <Header />
           <div className="container">
-            <Header />
-
             <div className="blog-section">
               <img src={post.urlToImage || post.image} alt="Blog img" />
 

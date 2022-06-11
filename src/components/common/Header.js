@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+import { logo } from "assets/images";
 import useUser from "hooks/useUser";
 import { useState } from "react";
 import Navbar from "../Navbar";
@@ -20,23 +21,30 @@ const Header = () => {
 
   return (
     <>
-      <header className={!navFixed ? "header" : "header fixed"}>
-        {user && (
-          <div className="user-container">
-            <div className="icon-contain">
-              <i className="fa-solid fa fa-user-circle"></i>
-              <i className="fa-solid fa fa-angle-down"></i>
+      <header className={navFixed ? "header fixed" : "header"}>
+        <div className="first-div">
+          {user && (
+            <div className="user-display">
+              <div className="avatar">
+                {user.image && (
+                  <img src={logo} className="user-image" alt="Izon voice" />
+                )}
 
-              <div className="dropdown">
-                <div className="name-contain">
-                  <h4>{user.name}</h4>
+                {!user.image && <i className="fa-solid fa fa-user-circle"></i>}
+                <i className="fa-solid fa fa-angle-down"></i>
+
+                <div className="dropdown">
+                  <div className="name-contain">
+                    <span>{user.name}</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
 
-        <Search />
+          <Search />
+        </div>
+
         <Navbar fixed={navFixed} />
       </header>
     </>
