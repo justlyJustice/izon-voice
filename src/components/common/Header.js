@@ -2,6 +2,7 @@
 import { logo } from "assets/images";
 import useUser from "hooks/useUser";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "../Navbar";
 import Search from "../Search";
 
@@ -35,8 +36,15 @@ const Header = () => {
 
                 <div className="dropdown">
                   <div className="name-contain">
+                    <i className="fa-solid fa-walking"></i>{" "}
                     <span>{user.name}</span>
                   </div>
+
+                  <hr />
+
+                  <Link className="logout-link" to={`#`}>
+                    Logout
+                  </Link>
                 </div>
               </div>
             </div>

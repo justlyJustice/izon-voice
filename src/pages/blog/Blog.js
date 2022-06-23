@@ -45,10 +45,12 @@ const Blog = () => {
           <Header />
           <div className="container">
             <div className="blog-section">
-              <img src={post.urlToImage || post.image} alt="Blog img" />
+              <div className="blog-image-contain">
+                <img src={post.urlToImage || post.image} alt="Blog img" />
+              </div>
 
               <div className="blog-text-contain">
-                <div className="">
+                <div>
                   <h2 className="blog-title">{post.title}</h2>
 
                   <div className="user-details-contain">

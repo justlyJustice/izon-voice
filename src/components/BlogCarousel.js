@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
-import { checkCurrentEnv } from "utils/helpers";
 
 const BlogCarousel = ({ posts }) => {
   const CustomNextArrow = (props) => {
@@ -63,13 +62,15 @@ const BlogCarousel = ({ posts }) => {
     <>
       <Slider {...settings}>
         {posts && posts.length > 0
-          ? posts.map((post) => (
+          ? posts.slice(1, 7).map((post) => (
               <div key={post.title} className="blog-slider">
-                <img
-                  className="blog-image"
-                  src={post.image || post.urlToImage}
-                  alt={post.image || post.urlToImage}
-                />
+                <div className="blog-image-contain">
+                  <img
+                    className="blog-image"
+                    src={post.image || post.urlToImage}
+                    alt={post.image || post.urlToImage}
+                  />
+                </div>
 
                 <div className="text-div">
                   <h2 className="carousel-text">

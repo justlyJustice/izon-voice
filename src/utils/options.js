@@ -1,46 +1,38 @@
 export const categories = [
   {
-    title: "ICT",
-    value: "ICT",
+    label: "Agriculture",
+    value: "agriculture",
   },
   {
-    title: "Politics",
+    label: "Politics",
     value: "politics",
   },
   {
-    title: "Business",
+    label: "Business",
     value: "business",
   },
   {
-    title: "Sports",
+    label: "Sports",
     value: "sports",
   },
   {
-    title: "Culture",
+    label: "Culture",
     value: "culture",
   },
   {
-    title: "Religion",
+    label: "Religion",
     value: "religion",
   },
   {
-    title: "Finance",
+    label: "Finance",
     value: "finance",
   },
   {
-    title: "COVID-19",
-    value: "covid 19",
+    label: "Social",
+    value: "social",
   },
   {
-    title: "Ukraine War",
-    value: "ukraine war",
-  },
-  {
-    title: "Entertaiment",
-    value: "entertainment",
-  },
-  {
-    title: "Articles",
-    value: "articles",
+    label: "Security",
+    value: "security",
   },
 ];

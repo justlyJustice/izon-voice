@@ -56,11 +56,15 @@ const BlogUpload = () => {
       const res = await uploadBlogPost(postData);
       setLoading(false);
 
-      if (res.status === 200) {
+      if (res.status === 201) {
         setValues(initialValues);
         setFile(null);
 
         setSuccess(true);
+
+        setTimeout(() => {
+          setSuccess(false);
+        }, 4000);
       }
     } catch (ex) {
       if (ex.response && !ex.response.ok) {
@@ -73,7 +77,7 @@ const BlogUpload = () => {
   return (
     <>
       <FormContainer>
-        <Form onSubmit={handleSubmit} encType="muiltipart/form-data">
+        <Form onSubmit={handleSubmit}>
           <StatusPlaceholder error={error} success={success} />
 
           <h2>Create a post</h2>
@@ -127,7 +131,7 @@ const BlogUpload = () => {
 
                 {categories.map((category, i) => (
                   <option value={category.value} key={i}>
-                    {category.title}
+                    {category.label}
                   </option>
                 ))}
               </select>
@@ -155,7 +159,7 @@ const BlogUpload = () => {
             />
           </Group>
 
-          <Button type="submit" disabled={loading}>
+          <Button type="submit" disabled={loading === true}>
             {loading ? (
               <>
                 Uploading <i className="fa-solid fa-spinner fa-spin"></i>

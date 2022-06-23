@@ -10,6 +10,7 @@ import Main from "pages/Main";
 import Register from "pages/Register";
 import NotFound from "pages/NotFound";
 import ProtectedRoute from "components/common/ProtectedRoute";
+import PrivacyPolicy from "pages/PrivacyPolicy";
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
+        <Route exact path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/home" element={<Blogs />} />

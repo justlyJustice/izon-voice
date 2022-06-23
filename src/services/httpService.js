@@ -1,13 +1,10 @@
 /* eslint-disable import/no-anonymous-default-export */
-/* import axios from "axios"; */
 import { create } from "apisauce";
 import { toast } from "react-toastify";
+import cache from "utils/cache";
 
 const apiClient = create({
   baseURL: process.env.REACT_APP_API_URL,
-  //  headers: {
-  //    "x-auth-token": ``
-  //  }
 });
 
 apiClient.axiosInstance.interceptors.response.use(null, (error) => {
@@ -28,40 +25,24 @@ apiClient.axiosInstance.interceptors.response.use(null, (error) => {
 });
 
 export const setJwt = (jwt) => {
-  // apiClient.addAsyncRequestTransform(async (request) => {
-  //   if (!jwt) return;
-
-  //   request.headers["x-auth-token"] = jwt;
-  // });
-
   apiClient.headers["x-auth-token"] = jwt;
 };
-/* 
-axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
-axios.interceptors.response.use(null, (error) => {
-  const expectedError =
-    error.response &&
-    error.response.status >= 400 &&
-    error.response.status < 500;
+const get = apiClient.get;
+apiClient.get = async (url, params, axiosConfig) => {
+  const response = await get(url, params, axiosConfig);
 
-  if (!expectedError) {
-    toast.error("An unexpected error occured", {
-      autoClose: 3000,
-      closeButton: true,
-      type: "error",
-    });
+  if (response.ok) {
+    cache.store(url, response.data);
+    return response;
   }
 
-  return Promise.reject(error);
-});
-
-const setJwt = (jwt) => {
-  axios.defaults.headers.common["x-auth-token"] = jwt;
-}; */
+  const data = await cache.get(url);
+  return data ? { ok: true, data } : response;
+};
 
 export default {
-  get: apiClient.get,
+  get,
   post: apiClient.post,
   put: apiClient.put,
   delete: apiClient.delete,

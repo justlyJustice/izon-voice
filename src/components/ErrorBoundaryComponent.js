@@ -35,11 +35,12 @@ class ErrorBoundary extends React.Component {
   }
 
   static getDerivedStateFromError(error) {
+    console.log(error, "Captured in static getDerived error");
     return { hasError: true };
   }
 
   componentDidCatch(err) {
-    log(err);
+    console.log(err, "Captured in error boundary");
   }
 
   render() {

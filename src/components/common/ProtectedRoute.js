@@ -7,7 +7,7 @@ const ProtectedRoute = ({ children }) => {
 
   return (
     <div>
-      {user.isAdmin ? (
+      {user.email === "admin@izonvoice.ng" ? (
         children
       ) : (
         <Navigate state={{ from: location.pathname }} to="/home" />

@@ -29,9 +29,10 @@ const BlogCategory = () => {
     <section className="blog-category-section">
       <Head title="Izon Voice | Category" />
       <LoadingAnimation loading={loading} />
-      <div className="container">
-        <Header />
 
+      <Header />
+
+      <div className="container">
         <div>
           <div className="top-contain">
             <h2 className="category">
