@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { logo } from "assets/images";
 
@@ -6,6 +6,25 @@ const Navbar = ({ fixed }) => {
   const [shown, setShown] = useState(false);
 
   const location = useLocation();
+  const node = useRef();
+
+  const close = (e) => {
+    if (node.current.contains(e.target)) {
+      return;
+    }
+
+    // outside click
+
+    setShown(false);
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", close);
+
+    return () => {
+      document.removeEventListener("mousedown", close);
+    };
+  }, [shown]);
 
   return (
     <>
@@ -17,11 +36,13 @@ const Navbar = ({ fixed }) => {
             <i
               className="fa fa-close toggle-icon"
               onClick={() => setShown(false)}
+              ref={node}
             ></i>
           ) : (
             <i
               className="fa fa-bars toggle-icon"
               onClick={() => setShown(true)}
+              ref={node}
             ></i>
           )}
         </div>

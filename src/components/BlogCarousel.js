@@ -65,27 +65,26 @@ const BlogCarousel = ({ posts }) => {
           ? posts
               .filter((post) => post._id !== "62b4cdaec10f2800dbe62cd1")
               .slice(0, 9)
-              .map((post) => (
-                <div key={post.title} className="blog-slider">
+              .map((post, i) => (
+                <div key={i} className="blog-slider">
                   <div className="blog-image-contain">
                     <img
                       className="blog-image"
-                      src={post.image || post.urlToImage}
-                      alt={post.image || post.urlToImage}
+                      src={post.urlToImage}
+                      alt={post.urlToImage}
                     />
                   </div>
 
                   <div className="text-div">
-                    <h2 className="carousel-text">
-                      <Link style={{ color: "black" }} to={`/${post.slug}`}>
-                        {post.title}
-                      </Link>
-                    </h2>
-                    <hr className="slide-rule" />
+                    <Link to={`/${post.slug}`}>
+                      <h2 className="carousel-text">{post.title}</h2>
 
-                    <div>
-                      <p className="slide-para">{post.description}</p>
-                    </div>
+                      <hr className="slide-rule" />
+
+                      <div>
+                        <p className="slide-para">{post.description}</p>
+                      </div>
+                    </Link>
                   </div>
                 </div>
               ))

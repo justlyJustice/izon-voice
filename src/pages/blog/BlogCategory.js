@@ -42,7 +42,7 @@ const BlogCategory = () => {
 
           <div className="category-wrapper">
             {posts && posts.length > 0 ? (
-              posts.map((post) => <CategoryCard data={post} key={post.slug} />)
+              posts.map((post, i) => <CategoryCard data={post} key={i} />)
             ) : (
               <>
                 <NoResults />

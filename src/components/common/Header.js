@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { logo } from "assets/images";
 import useUser from "hooks/useUser";
+import { useEffect, useRef } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { logout } from "services/authService";
@@ -9,7 +10,9 @@ import Search from "../Search";
 
 const Header = () => {
   const [navFixed, setNavFixed] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
   const { user } = useUser();
+  const node = useRef();
 
   const setNavbar = () => {
     if (window.scrollY > 100) {
@@ -18,6 +21,28 @@ const Header = () => {
       setNavFixed(false);
     }
   };
+
+  const open = (e) => {
+    setShowDropdown(true);
+  };
+
+  const close = (e) => {
+    if (node.current.contains(e.target)) {
+      return;
+    }
+
+    // outside click
+
+    setShowDropdown(false);
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", close);
+
+    return () => {
+      document.removeEventListener("mousedown", close);
+    };
+  }, [showDropdown]);
 
   window.addEventListener("scroll", () => setNavbar());
 
@@ -32,9 +57,17 @@ const Header = () => {
                   <img src={logo} className="user-image" alt="Izon voice" />
                 )}
 
-                {!user.image && <i className="fa-solid fa fa-user-circle"></i>}
+                {!user.image && (
+                  <i
+                    className="fa-solid fa fa-user-circle"
+                    onClick={open}
+                    ref={node}
+                  ></i>
+                )}
                 <i className="fa-solid fa fa-angle-down"></i>
+              </div>
 
+              {showDropdown && (
                 <div className="dropdown">
                   <div className="name-contain">
                     <i className="fa-solid fa-walking"></i>{" "}
@@ -55,7 +88,7 @@ const Header = () => {
                     Logout
                   </Link>
                 </div>
-              </div>
+              )}
             </div>
           )}
 
