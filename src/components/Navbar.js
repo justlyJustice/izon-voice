@@ -55,13 +55,13 @@ const Navbar = ({ fixed }) => {
           <Link
             onClick={() => setShown(false)}
             className={
-              location && location.pathname === "/category/entertainment"
+              location && location.pathname === "/category/agriculture"
                 ? "link active"
                 : "link"
             }
-            to="/category/entertainment"
+            to="/category/agriculture"
           >
-            Entertainment
+            Agriculture
           </Link>
 
           <Link
@@ -96,37 +96,37 @@ const Navbar = ({ fixed }) => {
           <Link
             onClick={() => setShown(false)}
             className={
-              location && location.pathname === "/category/articles"
+              location && location.pathname === "/category/culture"
                 ? "link active"
                 : "link"
             }
-            to="/category/articles"
+            to="/category/culture"
           >
-            Articles
+            Culture
           </Link>
 
           <Link
             onClick={() => setShown(false)}
             className={
-              location && location.pathname === "/category/ICT"
+              location && location.pathname === "/category/social"
                 ? "link active"
                 : "link"
             }
-            to="/category/ICT"
+            to="/category/social"
           >
-            ICT
+            Social
           </Link>
 
           <Link
             onClick={() => setShown(false)}
             className={
-              location && location.pathname === "/category/fashion"
+              location && location.pathname === "/category/security"
                 ? "link active"
                 : "link"
             }
-            to="/category/fashion"
+            to="/category/security"
           >
-            Fashion
+            Security
           </Link>
         </div>
       </nav>

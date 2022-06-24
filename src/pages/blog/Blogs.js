@@ -51,6 +51,7 @@ const Blogs = () => {
           <div className="news_feed_contain">
             <div className="head">
               <h2>NEWS FEED</h2>
+
               <hr />
             </div>
 
@@ -58,10 +59,12 @@ const Blogs = () => {
               <div className="section1">
                 {posts &&
                   posts.length > 0 &&
-                  posts.slice(7, 9).map((post, i) => (
+                  posts.slice(10, 16).map((post, i) => (
                     <Link to={`/${post.slug}`}>
                       <div className="div1" key={i}>
-                        <img src={post.urlToImage} alt="Item pic" />
+                        <div className="div1-image-contain">
+                          <img src={post.urlToImage} alt="Item pic" />
+                        </div>
 
                         <div className="text-div">
                           <div className="text-group-one">
@@ -79,7 +82,9 @@ const Blogs = () => {
                             </span>
                           </div>
 
-                          <p className="blog-title">{post.title}</p>
+                          <p className="blog-title">
+                            {post.title.toUpperCase()}
+                          </p>
 
                           <div className="tags-contain">
                             <span className="comment-contain">
