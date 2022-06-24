@@ -30,6 +30,7 @@ const CardContainer = styled.div`
     font-size: 20px;
     line-height: 24px;
     color: #000000;
+    text-transform: uppercase;
     transition: ease 0.5s all;
   }
 
