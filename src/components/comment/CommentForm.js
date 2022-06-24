@@ -62,7 +62,7 @@ const Button = styled(SubmitButton)`
   }
 `;
 
-const CommentForm = ({ postId, user }) => {
+const CommentForm = ({ postId, user, setData }) => {
   const [success, setSuccess] = useState(false);
   const [failed, setFailed] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -78,12 +78,10 @@ const CommentForm = ({ postId, user }) => {
       resetForm();
 
       if (res.status === 201) {
-        setSuccess(true);
-
-        setTimeout(() => {
+        /*   setTimeout(() => {
           setSuccess(false);
           window.location.reload();
-        }, 3000);
+        }, 3000); */
       }
       setLoading(false);
     } catch (ex) {

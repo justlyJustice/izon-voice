@@ -62,7 +62,7 @@ const BlogCarousel = ({ posts }) => {
     <>
       <Slider {...settings}>
         {posts && posts.length > 0
-          ? posts.slice(1, 7).map((post) => (
+          ? posts.slice(2, 8).map((post) => (
               <div key={post.title} className="blog-slider">
                 <div className="blog-image-contain">
                   <img

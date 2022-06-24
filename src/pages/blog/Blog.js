@@ -10,7 +10,7 @@ import Head from "components/common/Head";
 import CommentSection from "components/comment/CommentSection";
 import LoadingAnimation from "components/common/LoadingAnimation";
 
-import { timeSince } from "utils/helpers";
+import { formateTime } from "utils/helpers";
 import { getPost } from "services/postService";
 import useApi from "hooks/useApi";
 
@@ -61,7 +61,7 @@ const Blog = () => {
 
                     <span className="time">
                       <i className="fa-solid fa-calendar"></i>{" "}
-                      {timeSince(new Date(post.createdAt || post.publishedAt))}
+                      {formateTime(post.createdAt)}
                     </span>
 
                     <span className="category">

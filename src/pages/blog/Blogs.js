@@ -9,7 +9,7 @@ import { getPosts } from "services/postService";
 import useApi from "hooks/useApi";
 import LoadingAnimation from "components/common/LoadingAnimation";
 import Head from "components/common/Head";
-import { timeSince } from "utils/helpers";
+import { formateTime } from "utils/helpers";
 
 const Blogs = () => {
   const {
@@ -59,7 +59,7 @@ const Blogs = () => {
                 {posts &&
                   posts.length > 0 &&
                   posts.slice(7, 9).map((post, i) => (
-                    <Link to={`/${posts[0].slug}`}>
+                    <Link to={`/${post.slug}`}>
                       <div className="div1" key={i}>
                         <img src={post.urlToImage} alt="Item pic" />
 
@@ -75,9 +75,7 @@ const Blogs = () => {
                             ></i>
 
                             <span className="second-span">
-                              {timeSince(
-                                new Date(post.createdAt || post.publishedAt)
-                              )}
+                              {formateTime(post.createdAt)}
                             </span>
                           </div>
 
@@ -121,14 +119,21 @@ const Blogs = () => {
                 </div>
 
                 <div className="trends-container">
-                  {posts && posts.length > 0 && (
-                    <div className="trend">
-                      <Link to={`/${posts[0].slug}`}>
-                        <img src={posts[0].urlToImage} alt="Trend pic" />
-                        <p className="trend-text">{posts[0].title}</p>
-                      </Link>
-                    </div>
-                  )}
+                  {posts &&
+                    posts.length > 0 &&
+                    posts
+                      .filter((post) => post._id === "62b4cdaec10f2800dbe62cd1")
+                      .map((post) => (
+                        <div className="trend" key={post._id}>
+                          <Link to={`/${post.slug}`}>
+                            <div className="trend-pic-contain">
+                              <img src={post.urlToImage} alt="Trend pic" />
+                            </div>
+
+                            <p className="trend-text">{post.title}</p>
+                          </Link>
+                        </div>
+                      ))}
                 </div>
               </div>
             </div>

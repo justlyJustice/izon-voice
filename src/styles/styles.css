@@ -521,12 +521,19 @@
   transform: scale(1.1);
 }
 
-.news_feed_contain .section2 .trends-container .trend img {
+.news_feed_contain .section2 .trends-container .trend .trend-pic-contain {
   width: 100%;
   border-radius: 20px;
-  height: 70px;
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+}
+
+.news_feed_contain .section2 .trends-container .trend img {
+  width: 100%;
   object-fit: cover;
   position: absolute;
+  top: -70px;
 }
 
 .news_feed_contain .section2 .trends-container .trend .trend-text {
@@ -538,14 +545,13 @@
   font-weight: 800;
   font-size: 16px;
   text-align: center;
-  color: #ffffff;
-  position: relative;
-  top: 50%;
+  color: #000000;
+  /*  top: 50%;
   bottom: 0;
   right: 0;
   left: 50%;
   width: 100%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%); */
 }
 
 /* Blog on Id */
@@ -572,6 +578,7 @@
   font-weight: 800;
   font-size: 25px;
   text-align: center;
+  text-transform: uppercase;
   line-height: 30px;
   color: rgba(17, 55, 254, 0.7);
 }
@@ -675,6 +682,11 @@
 .comment-section .user_contain .user {
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
+}
+
+.comment-section .user_contain .user .user-rule {
+  display: none;
 }
 
 .comment-section .user_contain .user .name-contain {
@@ -708,7 +720,7 @@
 }
 
 .comment-section .user_contain .time-stamp {
-  width: 92px;
+  width: 120px;
   text-align: center;
   /* height: 19px; */
   background: rgba(196, 196, 196, 0.3);
@@ -850,7 +862,9 @@
   }
 
   .blog-section .blog-image-contain {
+    height: fit-content;
     margin-bottom: 0px !important;
+    margin: 0 !important;
     overflow: hidden;
   }
 
@@ -862,8 +876,7 @@
 
   .blog-section .blog-text-contain .blog-title {
     font-weight: 800;
-    font-size: 30px;
-    line-height: 35px;
+    font-size: 17px;
     text-align: center;
   }
 
@@ -905,7 +918,7 @@
   .blog-section .blog-content .para {
     font-family: "Playfair Display";
     font-weight: 600;
-    font-size: 15px;
+    font-size: 16px;
     line-height: 30px;
     text-align: justify;
     color: #393939;
@@ -947,53 +960,54 @@
   }
 
   .comment-section .user_contain {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-  }
-
-  .comment-section .user_contain .user {
-    align-items: center;
-    display: flex;
+    flex-direction: column;
   }
 
   .comment-section .user_contain .user .name-contain {
-    margin-left: 15px;
+    margin-left: 0px;
+    margin-top: 8px;
   }
 
   .comment-section .user_contain .user .name-contain .username {
     font-family: "Montserrat";
-
     font-weight: 700;
     font-size: 18px;
     line-height: 22px;
-
     color: rgba(17, 55, 254, 0.7);
+  }
+
+  .comment-section .user_contain .user .icon_container {
+    align-items: center;
+    display: flex;
   }
 
   .comment-section .user_contain .user .name-contain .comment {
     font-family: "Playfair Display";
-
     font-weight: 600;
     font-size: 14px;
     line-height: 19px;
     text-align: justify;
-
     color: #393939;
   }
 
+  .comment-section .user_contain .user .user-rule {
+    background: #f2f2f2;
+    border-radius: 20px;
+    display: inline-block;
+    height: 3px;
+    margin-left: 10px;
+    width: 400px;
+  }
+
   .comment-section .user_contain .time-stamp {
-    width: 92px;
-    text-align: center;
-    /* height: 19px; */
-    background: rgba(196, 196, 196, 0.3);
-    border-radius: 5px;
+    align-self: flex-start;
+    margin-top: 4px;
+    padding: 4px;
+    width: fit-content;
   }
 
   .comment-section .user_contain .time-stamp span {
     font-family: "Montserrat";
-
     font-weight: 800;
     font-size: 10px;
     color: #393939;
@@ -1196,39 +1210,12 @@
     position: relative;
     border: 3px solid #e0e0e0;
     height: 68px;
-    /* width: 345px; */
     border-radius: 20px;
-    /* overflow: hidden; */
     margin: 15px 0;
     transition: ease-in-out 0.3s all;
   }
 
   .news_feed_contain .section2 .trends-container .trend:hover {
     transform: scale(1.1);
-  }
-
-  .news_feed_contain .section2 .trends-container .trend img {
-    height: 70px;
-    width: 100%;
-    border-radius: 20px;
-    object-fit: cover;
-  }
-
-  .news_feed_contain .section2 .trends-container .trend .trend-text {
-    font-family: Montserrat;
-
-    font-weight: 800;
-    font-size: 16px;
-    line-height: 20px;
-    text-align: center;
-    color: #ffffff;
-    position: absolute;
-    width: 248px;
-    top: 50%;
-    bottom: 0;
-    right: 0;
-    left: 50%;
-    z-index: 100;
-    transform: translate(-50%, -50%);
   }
 }

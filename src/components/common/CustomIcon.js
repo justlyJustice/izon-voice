@@ -12,6 +12,9 @@ const IconDiv = styled.div`
   i {
     color: #393939;
   }
+
+  @media screen and (max-width: 768px) {
+  }
 `;
 
 const CustomIcon = ({ name = "user", ...otherProps }) => {

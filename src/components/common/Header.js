@@ -3,6 +3,7 @@ import { logo } from "assets/images";
 import useUser from "hooks/useUser";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { logout } from "services/authService";
 import Navbar from "../Navbar";
 import Search from "../Search";
 
@@ -42,7 +43,15 @@ const Header = () => {
 
                   <hr />
 
-                  <Link className="logout-link" to={`#`}>
+                  <Link
+                    className="logout-link"
+                    to={`#`}
+                    onClick={() => {
+                      logout();
+
+                      window.location.href = "/home";
+                    }}
+                  >
                     Logout
                   </Link>
                 </div>
