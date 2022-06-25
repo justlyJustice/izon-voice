@@ -13,8 +13,6 @@ const Navbar = ({ fixed }) => {
       return;
     }
 
-    // outside click
-
     setShown(false);
   };
 
@@ -84,18 +82,6 @@ const Navbar = ({ fixed }) => {
           >
             Agriculture
           </Link>
-
-          <Link
-            onClick={() => setShown(false)}
-            className={
-              location && location.pathname === "/category/politics"
-                ? "link active"
-                : "link"
-            }
-            to="/category/politics"
-          >
-            Politics
-          </Link>
         </div>
 
         <div
@@ -115,6 +101,30 @@ const Navbar = ({ fixed }) => {
           </Link>
 
           <Link
+            onClick={() => setShown(false)}
+            className={
+              location && location.pathname === "/category/social"
+                ? "link active"
+                : "link"
+            }
+            to="/category/social"
+          >
+            Social
+          </Link>
+
+          <Link
+            onClick={() => setShown(false)}
+            className={
+              location && location.pathname === "/category/politics"
+                ? "link active"
+                : "link"
+            }
+            to="/category/politics"
+          >
+            Politics
+          </Link>
+
+          {/* <Link
             onClick={() => setShown(false)}
             className={
               location && location.pathname === "/category/culture"
@@ -148,7 +158,7 @@ const Navbar = ({ fixed }) => {
             to="/category/security"
           >
             Security
-          </Link>
+          </Link> */}
         </div>
       </nav>
     </>

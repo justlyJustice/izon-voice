@@ -281,22 +281,23 @@
 
 .bottom-group .button-groups {
   display: flex;
-  justify-content: space-between !important;
-  /* overflow-wrap: break-word; */
+  justify-content: space-between;
 }
 
-.bottom-group .button-groups button {
+.bottom-group .button-groups .button {
   background: #f2f2f2;
   border: none;
   border-radius: 20px;
+  color: #000000;
   cursor: pointer;
   font-family: inherit;
   font-size: 14px;
   font-weight: 800;
-  height: 31px;
   line-height: 17px;
-  width: 129px !important;
   margin: 0px 10px;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
 }
 
 /* Blogs */
@@ -792,24 +793,7 @@
   }
 
   .left_div .top-links-contain {
-    display: flex !important;
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  .left_div .top-links-contain a {
-    font-family: Playfair Display;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 14px;
-    line-height: 19px;
-  }
-
-  .left_div .top-links-contain hr {
-    width: 2px;
-    height: 15px;
-    background: #dbdbdb;
-    border-radius: 10px;
+    margin: 0px auto;
   }
 
   .content_div {
@@ -818,6 +802,14 @@
     flex-direction: column;
     justify-content: space-between;
     flex-wrap: wrap;
+  }
+
+  .content_div .top-links-contain {
+    margin: 0 auto;
+  }
+
+  .content_div .cards-contain {
+    flex-direction: column;
   }
 
   .toggle-icon {
@@ -870,12 +862,6 @@
     margin-bottom: 0px !important;
     margin: 0 !important;
     overflow: hidden;
-  }
-
-  .blog-section img {
-    /*  object-fit: contain;
-    border-radius: 10px !important;
-    height: 300px; */
   }
 
   .blog-section .blog-text-contain .blog-title {
@@ -956,7 +942,6 @@
 
   .comment-section .comment-detail .content .item .text {
     font-family: inherit;
-
     font-weight: 800;
     font-size: 15px;
     line-height: 18px;
@@ -964,7 +949,9 @@
   }
 
   .comment-section .user_contain {
+    background-color: orange;
     flex-direction: column;
+    width: fit-content;
   }
 
   .comment-section .user_contain .user .name-contain {
@@ -1046,13 +1033,14 @@
 
   .bottom-group .button-groups {
     flex-direction: column;
-    justify-content: space-evenly !important;
+    justify-content: center;
     align-items: center;
   }
 
-  .bottom-group .button-groups button {
-    width: 50% !important;
+  .bottom-group .button-groups .button {
+    width: 35% !important;
     margin: 10px 0px;
+    height: 40px;
   }
 
   /* Blogs */

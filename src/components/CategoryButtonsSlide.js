@@ -1,69 +1,39 @@
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const CategoryButtonsSlide = () => {
-  const navigate = useNavigate();
-
+const CategoryLinksSlide = () => {
   return (
     <div>
       <div className="button-groups">
-        <button
-          onClick={() => {
-            navigate("/category/fashion");
-          }}
-        >
+        <Link to="/category/fashion" className="button">
           Fashion
-        </button>
+        </Link>
 
-        <button
-          onClick={() => {
-            navigate("/category/politics");
-          }}
-        >
+        <Link className="button" to="/category/politics">
           Politics
-        </button>
+        </Link>
 
-        <button
-          onClick={() => {
-            navigate("/category/ICT");
-          }}
-        >
+        <Link className="button" to="/category/ICT">
           ICT
-        </button>
+        </Link>
 
-        <button
-          onClick={() => {
-            navigate("/category/health");
-          }}
-        >
+        <Link className="button" to="/category/health">
           Health
-        </button>
+        </Link>
 
-        <button
-          onClick={() => {
-            navigate("/category/entertainment");
-          }}
-        >
+        <Link className="button" to="/category/entertainment">
           Entertainment
-        </button>
+        </Link>
 
-        <button
-          onClick={() => {
-            navigate("/category/sports");
-          }}
-        >
+        <Link className="button" to="/category/sports">
           Sports
-        </button>
+        </Link>
 
-        <button
-          onClick={() => {
-            navigate("/category/articles");
-          }}
-        >
+        <Link className="button" to="/category/articles">
           Articles
-        </button>
+        </Link>
       </div>
     </div>
   );
 };
 
-export default CategoryButtonsSlide;
+export default CategoryLinksSlide;

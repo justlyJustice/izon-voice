@@ -21,40 +21,37 @@ const CommentSection = ({ postId, comments, likes }) => {
     }
   };
 
-  if (!comments) {
-    return null;
-  }
-
   return (
     <>
-      {comments && comments.length > 0 && (
-        <section className="comment-section">
-          <div className="comment-detail">
-            <hr className="comment-rule" />
+      <section className="comment-section">
+        <div className="comment-detail">
+          <hr className="comment-rule" />
 
-            <div className="content">
-              <div className="item">
-                <i className="fa fa-comment icon"></i>
+          <div className="content">
+            <div className="item">
+              <i className="fa fa-comment icon"></i>
 
-                <span className="text">
-                  {comments && comments.length} comments
-                </span>
-              </div>
-
-              <div className="item">
-                <i
-                  className={`fa-solid fa-heart icon`}
-                  onClick={handleLikePost}
-                  style={{ cursor: !user && "not-allowed" }}
-                ></i>
-                <span className="text">{likesCount} likes</span>
-              </div>
+              <span className="text">
+                {comments && comments.length} comments
+              </span>
             </div>
 
-            <hr className="comment-rule" />
+            <div className="item">
+              <i
+                className={`fa-solid fa-heart icon`}
+                onClick={handleLikePost}
+                style={{ cursor: !user && "not-allowed" }}
+              ></i>
+              <span className="text">{likesCount} likes</span>
+            </div>
           </div>
 
-          {comments.map((comment, i) => (
+          <hr className="comment-rule" />
+        </div>
+
+        {comments &&
+          comments.length > 0 &&
+          comments.map((comment, i) => (
             <div key={i}>
               <div className="user_contain">
                 <div className="user">
@@ -80,9 +77,8 @@ const CommentSection = ({ postId, comments, likes }) => {
             </div>
           ))}
 
-          <CommentForm postId={postId} user={user} />
-        </section>
-      )}
+        <CommentForm postId={postId} user={user} />
+      </section>
     </>
   );
 };

@@ -44,10 +44,6 @@ const CardContainer = styled.div`
   }
 
   @media screen and (max-width: 768px) {
-    height: fit-content;
-    width: 80%;
-    max-width: 100%;
-
     .card-image {
       object-fit: cover;
       border-radius: 20px;
