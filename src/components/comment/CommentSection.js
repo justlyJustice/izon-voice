@@ -52,27 +52,25 @@ const CommentSection = ({ postId, comments, likes }) => {
         {comments &&
           comments.length > 0 &&
           comments.map((comment, i) => (
-            <div key={i}>
-              <div className="user_contain">
-                <div className="user">
-                  <div className="icon_container">
-                    <CustomIcon />
+            <div className="user_contain" key={i}>
+              <div className="user">
+                <div className="icon_container">
+                  <CustomIcon />
 
-                    <hr className="user-rule" />
-                  </div>
-
-                  <div className="name-contain">
-                    <div>
-                      <h2 className="username">{comment.user}</h2>
-
-                      <p className="comment">{comment.message}</p>
-                    </div>
-                  </div>
+                  <hr className="user-rule" />
                 </div>
 
-                <div className="time-stamp">
-                  <span>{formateTime(comment.createdAt)}</span>
+                <div className="name-contain">
+                  <div>
+                    <h2 className="username">{comment.user}</h2>
+
+                    <p className="comment">{comment.message}</p>
+                  </div>
                 </div>
+              </div>
+
+              <div className="time-stamp">
+                <span>{formateTime(comment.createdAt)}</span>
               </div>
             </div>
           ))}

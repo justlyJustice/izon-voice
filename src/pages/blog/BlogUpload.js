@@ -57,7 +57,15 @@ const BlogUpload = () => {
       setLoading(false);
 
       if (res.status === 201) {
-        setValues(initialValues);
+        setValues({
+          ...values,
+          author: "",
+          title: "",
+          description: "",
+          quote: "",
+          category: "",
+        });
+
         setFile(null);
 
         setSuccess(true);

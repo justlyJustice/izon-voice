@@ -42,8 +42,14 @@ const UserDisplayNav = () => {
 
           <hr />
 
+          <hr />
+
+          <Link to="/upload/post">
+            <i className="fa-solid fa-upload"></i> Upload New Post
+          </Link>
+
           <Link to="#" className="logout-link" onClick={handleLogout}>
-            <i className="fa fa-arrow-right"></i> Logout
+            <i className="fa-solid fa-arrow-right"></i> Logout
           </Link>
         </div>
       )}
