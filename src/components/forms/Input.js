@@ -60,7 +60,7 @@ const InputGroup = styled.div`
   }
 `;
 
-const Input = ({ name, className, label, labelStyle, ...otherProps }) => {
+const Input = ({ name, label, labelStyle, ...otherProps }) => {
   const { errors, touched, values, setFieldValue, setFieldTouched } =
     useFormikContext();
 

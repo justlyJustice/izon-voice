@@ -31,8 +31,6 @@ const Header = () => {
       return;
     }
 
-    // outside click
-
     setShowDropdown(false);
   };
 
@@ -74,6 +72,16 @@ const Header = () => {
                     <span>{user.name}</span>
                   </div>
 
+                  {user.email === "admin@izonvoice.ng" && (
+                    <>
+                      <hr />
+
+                      <Link to={`/upload/post`}>
+                        <i className="fa-solid fa-upload"></i> Upload New Post
+                      </Link>
+                    </>
+                  )}
+
                   <hr />
 
                   <Link
@@ -85,7 +93,7 @@ const Header = () => {
                       window.location.href = "/home";
                     }}
                   >
-                    Logout
+                    <i className="fa-solid fa-logout"></i> Logout
                   </Link>
                 </div>
               )}

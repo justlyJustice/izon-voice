@@ -78,10 +78,10 @@ const CommentForm = ({ postId, user, setData }) => {
       resetForm();
 
       if (res.status === 201) {
-        /*   setTimeout(() => {
+        setTimeout(() => {
           setSuccess(false);
           window.location.reload();
-        }, 3000); */
+        }, 3000);
       }
       setLoading(false);
     } catch (ex) {

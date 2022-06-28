@@ -11,6 +11,7 @@ import Register from "pages/Register";
 import NotFound from "pages/NotFound";
 import ProtectedRoute from "components/common/ProtectedRoute";
 import PrivacyPolicy from "pages/PrivacyPolicy";
+import Test from "components/Test";
 
 const App = () => {
   return (
@@ -24,6 +25,15 @@ const App = () => {
           element={
             <ProtectedRoute>
               <BlogUpload />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          exact
+          path="/upload/test"
+          element={
+            <ProtectedRoute>
+              <Test />
             </ProtectedRoute>
           }
         />

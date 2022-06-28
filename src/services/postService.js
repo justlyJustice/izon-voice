@@ -27,6 +27,7 @@ export const likePost = async (id) => {
 export const uploadBlogPost = (value) => {
   const formData = new FormData();
 
+  formData.append("author", value.author);
   formData.append("category", value.category);
   formData.append("description", value.description);
   formData.append("file", value.file);

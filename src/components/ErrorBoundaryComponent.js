@@ -1,5 +1,4 @@
 import * as React from "react";
-import { log } from "logrocket";
 import Lottie from "lottie-react";
 import styled from "styled-components";
 

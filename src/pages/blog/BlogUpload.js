@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import { toast } from "react-toastify";
+import * as Yup from "yup";
 
 import { uploadBlogPost } from "services/postService";
 import { categories } from "utils/options";
@@ -14,7 +15,23 @@ import {
 } from "../../styles/blogUploadStyles";
 import StatusPlaceholder from "components/common/StatusPlaceholder";
 
+const validationSchema = Yup.object().shape({
+  author: Yup.string().required().label("Author"),
+  title: Yup.string().required().min(10).label("Title"),
+  description: Yup.string().required().min(20).label("Description"),
+  quote: Yup.string().label("Quote"),
+  category: Yup.string().required().label("Category"),
+});
+
 const initialValues = {
+  author: "",
+  title: "",
+  description: "",
+  quote: "",
+  category: "",
+};
+
+const errors = {
   author: "",
   title: "",
   description: "",
@@ -57,14 +74,7 @@ const BlogUpload = () => {
       setLoading(false);
 
       if (res.status === 201) {
-        setValues({
-          ...values,
-          author: "",
-          title: "",
-          description: "",
-          quote: "",
-          category: "",
-        });
+        setValues(initialValues);
 
         setFile(null);
 
@@ -152,6 +162,7 @@ const BlogUpload = () => {
               type="text"
               name="author"
               id="author"
+              value={values.author}
               onChange={handleChange}
             />
           </Group>

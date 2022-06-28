@@ -59,7 +59,7 @@ const Blogs = () => {
               <div className="section1">
                 {posts &&
                   posts.length > 0 &&
-                  posts.slice(10, 16).map((post, i) => (
+                  posts.slice(14, 20).map((post, i) => (
                     <Link to={`/${post.slug}`}>
                       <div className="div1" key={i}>
                         <div className="div1-image-contain">
@@ -107,7 +107,7 @@ const Blogs = () => {
                                 }}
                               />
 
-                              <small>{posts.likes}</small>
+                              <small>0</small>
                             </span>
                           </div>
                         </div>
