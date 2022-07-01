@@ -59,61 +59,64 @@ const Blogs = () => {
               <div className="section1">
                 {posts &&
                   posts.length > 0 &&
-                  posts.slice(14, 20).map((post, i) => (
-                    <Link to={`/${post.slug}`}>
-                      <div className="div1" key={i}>
-                        <div className="div1-image-contain">
-                          <img src={post.urlToImage} alt="Item pic" />
-                        </div>
-
-                        <div className="text-div">
-                          <div className="text-group-one">
-                            <span className="first-span">
-                              {post.category.toUpperCase()}
-                            </span>
-
-                            <i
-                              className="fa fa-circle fa-sm"
-                              style={{ color: "#c4c4c4", fontSize: "8px" }}
-                            ></i>
-
-                            <span className="second-span">
-                              {formateTime(post.createdAt)}
-                            </span>
+                  posts
+                    .filter((post) => post._id !== "62b4cdaec10f2800dbe62cd1")
+                    .slice(15, 30)
+                    .map((post, i) => (
+                      <Link to={`/${post.slug}`}>
+                        <div className="div1" key={i}>
+                          <div className="div1-image-contain">
+                            <img src={post.urlToImage} alt="Item pic" />
                           </div>
 
-                          <p className="blog-title">
-                            {post.title.toUpperCase()}
-                          </p>
+                          <div className="text-div">
+                            <div className="text-group-one">
+                              <span className="first-span">
+                                {post.category.toUpperCase()}
+                              </span>
 
-                          <div className="tags-contain">
-                            <span className="comment-contain">
-                              <Icon
-                                name="comment"
-                                style={{
-                                  color: "#C4C4C4",
-                                  fontSize: "12px",
-                                }}
-                              />{" "}
-                              <small>{post.comments.length}</small>
-                            </span>
+                              <i
+                                className="fa fa-circle fa-sm"
+                                style={{ color: "#c4c4c4", fontSize: "8px" }}
+                              ></i>
 
-                            <span className="comment-contain">
-                              <Icon
-                                name="heart"
-                                style={{
-                                  color: "#C4C4C4",
-                                  fontSize: "12px",
-                                }}
-                              />
+                              <span className="second-span">
+                                {formateTime(post.createdAt)}
+                              </span>
+                            </div>
 
-                              <small>0</small>
-                            </span>
+                            <p className="blog-title">
+                              {post.title.toUpperCase()}
+                            </p>
+
+                            <div className="tags-contain">
+                              <span className="comment-contain">
+                                <Icon
+                                  name="comment"
+                                  style={{
+                                    color: "#C4C4C4",
+                                    fontSize: "12px",
+                                  }}
+                                />{" "}
+                                <small>{post.comments.length}</small>
+                              </span>
+
+                              <span className="comment-contain">
+                                <Icon
+                                  name="heart"
+                                  style={{
+                                    color: "#C4C4C4",
+                                    fontSize: "12px",
+                                  }}
+                                />
+
+                                <small>0</small>
+                              </span>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </Link>
-                  ))}
+                      </Link>
+                    ))}
               </div>
 
               <div className="section2">

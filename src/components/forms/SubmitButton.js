@@ -8,6 +8,7 @@ const SubmitButton = ({ className, icon, style, children, ...otherProps }) => {
       onClick={handleSubmit}
       className={className}
       style={style}
+      type="submit"
       {...otherProps}
     >
       {children}

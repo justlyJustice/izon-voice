@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
-import { logo } from "assets/images";
-import useUser from "hooks/useUser";
-import { useEffect, useRef } from "react";
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { logout } from "services/authService";
+
 import Navbar from "../Navbar";
 import Search from "../Search";
+import useUser from "hooks/useUser";
+
+import { logo } from "assets/images";
+import { logout } from "services/authService";
 
 const Header = () => {
   const [navFixed, setNavFixed] = useState(false);
@@ -22,7 +23,7 @@ const Header = () => {
     }
   };
 
-  const open = (e) => {
+  const open = () => {
     setShowDropdown(true);
   };
 
@@ -40,7 +41,7 @@ const Header = () => {
     return () => {
       document.removeEventListener("mousedown", close);
     };
-  }, [showDropdown]);
+  }, []);
 
   window.addEventListener("scroll", () => setNavbar());
 
@@ -76,7 +77,11 @@ const Header = () => {
                     <>
                       <hr />
 
-                      <Link to={`/upload/post`}>
+                      <Link
+                        to={`/upload/post`}
+                        className={`logout-link`}
+                        onClick={() => open()}
+                      >
                         <i className="fa-solid fa-upload"></i> Upload New Post
                       </Link>
                     </>
@@ -93,7 +98,7 @@ const Header = () => {
                       window.location.href = "/home";
                     }}
                   >
-                    <i className="fa-solid fa-logout"></i> Logout
+                    <i className="fa-solid fa-right-from-bracket"></i> Logout
                   </Link>
                 </div>
               )}
