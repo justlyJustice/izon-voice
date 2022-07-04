@@ -8,8 +8,6 @@ const Text = styled.small`
 const FormError = ({ error }) => {
   if (!error) return null;
 
-  console.log(error);
-
   return <Text>{error}</Text>;
 };
 

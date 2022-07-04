@@ -13,7 +13,7 @@ import { formateTime } from "utils/helpers";
 
 const Blogs = () => {
   const {
-    data: { posts },
+    data: posts,
     error,
     loading,
     request: retrievePosts,
@@ -61,7 +61,7 @@ const Blogs = () => {
                   posts.length > 0 &&
                   posts
                     .filter((post) => post._id !== "62b4cdaec10f2800dbe62cd1")
-                    .slice(15, 30)
+                    .slice(30, 40)
                     .map((post, i) => (
                       <Link to={`/${post.slug}`}>
                         <div className="div1" key={i}>

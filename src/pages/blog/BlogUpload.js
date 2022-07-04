@@ -31,18 +31,12 @@ const initialValues = {
   category: "",
 };
 
-const errors = {
-  author: "",
-  title: "",
-  description: "",
-  quote: "",
-  category: "",
-};
-
 const BlogUpload = () => {
   const [values, setValues] = useState(initialValues);
   const [file, setFile] = useState(null);
+  const [images, setImages] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [imageUrl, setImageUrl] = useState();
 
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -58,6 +52,11 @@ const BlogUpload = () => {
 
   const handleFileInputChange = (e) => {
     setFile(e.target.files[0]);
+    setImageUrl(URL.createObjectURL(e.target.files[0]));
+  };
+
+  const handleSelectImages = (e) => {
+    setImages(e.target.files);
   };
 
   const handleSubmit = async (e) => {
@@ -156,6 +155,12 @@ const BlogUpload = () => {
             </Group>
           </Contain>
 
+          {file && (
+            <div className="image-contain">
+              <img src={imageUrl} alt={file.name} />
+            </div>
+          )}
+
           <Group>
             <label htmlFor="author">Author</label>
             <input
@@ -164,6 +169,16 @@ const BlogUpload = () => {
               id="author"
               value={values.author}
               onChange={handleChange}
+            />
+          </Group>
+
+          <Group>
+            <label htmlFor="images">Images</label>
+            <input
+              type="file"
+              multiple
+              id="images"
+              onChange={handleSelectImages}
             />
           </Group>
 

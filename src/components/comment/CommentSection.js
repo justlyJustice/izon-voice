@@ -7,14 +7,16 @@ import { formateTime } from "utils/helpers";
 
 import useUser from "hooks/useUser";
 
-const CommentSection = ({ postId, comments, likes }) => {
+const CommentSection = ({ post, setPost }) => {
   const [isLiked, setIsLiked] = useState(false);
-  const [likesCount, setLikesCount] = useState(likes ? likes.length : 0);
+  const [likesCount, setLikesCount] = useState(
+    post.likes ? post.likes.length : 0
+  );
   const { user } = useUser();
 
   const handleLikePost = async () => {
     try {
-      const response = await likePost(postId);
+      const response = await likePost(post._id);
       console.log(response);
     } catch (ex) {
       console.log(ex);
@@ -24,6 +26,8 @@ const CommentSection = ({ postId, comments, likes }) => {
   return (
     <>
       <section className="comment-section">
+        <CommentForm post={post} user={user} setPost={setPost} />
+
         <div className="comment-detail">
           <hr className="comment-rule" />
 
@@ -32,7 +36,7 @@ const CommentSection = ({ postId, comments, likes }) => {
               <i className="fa fa-comment icon"></i>
 
               <span className="text">
-                {comments && comments.length} comments
+                {post.comments && post.comments.length} comments
               </span>
             </div>
 
@@ -49,9 +53,9 @@ const CommentSection = ({ postId, comments, likes }) => {
           <hr className="comment-rule" />
         </div>
 
-        {comments &&
-          comments.length > 0 &&
-          comments.map((comment, i) => (
+        {post.comments &&
+          post.comments.length > 0 &&
+          post.comments.map((comment, i) => (
             <div className="user_contain" key={i}>
               <div className="user">
                 <div className="icon_container">
@@ -74,8 +78,6 @@ const CommentSection = ({ postId, comments, likes }) => {
               </div>
             </div>
           ))}
-
-        <CommentForm postId={postId} user={user} />
       </section>
     </>
   );

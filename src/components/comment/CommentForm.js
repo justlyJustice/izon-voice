@@ -4,7 +4,7 @@ import styled from "styled-components";
 import * as Yup from "yup";
 
 import { Form, TextArea, SubmitButton } from "../forms";
-import comment from "services/commentService";
+import commentService from "services/commentService";
 import StatusAnimation from "components/common/StatusAnimation";
 
 const validationSchema = Yup.object().shape({
@@ -49,6 +49,7 @@ const Button = styled(SubmitButton)`
   line-height: 20px;
   text-transform: uppercase;
   color: #ffffff;
+  margin-bottom: 20px;
   width: 240px;
   background: rgba(17, 55, 254, 0.7);
   border-radius: 20px;
@@ -62,7 +63,7 @@ const Button = styled(SubmitButton)`
   }
 `;
 
-const CommentForm = ({ postId, user, setData }) => {
+const CommentForm = ({ post, user, setPost }) => {
   const [success, setSuccess] = useState(false);
   const [failed, setFailed] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -73,17 +74,23 @@ const CommentForm = ({ postId, user, setData }) => {
   const handleSubmit = async ({ message }, { resetForm }) => {
     try {
       setLoading(true);
-      const res = await comment.postComment(postId, message);
+      const res = await commentService.postComment(post._id, message);
+      setLoading(false);
 
-      resetForm();
+      if (res.ok) {
+        setSuccess(true);
 
-      if (res.status === 201) {
+        setPost({
+          ...post,
+          comments: [res.data.comment, ...post.comments],
+        });
+
+        resetForm();
+
         setTimeout(() => {
           setSuccess(false);
-          window.location.reload();
         }, 3000);
       }
-      setLoading(false);
     } catch (ex) {
       setLoading(false);
 
@@ -122,13 +129,7 @@ const CommentForm = ({ postId, user, setData }) => {
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
         >
-          <CustomTextArea
-            placeholder="What are your thoughts?"
-            name="message"
-            onClick={() => verifyUser()}
-          />
-
-          {shown ? (
+          {shown && (
             <Link
               to="/login"
               className="to_login"
@@ -136,7 +137,13 @@ const CommentForm = ({ postId, user, setData }) => {
             >
               <span>You must login to comment.</span>
             </Link>
-          ) : null}
+          )}
+
+          <CustomTextArea
+            placeholder="What are your thoughts?"
+            name="message"
+            onClick={() => verifyUser()}
+          />
 
           {user && (
             <Button type="button" disabled={loading}>

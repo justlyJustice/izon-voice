@@ -9,11 +9,11 @@ const GoogleAuth = ({ text, state }) => {
 
   const onSuccess = async (res) => {
     try {
-      const resp = await auth.googleAuth(res?.tokenId);
+      const result = await auth.googleAuth(res?.tokenId);
 
-      if (resp.ok) {
+      if (result.ok) {
         setSuccess(true);
-        auth.loginWithJwt(resp.data.token);
+        auth.loginWithJwt(result.data.token);
 
         setTimeout(() => {
           window.location = state ? state.from : "/home";
@@ -30,6 +30,7 @@ const GoogleAuth = ({ text, state }) => {
     <GoogleLogin
       clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
       onSuccess={onSuccess}
+      cookiePolicy={"single_host_origin"}
       render={(renderProps) =>
         success ? (
           <SuccessButton disabled={true}>

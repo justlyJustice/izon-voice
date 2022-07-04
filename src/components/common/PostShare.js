@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import {
+  EmailShareButton,
+  EmailIcon,
   FacebookIcon,
   FacebookShareButton,
   TelegramShareButton,
@@ -22,6 +24,14 @@ const Wrapper = styled.div`
 function PostShare({ url, title, hashtags }) {
   return (
     <Wrapper>
+      <EmailShareButton
+        url={url ? url : ""}
+        quote={title ? title : ""}
+        hashtag={hashtags ? hashtags : ["#"]}
+      >
+        <EmailIcon size={36} />
+      </EmailShareButton>
+
       <FacebookShareButton
         url={url ? url : ""}
         quote={title ? title : ""}

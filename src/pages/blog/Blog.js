@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
-
-import PostShare from "components/common/PostShare";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import Linkify from "linkify-react";
 
 import Header from "components/common/Header";
 import Head from "components/common/Head";
 import CommentSection from "components/comment/CommentSection";
+import PostShare from "components/common/PostShare";
 import LoadingAnimation from "components/common/LoadingAnimation";
 
 import { formateTime } from "utils/helpers";
@@ -15,32 +15,25 @@ import { getPost } from "services/postService";
 import useApi from "hooks/useApi";
 
 const Blog = () => {
-  const [comments, setComments] = useState([]);
-
   const {
-    data: { post },
+    data: post,
     loading,
-    request,
+    request: retrievePost,
+    setData: setPost,
   } = useApi(getPost);
 
-  const location = useLocation();
-  /* location.pathname = "/home"; */
   const { name } = useParams();
 
-  const retrievePost = async () => {
-    await request(name);
-  };
-
   useEffect(() => {
-    retrievePost();
+    retrievePost(name);
   }, []);
 
   return (
     <section>
-      <Head title={`Izon Voice| ${post && post.title}`} />
+      <Head title={`Izon Voice | ${post && post.title}`} />
       <LoadingAnimation loading={loading} />
 
-      {post && (
+      {post ? (
         <>
           <Header />
           <div className="container">
@@ -55,8 +48,8 @@ const Blog = () => {
 
                   <div className="user-details-contain">
                     <span className="author">
-                      <i className="fa-solid fa-user"></i>{" "}
-                      {post.author ? post.author : `Boungbai Computers`}
+                      <i className="fa-solid fa-user"></i>
+                      {post.author}
                     </span>
 
                     <span className="time">
@@ -87,22 +80,18 @@ const Blog = () => {
               <div className="blog-content">
                 {post.description.split("\n").map((des, i) => (
                   <p className="para" key={i}>
-                    {des}
+                    <Linkify>{des}</Linkify>
                   </p>
                 ))}
               </div>
             </div>
 
-            <CommentSection
-              comments={post.comments}
-              postId={post._id}
-              likes={post.likes}
-            />
+            <CommentSection post={post} setPost={setPost} />
           </div>
 
           <PostShare url={window.location.href} />
         </>
-      )}
+      ) : null}
     </section>
   );
 };

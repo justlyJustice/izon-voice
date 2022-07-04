@@ -19,7 +19,6 @@ export const getPostsCategory = async (category) => {
   return await http.get(`posts/?category=${category}`);
 };
 
-// POST REQUESTS
 export const likePost = async (id) => {
   return await http.post(`posts/${id}/likes`);
 };
@@ -33,6 +32,7 @@ export const uploadBlogPost = (value) => {
   formData.append("file", value.file);
   formData.append("quote", value.quote);
   formData.append("title", value.title);
+  formData.append("images", value.images);
 
   return http.post("posts", formData, {
     headers: {

@@ -6,6 +6,19 @@ export const FormContainer = styled.section`
   flex-direction: column;
   height: 100vh;
   justify-content: center;
+
+  .image-contain {
+    border-radius: 50%;
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+  }
+
+  .image-contain img {
+    height: 100%;
+    width: 100%;
+  }
 `;
 
 export const Form = styled.form`
