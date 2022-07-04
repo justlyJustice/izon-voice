@@ -59,7 +59,19 @@ const CommentSection = ({ post, setPost }) => {
             <div className="user_contain" key={i}>
               <div className="user">
                 <div className="icon_container">
-                  <CustomIcon />
+                  {comment.user === user.name && user.avatar ? (
+                    <img
+                      src={user.avatar}
+                      alt={`Comment-avatar`}
+                      style={{
+                        height: "100px",
+                        width: "100px",
+                        overflow: "hidden",
+                      }}
+                    />
+                  ) : (
+                    <CustomIcon />
+                  )}
 
                   <hr className="user-rule" />
                 </div>
@@ -68,7 +80,7 @@ const CommentSection = ({ post, setPost }) => {
                   <div>
                     <h2 className="username">{comment.user}</h2>
 
-                    <p className="comment">{comment.message}</p>
+                    <p className="comment">{comment.desc || comment.message}</p>
                   </div>
                 </div>
               </div>

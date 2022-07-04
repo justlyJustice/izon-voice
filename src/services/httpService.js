@@ -14,7 +14,7 @@ apiClient.axiosInstance.interceptors.response.use(null, (error) => {
 
   if (!expectedError) {
     toast.error("An unexpected error occured", {
-      autoClose: 3000,
+      autoClose: 2000,
       closeButton: true,
       type: "error",
     });

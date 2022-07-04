@@ -48,8 +48,8 @@ const Blog = () => {
 
                   <div className="user-details-contain">
                     <span className="author">
-                      <i className="fa-solid fa-user"></i>
-                      {post.author}
+                      <i className="fa-solid fa-user"></i>{" "}
+                      {post.author ? post.author : "A. T. Francis"}
                     </span>
 
                     <span className="time">

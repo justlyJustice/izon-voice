@@ -6,7 +6,6 @@ import Navbar from "../Navbar";
 import Search from "../Search";
 import useUser from "hooks/useUser";
 
-import { logo } from "assets/images";
 import { logout } from "services/authService";
 
 const Header = () => {
@@ -24,7 +23,7 @@ const Header = () => {
   };
 
   const open = () => {
-    setShowDropdown(true);
+    setShowDropdown((prev) => !prev);
   };
 
   const close = (e) => {
@@ -35,13 +34,23 @@ const Header = () => {
     setShowDropdown(false);
   };
 
-  useEffect(() => {
-    document.addEventListener("mousedown", close);
+  /*   useEffect(() => {
+    document.addEventListener("mousedown", () => setShowDropdown(false));
 
     return () => {
-      document.removeEventListener("mousedown", close);
+      document.body.removeEventListener("mousedown", () =>
+        setShowDropdown(true)
+      );
     };
-  }, []);
+  }, [showDropdown]); */
+
+  /*   useEffect(() => {
+    document.body.addEventListener("mousedown", close);
+
+    return () => {
+      document.body.removeEventListener("mousedown", close);
+    };
+  }, [showDropdown]); */
 
   window.addEventListener("scroll", () => setNavbar());
 
@@ -52,11 +61,17 @@ const Header = () => {
           {user && (
             <div className="user-display">
               <div className="avatar">
-                {user.image && (
-                  <img src={logo} className="user-image" alt="Izon voice" />
+                {user.avatar && (
+                  <img
+                    src={user.avatar}
+                    className="user-image"
+                    onClick={open}
+                    ref={node}
+                    alt="Izon voice"
+                  />
                 )}
 
-                {!user.image && (
+                {!user.avatar && (
                   <i
                     className="fa-solid fa fa-user-circle"
                     onClick={open}
@@ -80,7 +95,7 @@ const Header = () => {
                       <Link
                         to={`/upload/post`}
                         className={`logout-link`}
-                        onClick={() => open()}
+                        /* onClick={() => open()} */
                       >
                         <i className="fa-solid fa-upload"></i> Upload New Post
                       </Link>

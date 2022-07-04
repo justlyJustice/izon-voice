@@ -18,7 +18,7 @@ import { getWelcomePageStories } from "services/postService";
 const Main = () => {
   const {
     error,
-    data: { posts },
+    data: posts,
     loading,
     request,
   } = useApi(getWelcomePageStories);

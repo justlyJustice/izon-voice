@@ -15,11 +15,7 @@ import Head from "components/common/Head";
 const BlogCategory = () => {
   const { name } = useParams();
 
-  const {
-    data: { posts },
-    loading,
-    request,
-  } = useApi(getPostsCategory);
+  const { data: posts, loading, request } = useApi(getPostsCategory);
 
   useEffect(() => {
     request(name);

@@ -23,17 +23,15 @@ export const FormContainer = styled.section`
 
 export const Form = styled.form`
   background-color: white;
-  /* box-shadow: 4px 4px 3px 0px rgba(0, 0, 0, 0.05); */
-  -webkit-box-shadow: 0px 5px 14px 0px rgba(0, 0, 0, 0.19);
-  -moz-box-shadow: 0px 5px 14px 0px rgba(0, 0, 0, 0.19);
-  box-shadow: 0px 5px 14px 0px rgba(0, 0, 0, 0.19);
-  max-width: 550px;
+  border: 1px solid #c4c4c4;
+  border-radius: 10px;
+  max-width: 800px;
   width: 100%;
-  padding: 40px;
+  padding: 30px;
 
   h2 {
-    color: #000cc0;
-    margin-bottom: 30px;
+    color: #c4c4c4;
+    font-size: 24px;
     text-transform: uppercase;
   }
 
@@ -83,8 +81,8 @@ export const Group = styled.div`
 `;
 
 export const Contain = styled.div`
-  align-items: center;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(1fr, 2);
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -98,5 +96,5 @@ export const Button = styled.button`
   background-color: #000cc0;
   padding: 15px 0px;
   text-align: center;
-  width: 100%;
+  width: 30%;
 `;

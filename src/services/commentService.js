@@ -1,9 +1,9 @@
 /* eslint-disable import/no-anonymous-default-export */
 import http from "./httpService";
 
-const postComment = (postId, message) =>
+const postComment = (postId, desc) =>
   http.post(`posts/${postId}/comments`, {
-    message,
+    desc,
   });
 
 export default {

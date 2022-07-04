@@ -32,7 +32,10 @@ export const uploadBlogPost = (value) => {
   formData.append("file", value.file);
   formData.append("quote", value.quote);
   formData.append("title", value.title);
-  formData.append("images", value.images);
+
+  value.images.forEach((image, i) => {
+    formData.append("images", image);
+  });
 
   return http.post("posts", formData, {
     headers: {

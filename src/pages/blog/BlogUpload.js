@@ -15,20 +15,13 @@ import {
 } from "../../styles/blogUploadStyles";
 import StatusPlaceholder from "components/common/StatusPlaceholder";
 
-const validationSchema = Yup.object().shape({
-  author: Yup.string().required().label("Author"),
-  title: Yup.string().required().min(10).label("Title"),
-  description: Yup.string().required().min(20).label("Description"),
-  quote: Yup.string().label("Quote"),
-  category: Yup.string().required().label("Category"),
-});
-
 const initialValues = {
   author: "",
   title: "",
   description: "",
   quote: "",
   category: "",
+  images: [],
 };
 
 const BlogUpload = () => {
@@ -65,6 +58,7 @@ const BlogUpload = () => {
     const postData = {
       ...values,
       file,
+      images,
     };
 
     try {
@@ -97,7 +91,11 @@ const BlogUpload = () => {
         <Form onSubmit={handleSubmit}>
           <StatusPlaceholder error={error} success={success} />
 
-          <h2>Create a post</h2>
+          <div className="header">
+            <h2>Create a post</h2>
+
+            <hr />
+          </div>
 
           <Contain>
             <Group>
@@ -108,6 +106,8 @@ const BlogUpload = () => {
                 id="title"
                 value={values.title}
                 onChange={handleChange}
+                r
+                required
               />
             </Group>
 
@@ -119,6 +119,7 @@ const BlogUpload = () => {
                 id="quote"
                 value={values.quote}
                 onChange={handleChange}
+                required
               />
             </Group>
           </Contain>
@@ -131,6 +132,7 @@ const BlogUpload = () => {
                 name="file"
                 id="file"
                 onChange={handleFileInputChange}
+                required
               />
             </Group>
 
@@ -143,6 +145,7 @@ const BlogUpload = () => {
                 id="category"
                 value={values.category}
                 onChange={handleChange}
+                required
               >
                 <option value="">Select...</option>
 
@@ -169,6 +172,7 @@ const BlogUpload = () => {
               id="author"
               value={values.author}
               onChange={handleChange}
+              required
             />
           </Group>
 
@@ -179,6 +183,7 @@ const BlogUpload = () => {
               multiple
               id="images"
               onChange={handleSelectImages}
+              required
             />
           </Group>
 
@@ -190,6 +195,7 @@ const BlogUpload = () => {
               id="description"
               value={values.description}
               onChange={handleChange}
+              required
             />
           </Group>
 
