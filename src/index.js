@@ -33,13 +33,13 @@ Sentry.init({
 
 ReactDOM.render(
   <>
-    <React.StrictMode>
+    <>
       <ErrorBoundary>
         <Router>
           <App />
         </Router>
       </ErrorBoundary>
-    </React.StrictMode>
+    </>
   </>,
   document.getElementById("root")
 );

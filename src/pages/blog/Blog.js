@@ -39,7 +39,7 @@ const Blog = () => {
           <div className="container">
             <div className="blog-section">
               <div className="blog-image-contain">
-                <img src={post.urlToImage || post.image} alt="Blog img" />
+                <img src={post.urlToImage} alt="Blog img" />
               </div>
 
               <div className="blog-text-contain">
