@@ -643,7 +643,6 @@
 }
 
 .comment-section {
-  margin-top: 30px;
   padding-bottom: 40px;
 }
 
@@ -711,7 +710,7 @@
 .comment-section .user_contain .user .name-contain .comment {
   font-family: "Playfair Display";
   font-weight: 600;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 19px;
   text-align: justify;
   color: #393939;
@@ -1002,7 +1001,7 @@
     display: inline-block;
     height: 3px;
     margin-left: 10px;
-    width: 140px;
+    width: 200px;
   }
 
   .comment-section .user_contain .time-stamp {

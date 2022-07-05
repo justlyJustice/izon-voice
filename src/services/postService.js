@@ -1,6 +1,5 @@
 import http from "./httpService";
 
-// GET REQUESTS
 export const getPosts = async () => {
   return await http.get("posts");
 };
@@ -12,8 +11,6 @@ export const getPost = async (id) => {
 export const getWelcomePageStories = async () => {
   return await http.get("posts/welcome-page-stories");
 };
-
-export const getTrendingPosts = async () => await http.get("/trending");
 
 export const getPostsCategory = async (category) => {
   return await http.get(`posts/?category=${category}`);

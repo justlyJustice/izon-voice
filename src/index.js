@@ -32,14 +32,12 @@ Sentry.init({
  */
 
 ReactDOM.render(
-  <>
-    <>
-      <ErrorBoundary>
-        <Router>
-          <App />
-        </Router>
-      </ErrorBoundary>
-    </>
-  </>,
+  <React.StrictMode>
+    <ErrorBoundary>
+      <Router>
+        <App />
+      </Router>
+    </ErrorBoundary>
+  </React.StrictMode>,
   document.getElementById("root")
 );

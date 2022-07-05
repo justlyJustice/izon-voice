@@ -8,89 +8,69 @@ import { formateTime } from "utils/helpers";
 import useUser from "hooks/useUser";
 
 const CommentSection = ({ post, setPost }) => {
-  const [isLiked, setIsLiked] = useState(false);
-  const [likesCount, setLikesCount] = useState(
-    post.likes ? post.likes.length : 0
-  );
+  const [likes, setLikes] = useState(post && post.likes);
   const { user } = useUser();
 
-  const handleLikePost = async () => {
-    try {
-      const response = await likePost(post._id);
-      console.log(response);
-    } catch (ex) {
-      console.log(ex);
-    }
+  const handleLike = async () => {
+    const res = await likePost(post && post.id);
   };
 
   return (
     <>
-      <section className="comment-section">
-        <CommentForm post={post} user={user} setPost={setPost} />
+      {post && (
+        <section className="comment-section">
+          <CommentForm post={post} user={user} setPost={setPost} />
 
-        <div className="comment-detail">
-          <hr className="comment-rule" />
+          <div className="comment-detail">
+            <hr className="comment-rule" />
 
-          <div className="content">
-            <div className="item">
-              <i className="fa fa-comment icon"></i>
+            <div className="content">
+              <div className="item">
+                <i className="fa fa-comment icon"></i>
 
-              <span className="text">
-                {post.comments && post.comments.length} comments
-              </span>
+                <span className="text">{post.comments.length} comments</span>
+              </div>
+
+              <div className="item">
+                <i
+                  className={`fa-solid fa-heart icon`}
+                  style={{ cursor: !user && "not-allowed" }}
+                ></i>
+                <span className="text">{likes} likes</span>
+              </div>
             </div>
 
-            <div className="item">
-              <i
-                className={`fa-solid fa-heart icon`}
-                onClick={handleLikePost}
-                style={{ cursor: !user && "not-allowed" }}
-              ></i>
-              <span className="text">{likesCount} likes</span>
-            </div>
+            <hr className="comment-rule" />
           </div>
 
-          <hr className="comment-rule" />
-        </div>
-
-        {post.comments &&
-          post.comments.length > 0 &&
-          post.comments.map((comment, i) => (
-            <div className="user_contain" key={i}>
-              <div className="user">
-                <div className="icon_container">
-                  {comment.user === user.name && user.avatar ? (
-                    <img
-                      src={user.avatar}
-                      alt={`Comment-avatar`}
-                      style={{
-                        height: "100px",
-                        width: "100px",
-                        overflow: "hidden",
-                      }}
-                    />
-                  ) : (
+          {post.comments.length > 0 &&
+            post.comments.map((comment, i) => (
+              <div className="user_contain" key={i}>
+                <div className="user">
+                  <div className="icon_container">
                     <CustomIcon />
-                  )}
 
-                  <hr className="user-rule" />
-                </div>
+                    <hr className="user-rule" />
+                  </div>
 
-                <div className="name-contain">
-                  <div>
-                    <h2 className="username">{comment.user}</h2>
+                  <div className="name-contain">
+                    <div>
+                      <h2 className="username">{comment.user}</h2>
 
-                    <p className="comment">{comment.desc || comment.message}</p>
+                      <p className="comment">
+                        {comment.desc || comment.message}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div className="time-stamp">
-                <span>{formateTime(comment.createdAt)}</span>
+                <div className="time-stamp">
+                  <span>{formateTime(comment.createdAt)}</span>
+                </div>
               </div>
-            </div>
-          ))}
-      </section>
+            ))}
+        </section>
+      )}
     </>
   );
 };
