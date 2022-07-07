@@ -61,7 +61,7 @@ const Blogs = () => {
                   posts.length > 0 &&
                   posts
                     .filter((post) => post._id !== "62b4cdaec10f2800dbe62cd1")
-                    .slice(38, 48)
+                    .slice(20, 50)
                     .map((post, i) => (
                       <Link to={`/${post.slug}`} key={i}>
                         <div className="div1">

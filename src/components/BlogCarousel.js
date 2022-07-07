@@ -64,7 +64,7 @@ const BlogCarousel = ({ posts }) => {
         {posts && posts.length > 0
           ? posts
               .filter((post) => post._id !== "62b4cdaec10f2800dbe62cd1")
-              .slice(0, 38)
+              .slice(0, 20)
               .map((post, i) => (
                 <div key={i} className="blog-slider">
                   <div className="blog-image-contain">

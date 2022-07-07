@@ -122,7 +122,7 @@ const Blog = () => {
 
                     {post.images[1] &&
                       post.splice(1, 2).map((imageUrl, i) => (
-                        <div className="ad-contain">
+                        <div key={i} className="ad-contain">
                           <img
                             className="other-image"
                             src={imageUrl}
