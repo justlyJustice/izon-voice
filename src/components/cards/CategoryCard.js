@@ -82,7 +82,7 @@ const CategoryCard = ({ data }) => {
       <Link to={`/${data.slug || data._id}`}>
         <img
           className="card-image"
-          src={data.image || data.urlToImage}
+          src={data.images[0] || data.urlToImage}
           alt="Category"
         />
         <div>

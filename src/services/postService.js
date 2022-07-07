@@ -21,18 +21,19 @@ export const likePost = async (id) => {
 };
 
 export const uploadBlogPost = (value) => {
+  const { author, category, description, title, quote, images } = value;
+
   const formData = new FormData();
 
-  formData.append("author", value.author);
-  formData.append("category", value.category);
-  formData.append("description", value.description);
-  formData.append("file", value.file);
-  formData.append("quote", value.quote);
-  formData.append("title", value.title);
+  formData.append("author", author);
+  formData.append("category", category);
+  formData.append("desc", description);
+  formData.append("quote", quote);
+  formData.append("title", title);
 
-  value.images.forEach((image, i) => {
-    formData.append("images", image);
-  });
+  for (let i = 0; i < images.length; i++) {
+    formData.append("image", images[i]);
+  }
 
   return http.post("posts", formData, {
     headers: {

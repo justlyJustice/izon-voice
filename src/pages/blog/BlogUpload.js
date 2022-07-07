@@ -1,7 +1,5 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
-import { toast } from "react-toastify";
-import * as Yup from "yup";
 
 import { uploadBlogPost } from "services/postService";
 import { categories } from "utils/options";
@@ -21,15 +19,12 @@ const initialValues = {
   description: "",
   quote: "",
   category: "",
-  images: [],
 };
 
 const BlogUpload = () => {
   const [values, setValues] = useState(initialValues);
-  const [file, setFile] = useState(null);
   const [images, setImages] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState();
 
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -43,11 +38,6 @@ const BlogUpload = () => {
     });
   };
 
-  const handleFileInputChange = (e) => {
-    setFile(e.target.files[0]);
-    setImageUrl(URL.createObjectURL(e.target.files[0]));
-  };
-
   const handleSelectImages = (e) => {
     setImages(e.target.files);
   };
@@ -57,7 +47,6 @@ const BlogUpload = () => {
 
     const postData = {
       ...values,
-      file,
       images,
     };
 
@@ -69,8 +58,7 @@ const BlogUpload = () => {
       if (res.status === 201) {
         setValues(initialValues);
 
-        setFile(null);
-
+        setImages(null);
         setSuccess(true);
 
         setTimeout(() => {
@@ -106,7 +94,6 @@ const BlogUpload = () => {
                 id="title"
                 value={values.title}
                 onChange={handleChange}
-                r
                 required
               />
             </Group>
@@ -119,20 +106,21 @@ const BlogUpload = () => {
                 id="quote"
                 value={values.quote}
                 onChange={handleChange}
-                required
               />
             </Group>
           </Contain>
 
           <Contain>
             <Group>
-              <label htmlFor="file">File</label>
+              <label htmlFor="image">Image</label>
               <input
                 type="file"
-                name="file"
-                id="file"
-                onChange={handleFileInputChange}
+                name="image"
+                id="image"
+                onChange={handleSelectImages}
+                multiple
                 required
+                accept="image/*"
               />
             </Group>
 
@@ -158,12 +146,6 @@ const BlogUpload = () => {
             </Group>
           </Contain>
 
-          {file && (
-            <div className="image-contain">
-              <img src={imageUrl} alt={file.name} />
-            </div>
-          )}
-
           <Group>
             <label htmlFor="author">Author</label>
             <input
@@ -172,17 +154,6 @@ const BlogUpload = () => {
               id="author"
               value={values.author}
               onChange={handleChange}
-              required
-            />
-          </Group>
-
-          <Group>
-            <label htmlFor="images">Images</label>
-            <input
-              type="file"
-              multiple
-              id="images"
-              onChange={handleSelectImages}
               required
             />
           </Group>

@@ -64,14 +64,14 @@ const BlogCarousel = ({ posts }) => {
         {posts && posts.length > 0
           ? posts
               .filter((post) => post._id !== "62b4cdaec10f2800dbe62cd1")
-              .slice(0, 30)
+              .slice(0, 38)
               .map((post, i) => (
                 <div key={i} className="blog-slider">
                   <div className="blog-image-contain">
                     <img
                       className="blog-image"
-                      src={post.urlToImage}
-                      alt={post.urlToImage}
+                      src={post.urlToImage || post.images[0]}
+                      alt={post.urlToImage || post.images[0]}
                     />
                   </div>
 
@@ -82,7 +82,9 @@ const BlogCarousel = ({ posts }) => {
                       <hr className="slide-rule" />
 
                       <div>
-                        <p className="slide-para">{post.description}</p>
+                        <p className="slide-para">
+                          {post.description || post.desc}
+                        </p>
                       </div>
                     </Link>
                   </div>

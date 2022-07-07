@@ -82,15 +82,17 @@ const Main = () => {
           <div className="cards-contain">
             {posts &&
               posts.length > 0 &&
-              posts.map((post, index) => (
-                <Card
-                  key={index}
-                  image={post.image || post.urlToImage}
-                  title={post.title}
-                  paraText={post.description}
-                  slug={post.slug || post._id}
-                />
-              ))}
+              posts
+                .slice(0, 3)
+                .map((post, index) => (
+                  <Card
+                    key={index}
+                    image={post.urlToImage || post.images[0]}
+                    title={post.title}
+                    paraText={post.description || post.desc}
+                    slug={post.slug}
+                  />
+                ))}
           </div>
 
           <div className="divider"></div>

@@ -25,13 +25,19 @@ export const Form = styled.form`
   background-color: white;
   border: 1px solid #c4c4c4;
   border-radius: 10px;
-  max-width: 800px;
+  max-width: 500px;
   width: 100%;
   padding: 30px;
 
+  .header hr {
+    outline: 1.2px solid #1c1a1a;
+    width: 200px;
+    margin: 8px 0;
+  }
+
   h2 {
-    color: #c4c4c4;
-    font-size: 24px;
+    color: #1c1a1a;
+    font-size: 28px;
     text-transform: uppercase;
   }
 
@@ -41,8 +47,10 @@ export const Form = styled.form`
 `;
 
 export const Group = styled.div`
-  width: 100%;
-  margin: 15px 0px;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  margin: 10px 3px;
 
   @media screen and (max-width: 768px) {
     margin: 5px 0px;
@@ -59,12 +67,16 @@ export const Group = styled.div`
     background-color: white;
     border: 1px solid #f4f4f4;
     padding: 10px;
-    max-width: 100%;
     width: 100%;
 
     @media screen and (max-width: 768px) {
       width: 100%;
     }
+  }
+
+  input[type="file"] {
+    font-size: x-small;
+    height: initial;
   }
 
   textarea {
@@ -82,7 +94,10 @@ export const Group = styled.div`
 
 export const Contain = styled.div`
   display: grid;
-  grid-template-columns: repeat(1fr, 2);
+  grid-template-columns: 1fr 1fr;
+  /*  align-items: center;
+  display: flex;
+  justify-content: space-between; */
 
   @media screen and (max-width: 768px) {
     flex-direction: column;
@@ -94,7 +109,10 @@ export const Button = styled.button`
   color: white;
   cursor: pointer;
   background-color: #000cc0;
-  padding: 15px 0px;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 12px 0px;
   text-align: center;
+  text-transform: uppercase;
   width: 30%;
 `;

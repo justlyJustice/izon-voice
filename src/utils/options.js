@@ -31,8 +31,4 @@ export const categories = [
     label: "Social",
     value: "social",
   },
-  {
-    label: "Security",
-    value: "security",
-  },
 ];

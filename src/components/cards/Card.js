@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const CardContainer = styled.div`
-  width: 300px;
+  width: 240px;
   margin: 20px;
 
   .card-image {
