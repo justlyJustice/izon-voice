@@ -29,8 +29,10 @@ const Blog = () => {
     retrievePost(name);
   }, []);
 
-  const splitDescArray = (array) => {
-    if (array) {
+  const splitDesc = () => {
+    if (post && post.desc) {
+      const array = post.desc.split("\n");
+
       const middleIndex = Math.ceil(array.length / 2);
 
       const firstHalf = array.splice(0, middleIndex);
@@ -40,24 +42,40 @@ const Blog = () => {
 
       let objectKeys = Object.keys(obj);
 
-      /* for (let i = 0; i < objectKeys.length; i++) {
-        return obj[objectKeys[i]];
-      } */
-
-      return objectKeys.map((i, val) => obj[i]);
+      return objectKeys.map((i) => obj[i]);
     }
+
+    return null;
   };
 
-  const result = splitDescArray(
-    post && (post.desc.split("\n") || post.description.split("\n"))
-  );
+  const splitDescription = () => {
+    if (post && post.description) {
+      const array = post.description.split("\n");
+
+      const middleIndex = Math.ceil(array.length / 2);
+
+      const firstHalf = array.splice(0, middleIndex);
+      const secondHalf = array.splice(-middleIndex);
+
+      let obj = { firstHalf, secondHalf };
+
+      let objectKeys = Object.keys(obj);
+
+      return objectKeys.map((i) => obj[i]);
+    }
+
+    return null;
+  };
+
+  const description = splitDescription();
+  const desc = splitDesc();
 
   return (
     <section>
       <Head title={`Izon Voice | ${post && post.title}`} />
       <LoadingAnimation loading={loading} />
 
-      {post ? (
+      {post && (
         <>
           <Header />
           <div className="container">
@@ -106,62 +124,51 @@ const Blog = () => {
               </div>
 
               <div className="blog-content">
-                {post.description ? (
-                  post.description.split("\n").map((des, i) => (
-                    <p className="para" key={i}>
-                      <Linkify>{des}</Linkify>
-                    </p>
-                  ))
-                ) : (
-                  <>
-                    {result[0].map((des, i) => (
+                <>
+                  {(description &&
+                    description[0].map((des, i) => (
                       <p className="para" key={i}>
                         <Linkify>{des}</Linkify>
                       </p>
-                    ))}
+                    ))) ||
+                    (desc &&
+                      desc[0].map((des, i) => (
+                        <p className="para" key={i}>
+                          <Linkify>{des}</Linkify>
+                        </p>
+                      )))}
 
-                    {post.images[1] &&
-                      post.splice(1, 2).map((imageUrl, i) => (
-                        <div key={i} className="ad-contain">
-                          <img
-                            className="other-image"
-                            src={imageUrl}
-                            alt={`other-img`}
-                          />
+                  <div className="ad-contain">
+                    <a href={`/2.jpeg`} target={`_blank`}>
+                      <img
+                        className="ad-image"
+                        src={adImageOne}
+                        alt={adImageOne}
+                      />
+                    </a>
 
-                          <img
-                            className="other-image"
-                            src={imageUrl}
-                            alt={`other-img`}
-                          />
-                        </div>
-                      ))}
+                    <a href={`/3.jpeg`} target={`_blank`}>
+                      <img
+                        className="ad-image"
+                        src={adImageTwo}
+                        alt={adImageTwo}
+                      />
+                    </a>
+                  </div>
 
-                    {result[1].map((des, i) => (
+                  {(description &&
+                    description[1].map((des, i) => (
                       <p className="para" key={i}>
                         <Linkify>{des}</Linkify>
                       </p>
-                    ))}
-
-                    <div className="ad-contain">
-                      <a href={`/2.jpeg`} target={`_blank`}>
-                        <img
-                          className="ad-image"
-                          src={adImageOne}
-                          alt={adImageOne}
-                        />
-                      </a>
-
-                      <a href={`/3.jpeg`} target={`_blank`}>
-                        <img
-                          className="ad-image"
-                          src={adImageTwo}
-                          alt={adImageTwo}
-                        />
-                      </a>
-                    </div>
-                  </>
-                )}
+                    ))) ||
+                    (desc &&
+                      desc[1].map((des, i) => (
+                        <p className="para" key={i}>
+                          <Linkify>{des}</Linkify>
+                        </p>
+                      )))}
+                </>
               </div>
             </div>
 
@@ -170,7 +177,7 @@ const Blog = () => {
 
           <PostShare url={window.location.href} />
         </>
-      ) : null}
+      )}
     </section>
   );
 };
