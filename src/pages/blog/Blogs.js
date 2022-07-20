@@ -61,12 +61,15 @@ const Blogs = () => {
                   posts.length > 0 &&
                   posts
                     .filter((post) => post._id !== "62b4cdaec10f2800dbe62cd1")
-                    .slice(20, 50)
+                    .slice(20, posts.length)
                     .map((post, i) => (
                       <Link to={`/${post.slug}`} key={i}>
                         <div className="div1">
                           <div className="div1-image-contain">
-                            <img src={post.urlToImage} alt="Item pic" />
+                            <img
+                              src={post.urlToImage || post.images[0]}
+                              alt="Item pic"
+                            />
                           </div>
 
                           <div className="text-div">
