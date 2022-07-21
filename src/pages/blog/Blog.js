@@ -1,8 +1,9 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
-import { useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import Linkify from "linkify-react";
+import ReactModal from "react-modal";
 
 import Header from "components/common/Header";
 import Head from "components/common/Head";
@@ -10,12 +11,30 @@ import CommentSection from "components/comment/CommentSection";
 import PostShare from "components/common/PostShare";
 import LoadingAnimation from "components/common/LoadingAnimation";
 
-import { formateTime } from "utils/helpers";
+import {
+  formateTime,
+  splitDescriptionToFour,
+  splitDescToFour,
+} from "utils/helpers";
 import { getPost } from "services/postService";
 import useApi from "hooks/useApi";
-import { adImageOne, adImageTwo } from "assets/images";
+import { adImageOne } from "assets/images";
 
 const Blog = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [imageUrl, setImageUrl] = useState("");
+
+  function openModal(imgUrl) {
+    setIsModalOpen(true);
+    setImageUrl(imgUrl);
+  }
+
+  function closeModal() {
+    setIsModalOpen(false);
+  }
+
+  ReactModal.setAppElement("#root");
+
   const {
     data: post,
     loading,
@@ -29,49 +48,47 @@ const Blog = () => {
     retrievePost(name);
   }, []);
 
-  const splitDesc = () => {
-    if (post && post.desc) {
-      const array = post.desc.split("\n");
-
-      const middleIndex = Math.ceil(array.length / 2);
-
-      const firstHalf = array.splice(0, middleIndex);
-      const secondHalf = array.splice(-middleIndex);
-
-      let obj = { firstHalf, secondHalf };
-
-      let objectKeys = Object.keys(obj);
-
-      return objectKeys.map((i) => obj[i]);
-    }
-
-    return null;
-  };
-
-  const splitDescription = () => {
-    if (post && post.description) {
-      const array = post.description.split("\n");
-
-      const middleIndex = Math.ceil(array.length / 2);
-
-      const firstHalf = array.splice(0, middleIndex);
-      const secondHalf = array.splice(-middleIndex);
-
-      let obj = { firstHalf, secondHalf };
-
-      let objectKeys = Object.keys(obj);
-
-      return objectKeys.map((i) => obj[i]);
-    }
-
-    return null;
-  };
-
-  const description = splitDescription();
-  const desc = splitDesc();
+  const description = splitDescriptionToFour(post);
+  const desc = splitDescToFour(post);
 
   return (
     <section>
+      <style jsx>
+        {`
+          .modal {
+            width: 400px;
+            height: fit-content;
+            background-color: white;
+            padding: 20px 20px;
+          }
+
+          .overlay {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.25);
+          }
+
+          .close {
+            display: flex;
+            justify-content: flex-end;
+            color: #dbdbdb;
+            cursor: pointer;
+            font-size: 30px;
+          }
+
+          .modal-pic {
+            object-fit: contain;
+            height: auto;
+            width: 100%;
+          }
+        `}
+      </style>
       <Head title={`Izon Voice | ${post && post.title}`} />
       <LoadingAnimation loading={loading} />
 
@@ -124,6 +141,22 @@ const Blog = () => {
               </div>
 
               <div className="blog-content">
+                <ReactModal
+                  className={`modal`}
+                  isOpen={isModalOpen}
+                  onRequestClose={closeModal}
+                  contentLabel="Image Modal"
+                  overlayClassName={`overlay`}
+                >
+                  <i
+                    className="fa-solid fa-xmark close"
+                    onClick={() => closeModal()}
+                  ></i>
+
+                  {imageUrl && (
+                    <img className="modal-pic" src={imageUrl} alt="Modal Pic" />
+                  )}
+                </ReactModal>
                 <>
                   {(description &&
                     description[0].map((des, i) => (
@@ -139,7 +172,7 @@ const Blog = () => {
                       )))}
 
                   <div className="ad-contain">
-                    <a href={`/2.jpeg`} target={`_blank`}>
+                    <a href="#" onClick={() => openModal(adImageOne)}>
                       <img
                         className="ad-image"
                         src={adImageOne}
@@ -156,6 +189,52 @@ const Blog = () => {
                     ))) ||
                     (desc &&
                       desc[1].map((des, i) => (
+                        <p className="para" key={i}>
+                          <Linkify>{des}</Linkify>
+                        </p>
+                      )))}
+
+                  <div className="ad-contain">
+                    <a href="#" onClick={() => openModal(adImageOne)}>
+                      <img
+                        className="ad-image"
+                        src={adImageOne}
+                        alt={adImageOne}
+                      />
+                    </a>
+                  </div>
+
+                  {(description &&
+                    description[2].map((des, i) => (
+                      <p className="para" key={i}>
+                        <Linkify>{des}</Linkify>
+                      </p>
+                    ))) ||
+                    (desc &&
+                      desc[2].map((des, i) => (
+                        <p className="para" key={i}>
+                          <Linkify>{des}</Linkify>
+                        </p>
+                      )))}
+
+                  <div className="ad-contain">
+                    <a href="#" onClick={() => openModal(adImageOne)}>
+                      <img
+                        className="ad-image"
+                        src={adImageOne}
+                        alt={adImageOne}
+                      />
+                    </a>
+                  </div>
+
+                  {(description &&
+                    description[3].map((des, i) => (
+                      <p className="para" key={i}>
+                        <Linkify>{des}</Linkify>
+                      </p>
+                    ))) ||
+                    (desc &&
+                      desc[3].map((des, i) => (
                         <p className="para" key={i}>
                           <Linkify>{des}</Linkify>
                         </p>
