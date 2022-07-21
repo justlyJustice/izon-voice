@@ -17,7 +17,6 @@ const initialValues = {
   author: "",
   title: "",
   description: "",
-  quote: "",
   category: "",
 };
 
@@ -56,7 +55,11 @@ const BlogUpload = () => {
       setLoading(false);
 
       if (res.status === 201) {
-        setValues(initialValues);
+        setValues({
+          title: "",
+          description: "",
+          category: "",
+        });
 
         setImages(null);
         setSuccess(true);
@@ -85,30 +88,17 @@ const BlogUpload = () => {
             <hr />
           </div>
 
-          <Contain>
-            <Group>
-              <label htmlFor="title">Title</label>
-              <input
-                type="text"
-                name="title"
-                id="title"
-                value={values.title}
-                onChange={handleChange}
-                required
-              />
-            </Group>
-
-            <Group>
-              <label htmlFor="quote">Quote</label>
-              <input
-                type="text"
-                name="quote"
-                id="quote"
-                value={values.quote}
-                onChange={handleChange}
-              />
-            </Group>
-          </Contain>
+          <Group>
+            <label htmlFor="title">Title</label>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              value={values.title}
+              onChange={handleChange}
+              required
+            />
+          </Group>
 
           <Contain>
             <Group>

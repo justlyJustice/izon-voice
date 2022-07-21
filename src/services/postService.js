@@ -21,14 +21,13 @@ export const likePost = async (id) => {
 };
 
 export const uploadBlogPost = (value) => {
-  const { author, category, description, title, quote, images } = value;
+  const { author, category, description, title, images } = value;
 
   const formData = new FormData();
 
   formData.append("author", author);
   formData.append("category", category);
   formData.append("desc", description);
-  formData.append("quote", quote);
   formData.append("title", title);
 
   for (let i = 0; i < images.length; i++) {

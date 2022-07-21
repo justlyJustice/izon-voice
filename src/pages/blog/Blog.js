@@ -146,14 +146,6 @@ const Blog = () => {
                         alt={adImageOne}
                       />
                     </a>
-
-                    <a href={`/3.jpeg`} target={`_blank`}>
-                      <img
-                        className="ad-image"
-                        src={adImageTwo}
-                        alt={adImageTwo}
-                      />
-                    </a>
                   </div>
 
                   {(description &&
