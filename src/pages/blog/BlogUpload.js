@@ -55,11 +55,7 @@ const BlogUpload = () => {
       setLoading(false);
 
       if (res.status === 201) {
-        setValues({
-          title: "",
-          description: "",
-          category: "",
-        });
+        setValues(initialValues);
 
         setImages(null);
         setSuccess(true);
