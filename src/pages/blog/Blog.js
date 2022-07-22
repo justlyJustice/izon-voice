@@ -18,7 +18,7 @@ import {
 } from "utils/helpers";
 import { getPost } from "services/postService";
 import useApi from "hooks/useApi";
-import { adImageOne } from "assets/images";
+import { adImageOne, treasuresColdRoom } from "assets/images";
 
 const Blog = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -53,7 +53,7 @@ const Blog = () => {
 
   return (
     <section>
-      <style jsx>
+      <style>
         {`
           .modal {
             width: 400px;
@@ -98,11 +98,7 @@ const Blog = () => {
           <div className="container">
             <div className="blog-section">
               <div className="blog-image-contain">
-                <img
-                  /*  className="top-image" */
-                  src={post.urlToImage || post.images[0]}
-                  alt="Blog img"
-                />
+                <img src={post.urlToImage || post.images[0]} alt="Blog img" />
               </div>
 
               <div className="blog-text-contain">
@@ -195,11 +191,11 @@ const Blog = () => {
                       )))}
 
                   <div className="ad-contain">
-                    <a href="#" onClick={() => openModal(adImageOne)}>
+                    <a href="#" onClick={() => openModal(treasuresColdRoom)}>
                       <img
                         className="ad-image"
-                        src={adImageOne}
-                        alt={adImageOne}
+                        src={treasuresColdRoom}
+                        alt={treasuresColdRoom}
                       />
                     </a>
                   </div>
