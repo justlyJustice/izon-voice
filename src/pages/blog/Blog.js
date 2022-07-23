@@ -23,6 +23,7 @@ import { adImageOne, treasuresColdRoom } from "assets/images";
 const Blog = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
+  const { name } = useParams();
 
   function openModal(imgUrl) {
     setIsModalOpen(true);
@@ -41,8 +42,6 @@ const Blog = () => {
     request: retrievePost,
     setData: setPost,
   } = useApi(getPost);
-
-  const { name } = useParams();
 
   useEffect(() => {
     retrievePost(name);
@@ -92,9 +91,10 @@ const Blog = () => {
       <Head title={`Izon Voice | ${post && post.title}`} />
       <LoadingAnimation loading={loading} />
 
+      <Header />
       {post && (
         <>
-          <Header />
+          {" "}
           <div className="container">
             <div className="blog-section">
               <div className="blog-image-contain">
@@ -241,7 +241,6 @@ const Blog = () => {
 
             <CommentSection post={post} setPost={setPost} />
           </div>
-
           <PostShare url={window.location.href} />
         </>
       )}

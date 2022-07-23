@@ -28,15 +28,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route
-          exact
-          path="/upload/test"
-          element={
-            <ProtectedRoute>
-              <Test />
-            </ProtectedRoute>
-          }
-        />
+
         <Route exact path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/login" element={<Login />} />
