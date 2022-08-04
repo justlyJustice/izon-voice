@@ -428,16 +428,14 @@
   align-items: center;
   display: flex;
   margin: 5px 0px;
-  justify-content: space-between;
-  width: 180px;
 }
 
 .news_feed_contain .section1 .div1 .text-div .text-group-one .first-span {
   font-family: Montserrat;
-
   font-weight: 800;
   font-size: 15px;
   line-height: 18px;
+  margin: 10px;
   color: rgba(66, 232, 39, 0.7);
 }
 
@@ -446,6 +444,7 @@
   font-weight: normal;
   font-size: 15px;
   line-height: 20px;
+  margin: 10px;
   color: #c4c4c4;
 }
 

@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState } from "react";
+import React, { useState, useRef, useLayoutEffect } from "react";
 import CustomIcon from "components/common/CustomIcon";
 import CommentForm from "./CommentForm";
 import { likePost } from "services/postService";
@@ -8,12 +8,22 @@ import { formateTime } from "utils/helpers";
 import useUser from "hooks/useUser";
 
 const CommentSection = ({ post, setPost }) => {
+  const ref = useRef();
   const [likes, setLikes] = useState(post && post.likes);
   const { user } = useUser();
+  const [shown, setShown] = useState(false);
 
   const handleLike = async () => {
     const res = await likePost(post && post.id);
   };
+
+  const handleShowReplyBox = () => {
+    setShown((prev) => !prev);
+  };
+
+  useLayoutEffect(() => {
+    console.log(ref);
+  }, [shown]);
 
   return (
     <>
@@ -63,6 +73,16 @@ const CommentSection = ({ post, setPost }) => {
                     </div>
                   </div>
                 </div>
+
+                <button onClick={() => handleShowReplyBox(comment._id)}>
+                  Reply
+                </button>
+
+                {shown && comment._id === ref.current?.key && (
+                  <p key={comment._id} ref={ref}>
+                    Reply
+                  </p>
+                )}
 
                 <div className="time-stamp">
                   <span>{formateTime(comment.createdAt)}</span>

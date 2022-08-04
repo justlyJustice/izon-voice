@@ -62,18 +62,6 @@ const Navbar = ({ fixed }) => {
           <Link
             onClick={() => setShown(false)}
             className={
-              location && location.pathname === "/category/business"
-                ? "link active"
-                : "link"
-            }
-            to="/category/business"
-          >
-            Business
-          </Link>
-
-          <Link
-            onClick={() => setShown(false)}
-            className={
               location && location.pathname === "/category/agriculture"
                 ? "link active"
                 : "link"
@@ -81,6 +69,30 @@ const Navbar = ({ fixed }) => {
             to="/category/agriculture"
           >
             Agriculture
+          </Link>
+
+          <Link
+            onClick={() => setShown(false)}
+            className={
+              location && location.pathname === "/category/culture"
+                ? "link active"
+                : "link"
+            }
+            to="/category/culture"
+          >
+            Culture
+          </Link>
+
+          <Link
+            onClick={() => setShown(false)}
+            className={
+              location && location.pathname === "/category/finance"
+                ? "link active"
+                : "link"
+            }
+            to="/category/finance"
+          >
+            Finance
           </Link>
         </div>
 
@@ -123,42 +135,6 @@ const Navbar = ({ fixed }) => {
           >
             Politics
           </Link>
-
-          {/* <Link
-            onClick={() => setShown(false)}
-            className={
-              location && location.pathname === "/category/culture"
-                ? "link active"
-                : "link"
-            }
-            to="/category/culture"
-          >
-            Culture
-          </Link>
-
-          <Link
-            onClick={() => setShown(false)}
-            className={
-              location && location.pathname === "/category/social"
-                ? "link active"
-                : "link"
-            }
-            to="/category/social"
-          >
-            Social
-          </Link>
-
-          <Link
-            onClick={() => setShown(false)}
-            className={
-              location && location.pathname === "/category/security"
-                ? "link active"
-                : "link"
-            }
-            to="/category/security"
-          >
-            Security
-          </Link> */}
         </div>
       </nav>
     </>

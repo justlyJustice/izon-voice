@@ -8,10 +8,6 @@ export const categories = [
     value: "politics",
   },
   {
-    label: "Business",
-    value: "business",
-  },
-  {
     label: "Sports",
     value: "sports",
   },

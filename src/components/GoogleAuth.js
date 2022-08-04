@@ -6,10 +6,13 @@ import auth from "services/authService";
 
 const GoogleAuth = ({ text, state }) => {
   const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const onSuccess = async (res) => {
     try {
+      setLoading(true);
       const result = await auth.googleAuth(res?.tokenId);
+      setLoading(false);
 
       if (result.ok) {
         setSuccess(true);
@@ -38,7 +41,13 @@ const GoogleAuth = ({ text, state }) => {
           </SuccessButton>
         ) : (
           <Button onClick={renderProps.onClick}>
-            {text} <i className="icon fa-brands fa-google" />
+            {loading ? (
+              <i className="icon fa-solid fa-spinner fa-spin" />
+            ) : (
+              <>
+                {text} <i className="icon fa-brands fa-google" />
+              </>
+            )}
           </Button>
         )
       }

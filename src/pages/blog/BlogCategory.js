@@ -32,7 +32,7 @@ const BlogCategory = () => {
         <div>
           <div className="top-contain">
             <h2 className="category">
-              <i className="fa fa-globe"></i> {name}
+              <i className="fa-solid fa-bars-staggered"></i> {name}
             </h2>
           </div>
 
