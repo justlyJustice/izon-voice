@@ -12,27 +12,11 @@ import Head from "components/common/Head";
 import { formateTime } from "utils/helpers";
 
 const Blogs = () => {
-  const {
-    data: posts,
-    error,
-    loading,
-    request: retrievePosts,
-  } = useApi(getPosts);
+  const { data: posts, loading, request: retrievePosts } = useApi(getPosts);
 
   useEffect(() => {
     retrievePosts();
   }, []);
-
-  if (error) {
-    return (
-      <div>
-        <h3>Error getting the posts!</h3>
-        <button className="btn" onClick={() => retrievePosts()}>
-          Retry
-        </button>
-      </div>
-    );
-  }
 
   return (
     <>

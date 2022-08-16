@@ -26,7 +26,7 @@ const NoResults = () => {
         loop
       />
 
-      <p>No Posts Yet!</p>
+      <p>No posts yet for this category!</p>
     </Container>
   );
 };

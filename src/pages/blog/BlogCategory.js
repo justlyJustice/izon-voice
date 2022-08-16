@@ -29,22 +29,20 @@ const BlogCategory = () => {
       <Header />
 
       <div className="container">
-        <div>
-          <div className="top-contain">
-            <h2 className="category">
-              <i className="fa-solid fa-bars-staggered"></i> {name}
-            </h2>
-          </div>
+        <div className="top-contain">
+          <h2 className="category">
+            <i className="fa-solid fa-bars-staggered"></i> {name}
+          </h2>
+        </div>
 
-          <div className="category-wrapper">
-            {posts && posts.length > 0 ? (
-              posts.map((post, i) => <CategoryCard data={post} key={i} />)
-            ) : (
-              <>
-                <NoResults />
-              </>
-            )}
-          </div>
+        <div className="category-wrapper">
+          {posts && posts.length > 0 ? (
+            posts.map((post, i) => <CategoryCard data={post} key={i} />)
+          ) : (
+            <>
+              <NoResults />
+            </>
+          )}
         </div>
       </div>
     </section>

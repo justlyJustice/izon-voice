@@ -55,7 +55,7 @@ class ErrorBoundary extends React.Component {
             />
           </div>
 
-          <h3>Service Unavailable!</h3>
+          <h3>Internal Server Error</h3>
         </Wrapper>
       );
     }

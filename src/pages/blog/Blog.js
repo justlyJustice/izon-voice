@@ -38,6 +38,7 @@ const Blog = () => {
 
   const {
     data: post,
+    error,
     loading,
     request: retrievePost,
     setData: setPost,
