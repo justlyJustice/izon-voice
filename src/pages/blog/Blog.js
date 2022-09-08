@@ -16,7 +16,7 @@ import {
   splitDescriptionToFour,
   splitDescToFour,
 } from "utils/helpers";
-import { getPost } from "services/postService";
+import { getPost } from "components/services/postService";
 import useApi from "hooks/useApi";
 import { adImageOne, treasuresColdRoom } from "assets/images";
 
@@ -38,7 +38,6 @@ const Blog = () => {
 
   const {
     data: post,
-    error,
     loading,
     request: retrievePost,
     setData: setPost,

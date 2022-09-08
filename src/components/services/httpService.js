@@ -2,8 +2,10 @@
 import { create } from "apisauce";
 import { toast } from "react-toastify";
 
+import url from "config/url";
+
 const apiClient = create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: url,
 });
 
 apiClient.axiosInstance.interceptors.response.use(null, (error) => {
@@ -14,7 +16,7 @@ apiClient.axiosInstance.interceptors.response.use(null, (error) => {
 
   if (!expectedError) {
     toast.error("An unexpected error occured", {
-      autoClose: 2000,
+      autoClose: true,
       closeButton: true,
       type: "error",
     });

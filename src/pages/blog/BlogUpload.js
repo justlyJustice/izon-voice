@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 
-import { uploadBlogPost } from "services/postService";
+import { uploadBlogPost } from "components/services/postService";
 import { categories } from "utils/options";
 
 import {

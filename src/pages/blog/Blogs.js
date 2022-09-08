@@ -2,10 +2,9 @@
 import { useEffect } from "react";
 import BlogCarousel from "components/BlogCarousel";
 import Header from "components/common/Header";
-import Icon from "components/common/Icon";
 import { Link } from "react-router-dom";
 
-import { getPosts } from "services/postService";
+import { getPosts } from "components/services/postService";
 import useApi from "hooks/useApi";
 import LoadingAnimation from "components/common/LoadingAnimation";
 import Head from "components/common/Head";
@@ -78,8 +77,8 @@ const Blogs = () => {
 
                             <div className="tags-contain">
                               <span className="comment-contain">
-                                <Icon
-                                  name="comment"
+                                <i
+                                  className="fa-solid fa-comment"
                                   style={{
                                     color: "#C4C4C4",
                                     fontSize: "12px",
@@ -89,8 +88,8 @@ const Blogs = () => {
                               </span>
 
                               <span className="comment-contain">
-                                <Icon
-                                  name="heart"
+                                <i
+                                  className="fa-solid fa-heart"
                                   style={{
                                     color: "#C4C4C4",
                                     fontSize: "12px",

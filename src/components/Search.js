@@ -22,7 +22,11 @@ const Search = () => {
           }}
           placeholder="Need a quick search?"
         />
-        <Icon name="search" className="search-icon" onClick={handleSubmit} />
+
+        <i
+          className="fa-solid fa-magnifying-glass search-icon"
+          onClick={handleSubmit}
+        ></i>
       </form>
     </div>
   );

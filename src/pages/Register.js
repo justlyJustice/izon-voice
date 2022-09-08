@@ -8,8 +8,8 @@ import AppLink from "components/common/AppLink";
 import { logo } from "assets/images";
 import { Form, Input } from "components/forms";
 
-import { register } from "services/userService";
-import auth from "services/authService";
+import { register } from "components/services/userService";
+import auth from "components/services/authService";
 import StatusAnimation from "components/common/StatusAnimation";
 import Head from "components/common/Head";
 import { Container, Btn as SubmitButton } from "styles/registerStyles";

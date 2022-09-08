@@ -3,10 +3,9 @@ import React, { useState, useRef, useEffect } from "react";
 import CustomIcon from "components/common/CustomIcon";
 import CommentForm from "./CommentForm";
 
-import { likePost } from "services/postService";
+import { likePost } from "components/services/postService";
 import { formateTime } from "utils/helpers";
 import useUser from "hooks/useUser";
-
 
 const CommentSection = ({ post, setPost }) => {
   const elementRef = useRef();
@@ -51,7 +50,7 @@ const CommentSection = ({ post, setPost }) => {
               <div className="user_contain" key={i}>
                 <div className="user">
                   <div className="icon_container">
-                    <CustomIcon />
+                    <i className="fa-solid fa-user"></i>
 
                     <hr className="user-rule" />
                   </div>

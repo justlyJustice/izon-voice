@@ -6,7 +6,7 @@ import Navbar from "../Navbar";
 import Search from "../Search";
 import useUser from "hooks/useUser";
 
-import { logout } from "services/authService";
+import { logout } from "components/services/authService";
 
 const Header = () => {
   const [navFixed, setNavFixed] = useState(false);
