@@ -21,7 +21,7 @@ export const Btn = styled(SubmitButton)`
 export const SuccessButton = styled.button`
   cursor: pointer;
   color: #fff;
-  width: 230px;
+  width: 100%;
   background: #36cd01;
   border-radius: 10px;
   padding: 15px;

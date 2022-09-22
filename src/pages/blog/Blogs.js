@@ -18,7 +18,7 @@ const Blogs = () => {
   }, []);
 
   return (
-    <>
+    <div>
       <section>
         <Head
           title="Izon Voice | Blog"
@@ -134,7 +134,7 @@ const Blogs = () => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

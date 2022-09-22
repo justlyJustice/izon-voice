@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Icon from "./common/Icon";
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");

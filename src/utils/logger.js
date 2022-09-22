@@ -1,8 +1,10 @@
 /* eslint-disable import/no-anonymous-default-export */
 import Bugsnag from "@bugsnag/js";
 
-const notify = (error) => {
-  Bugsnag.notify(error);
+const logger = (error) => {
+  process.env.NODE_ENV === "development"
+    ? console.log(error)
+    : Bugsnag.notify(error);
 };
 
-export default { notify };
+export default logger;

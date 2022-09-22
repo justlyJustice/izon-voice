@@ -4,11 +4,7 @@ const withApiData = (Component, apiFunc) => {
   return function WithApiData(props) {
     const apiResponse = useApi(apiFunc);
 
-    return (
-      <>
-        <Component apiResponse={apiResponse} {...props} />
-      </>
-    );
+    return <Component apiResponse={apiResponse} {...props} />;
   };
 };
 

@@ -14,22 +14,19 @@ import useApi from "../hooks/useApi";
 import useUser from "../hooks/useUser";
 
 import { getWelcomePageStories } from "components/services/postService";
+import Footer from "components/Footer";
 
 const Main = () => {
   const {
     error,
     data: posts,
     loading,
-    request,
+    request: retrievePosts,
   } = useApi(getWelcomePageStories);
   const { user } = useUser();
 
-  const loadPosts = async () => {
-    await request();
-  };
-
   useEffect(() => {
-    loadPosts();
+    retrievePosts();
   }, []);
 
   if (error) {
@@ -108,6 +105,8 @@ const Main = () => {
           </div>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 };

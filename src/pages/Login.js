@@ -6,7 +6,9 @@ import * as Yup from "yup";
 import Alert from "utils/Alert";
 import AppLink from "components/common/AppLink";
 import { Form, Input } from "components/forms";
+
 import useUser from "hooks/useUser";
+import useSubmit from "hooks/useSubmit";
 
 import {
   LoginContainer,
@@ -24,34 +26,36 @@ const validationSchema = Yup.object().shape({
 });
 
 const Login = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
+  /* const [success, setSuccess] = useState(false); */
   const { state } = useLocation();
-  const { setUser, user } = useUser();
+  const { user } = useUser();
+  const {
+    data,
+    error,
+    submit: login,
+    submitting: isSubmitting,
+    success,
+  } = useSubmit(auth.login);
 
   const loginUser = async (values, { resetForm }) => {
-    try {
-      setIsLoading(true);
-      const response = await auth.login(values);
-      setUser(response.data);
+    const res = await login(values);
 
-      setSuccess(true);
-      setIsLoading(false);
+    if (data && data.token) {
+      Alert.success("Successful!", "Login successful!");
 
-      resetForm();
+      /* window.location = state ? state.from : "/home"; */
+    }
 
-      setTimeout(() => {
-        window.location = state ? state.from : "/home";
-
-        setSuccess(false);
-      }, 3000);
-    } catch (ex) {
+    if (error) {
+      Alert.error("Error logging in user!", res.data.message);
+    }
+    /* catch (ex) {
       if (ex.response && ex.response.status === 400) {
         Alert.error("Error logging in user!", ex.response.data.message);
       }
 
-      setIsLoading(false);
-    }
+      setisSubmitting(false);
+    } */
   };
 
   if (user) return <Navigate to="/home" />;
@@ -94,14 +98,14 @@ const Login = () => {
               />
 
               {success ? (
-                <SuccessButton />
+                <SuccessButton>Success</SuccessButton>
               ) : (
                 <SubmitButton
                   style={{
-                    cursor: isLoading && "not-allowed",
+                    cursor: isSubmitting && "not-allowed",
                   }}
                 >
-                  {isLoading ? (
+                  {isSubmitting ? (
                     <i className="fa-solid fa-spinner fa-spin"></i>
                   ) : (
                     "LOGIN"
