@@ -1,0 +1,62 @@
+.admin-contain {
+  display: flex;
+  height: 100vh;
+}
+
+.admin-contain .aside-bar {
+  align-items: center;
+  background-color: rgb(236, 236, 236);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px;
+  width: 20%;
+}
+
+.admin-contain .aside-bar img {
+  height: 100px;
+  margin: 20px 0;
+  width: 100px;
+}
+
+.admin-contain .aside-bar .menu-contain {
+  align-items: center;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.admin-contain .aside-bar .menu-contain .menu-item {
+  background: linear-gradient(
+    to right,
+    rgba(234, 25, 25, 0.7),
+    rgb(4, 46, 161)
+  );
+  border-radius: 50px;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 30px;
+  text-align: center;
+  width: 100%;
+}
+
+.admin-contain .aside-bar .sign-out-contain {
+  align-self: flex-end;
+  background-color: rgba(0, 0, 0, 0.24);
+  justify-self: center;
+  padding: 10px;
+  position: relative;
+  text-align: center;
+  top: 30%;
+  width: 100%;
+}
+
+.admin-contain .aside-bar .sign-out-contain .link {
+  color: #000;
+  font-weight: bold;
+}

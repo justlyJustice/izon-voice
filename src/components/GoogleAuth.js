@@ -2,7 +2,7 @@ import { useState } from "react";
 import GoogleLogin from "react-google-login";
 
 import { Button, SuccessButton } from "styles/loginStyles";
-import auth from "components/services/authService";
+import auth from "services/authService";
 
 const GoogleAuth = ({ text, state }) => {
   const [success, setSuccess] = useState(false);

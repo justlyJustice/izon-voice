@@ -11,6 +11,9 @@ import Register from "pages/Register";
 import NotFound from "pages/NotFound";
 import ProtectedRoute from "components/common/ProtectedRoute";
 import PrivacyPolicy from "pages/PrivacyPolicy";
+import AdminLogin from "pages/admin/AdminLogin";
+import AdminDashboard from "pages/admin/AdminDashboard";
+import CreatePost from "pages/admin/CreatePost";
 
 const App = () => {
   return (
@@ -18,6 +21,12 @@ const App = () => {
       <ToastContainer autoClose />
 
       <Routes>
+        {/* Admin Routes */}
+        <Route exact path="/auth/admin" element={<AdminLogin />} />
+        <Route exact path="/admin" element={<AdminDashboard />} />
+        <Route exact path="/auth/admin" element={<AdminLogin />} />
+        <Route exact path="/admin/create-post" element={<CreatePost />} />
+
         <Route
           exact
           path="/upload/post"

@@ -15,7 +15,7 @@ import {
   Btn as SubmitButton,
   SuccessButton,
 } from "styles/loginStyles";
-import auth from "components/services/authService";
+import auth from "services/authService";
 import { logo } from "assets/images";
 
 import GoogleAuth from "components/GoogleAuth";

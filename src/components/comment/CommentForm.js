@@ -4,7 +4,7 @@ import styled from "styled-components";
 import * as Yup from "yup";
 
 import { Form, TextArea, SubmitButton } from "../forms";
-import commentService from "components/services/commentService";
+import commentService from "services/commentService";
 import StatusAnimation from "components/common/StatusAnimation";
 
 const validationSchema = Yup.object().shape({

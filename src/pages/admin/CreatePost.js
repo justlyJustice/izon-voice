@@ -1,3 +1,4 @@
+import AdminWrapper from "components/AdminWrapper";
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 
@@ -20,7 +21,7 @@ const initialValues = {
   category: "",
 };
 
-const BlogUpload = () => {
+const CreatePost = () => {
   const [values, setValues] = useState(initialValues);
   const [images, setImages] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -71,9 +72,8 @@ const BlogUpload = () => {
       }
     }
   };
-
   return (
-    <>
+    <AdminWrapper>
       <FormContainer>
         <Form onSubmit={handleSubmit}>
           <StatusPlaceholder error={error} success={success} />
@@ -169,8 +169,8 @@ const BlogUpload = () => {
           </Button>
         </Form>
       </FormContainer>
-    </>
+    </AdminWrapper>
   );
 };
 
-export default BlogUpload;
+export default CreatePost;

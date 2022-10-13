@@ -3,7 +3,7 @@ import { useState } from "react";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 
 import { Button, SuccessButton } from "styles/loginStyles";
-import auth from "components/services/authService";
+import auth from "services/authService";
 
 const FacebookAuth = ({ text, state }) => {
   const [success, setSuccess] = useState(false);

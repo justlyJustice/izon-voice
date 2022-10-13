@@ -4,7 +4,7 @@ import BlogCarousel from "components/BlogCarousel";
 import Header from "components/common/Header";
 import { Link } from "react-router-dom";
 
-import { getPosts } from "components/services/postService";
+import { getPosts } from "services/postService";
 import useApi from "hooks/useApi";
 import LoadingAnimation from "components/common/LoadingAnimation";
 import Head from "components/common/Head";

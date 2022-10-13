@@ -16,7 +16,7 @@ import {
   splitDescriptionToFour,
   splitDescToFour,
 } from "utils/helpers";
-import { getPost } from "components/services/postService";
+import { getPost } from "services/postService";
 import useApi from "hooks/useApi";
 import { adImageOne, treasuresColdRoom } from "assets/images";
 
@@ -94,11 +94,10 @@ const Blog = () => {
       <Header />
       {post && (
         <>
-          {" "}
           <div className="container">
             <div className="blog-section">
               <div className="blog-image-contain">
-                <img src={post.urlToImage || post.images[0]} alt="Blog img" />
+                <img src={post.urlToImage || post.images[0]} alt="Post img" />
               </div>
 
               <div className="blog-text-contain">
@@ -241,6 +240,7 @@ const Blog = () => {
 
             <CommentSection post={post} setPost={setPost} />
           </div>
+
           <PostShare url={window.location.href} />
         </>
       )}

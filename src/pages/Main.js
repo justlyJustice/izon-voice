@@ -13,7 +13,7 @@ import LoadingAnimation from "components/common/LoadingAnimation";
 import useApi from "../hooks/useApi";
 import useUser from "../hooks/useUser";
 
-import { getWelcomePageStories } from "components/services/postService";
+import { getWelcomePageStories } from "services/postService";
 import Footer from "components/Footer";
 
 const Main = () => {

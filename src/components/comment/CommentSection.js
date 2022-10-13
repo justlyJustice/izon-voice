@@ -3,7 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import CustomIcon from "components/common/CustomIcon";
 import CommentForm from "./CommentForm";
 
-import { likePost } from "components/services/postService";
+import { likePost } from "services/postService";
 import { formateTime } from "utils/helpers";
 import useUser from "hooks/useUser";
 
