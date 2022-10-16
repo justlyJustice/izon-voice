@@ -40,3 +40,7 @@ export const uploadBlogPost = (value) => {
     },
   });
 };
+
+export const deletePost = (id) => {
+  return http.delete(`/posts/${id}`);
+};

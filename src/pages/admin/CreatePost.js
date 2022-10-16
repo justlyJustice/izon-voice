@@ -1,4 +1,4 @@
-import AdminWrapper from "components/AdminWrapper";
+import DashboardWrapper from "components/admin/Wrapper";
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 
@@ -8,11 +8,11 @@ import { categories } from "utils/options";
 import {
   Button,
   Contain,
-  Form,
   FormContainer,
   Group,
 } from "../../styles/blogUploadStyles";
 import StatusPlaceholder from "components/common/StatusPlaceholder";
+import { Form, Input, SubmitButton, TextArea } from "components/forms";
 
 const initialValues = {
   author: "",
@@ -72,104 +72,32 @@ const CreatePost = () => {
       }
     }
   };
+
   return (
-    <AdminWrapper>
-      <FormContainer>
-        <Form onSubmit={handleSubmit}>
-          <StatusPlaceholder error={error} success={success} />
+    <DashboardWrapper topText={`Create new posts`}>
+      <div className="form-contain">
+        <h3 className="create-text">Create new post</h3>
 
-          <div className="header">
-            <h2>Create a post</h2>
+        <Form initialValues={{}} onSubmit={(e) => e.preventDefault()}>
+          <Input name={`title`} placeholder={`Enter post title`} />
 
-            <hr />
+          <div className="form-group">
+            <Input name={`title`} placeholder={`Enter post title`} />
+
+            <Input name={`title`} placeholder={`Enter post title`} />
           </div>
 
-          <Group>
-            <label htmlFor="title">Title</label>
-            <input
-              type="text"
-              name="title"
-              id="title"
-              value={values.title}
-              onChange={handleChange}
-              required
-            />
-          </Group>
+          <Input name={`title`} placeholder={`Enter post title`} />
 
-          <Contain>
-            <Group>
-              <label htmlFor="image">Image</label>
-              <input
-                type="file"
-                name="image"
-                id="image"
-                onChange={handleSelectImages}
-                multiple
-                required
-                accept="image/*"
-              />
-            </Group>
+          <TextArea
+            name={`description`}
+            placeholder={`Enter post description`}
+          />
 
-            <Group>
-              <label htmlFor="category">Category</label>
-
-              <select
-                type="text"
-                name="category"
-                id="category"
-                value={values.category}
-                onChange={handleChange}
-                required
-              >
-                <option value="">Select...</option>
-
-                {categories.map((category, i) => (
-                  <option value={category.value} key={i}>
-                    {category.label}
-                  </option>
-                ))}
-              </select>
-            </Group>
-          </Contain>
-
-          <Group>
-            <label htmlFor="author">Author</label>
-            <input
-              type="text"
-              name="author"
-              id="author"
-              value={values.author}
-              onChange={handleChange}
-              required
-            />
-          </Group>
-
-          <Group>
-            <label htmlFor="description">Description</label>
-            <textarea
-              type="text"
-              name="description"
-              id="description"
-              value={values.description}
-              onChange={handleChange}
-              required
-            />
-          </Group>
-
-          <Button type="submit" disabled={loading === true}>
-            {loading ? (
-              <>
-                Uploading <i className="fa-solid fa-spinner fa-spin"></i>
-              </>
-            ) : (
-              <>
-                Upload Post <i className="fa-solid fa-upload"></i>
-              </>
-            )}
-          </Button>
+          <SubmitButton className={`upld-btn`}>Upload Post</SubmitButton>
         </Form>
-      </FormContainer>
-    </AdminWrapper>
+      </div>
+    </DashboardWrapper>
   );
 };
 

@@ -3,7 +3,6 @@ import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { UserProvider } from "./context/UserContext";
 import { Blog, BlogCategory, Blogs, BlogUpload } from "pages/blog";
 import Login from "pages/Login";
 import Main from "pages/Main";
@@ -11,21 +10,23 @@ import Register from "pages/Register";
 import NotFound from "pages/NotFound";
 import ProtectedRoute from "components/common/ProtectedRoute";
 import PrivacyPolicy from "pages/PrivacyPolicy";
-import AdminLogin from "pages/admin/AdminLogin";
-import AdminDashboard from "pages/admin/AdminDashboard";
+import AdminLogin from "pages/admin/Login";
+import AdminDashboard from "pages/admin/Dashboard";
 import CreatePost from "pages/admin/CreatePost";
+import ManagePosts from "pages/admin/ManagePosts";
 
 const App = () => {
   return (
-    <UserProvider>
+    <>
       <ToastContainer autoClose />
 
       <Routes>
         {/* Admin Routes */}
         <Route exact path="/auth/admin" element={<AdminLogin />} />
-        <Route exact path="/admin" element={<AdminDashboard />} />
+        <Route exact path="/dashboard" element={<AdminDashboard />} />
         <Route exact path="/auth/admin" element={<AdminLogin />} />
-        <Route exact path="/admin/create-post" element={<CreatePost />} />
+        <Route exact path="/posts/create-post" element={<CreatePost />} />
+        <Route exact path="/posts/manage-posts" element={<ManagePosts />} />
 
         <Route
           exact
@@ -47,7 +48,7 @@ const App = () => {
 
         <Route exact path="*" element={<NotFound />} />
       </Routes>
-    </UserProvider>
+    </>
   );
 };
 

@@ -12,6 +12,8 @@ import "./styles/styles.css";
 import "./styles/admin.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { AdminProvider } from "context/AdminContext";
+import { UserProvider } from "context/UserContext";
 
 /* LogRocket.init("pbnfxi/izon-voice");
 
@@ -21,12 +23,14 @@ LogRocket.identify("f6d5211e-302e-470b-bd42-fbef963cd14", {
  */
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ErrorBoundary>
-      <Router>
-        <App />
-      </Router>
-    </ErrorBoundary>
-  </React.StrictMode>,
+  <AdminProvider>
+    <UserProvider>
+      <ErrorBoundary>
+        <Router>
+          <App />
+        </Router>
+      </ErrorBoundary>
+    </UserProvider>
+  </AdminProvider>,
   document.getElementById("root")
 );

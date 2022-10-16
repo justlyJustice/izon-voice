@@ -30,7 +30,7 @@ const InputGroup = styled.div`
   margin: 10px 0px;
 
   .label {
-    color: white;
+    color: black;
     margin: 5px;
     font-size: 16px;
     font-style: normal;

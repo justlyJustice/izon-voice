@@ -1,11 +1,17 @@
-.admin-contain {
+.dashboard {
   display: flex;
   height: 100vh;
 }
 
-.admin-contain .aside-bar {
+.dashboard .aside-bar {
   align-items: center;
-  background-color: rgb(236, 236, 236);
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.8),
+      rgba(237, 237, 237, 0.75)
+    ),
+    url("assets/images/blog.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -13,15 +19,14 @@
   width: 20%;
 }
 
-.admin-contain .aside-bar img {
+.dashboard .aside-bar img {
   height: 100px;
   margin: 20px 0;
   width: 100px;
 }
 
-.admin-contain .aside-bar .menu-contain {
+.dashboard .aside-bar .menu-contain {
   align-items: center;
-  background-color: #000;
   display: flex;
   flex-direction: column;
   height: 40%;
@@ -29,7 +34,7 @@
   width: 100%;
 }
 
-.admin-contain .aside-bar .menu-contain .menu-item {
+.dashboard .aside-bar .menu-contain .menu-item {
   background: linear-gradient(
     to right,
     rgba(234, 25, 25, 0.7),
@@ -45,7 +50,7 @@
   width: 100%;
 }
 
-.admin-contain .aside-bar .sign-out-contain {
+.dashboard .aside-bar .sign-out-contain {
   align-self: flex-end;
   background-color: rgba(0, 0, 0, 0.24);
   justify-self: center;
@@ -56,7 +61,208 @@
   width: 100%;
 }
 
-.admin-contain .aside-bar .sign-out-contain .link {
+.dashboard .aside-bar .sign-out-contain .link {
   color: #000;
   font-weight: bold;
+}
+
+/* .dashboard-main-contain {
+} */
+
+.adm-side-content {
+  background-color: rgb(39, 32, 32);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  padding: 40px;
+  overflow-x: auto;
+  width: 80%;
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.adm-side-content .text-contain {
+  align-self: flex-end;
+  margin-bottom: 30px;
+}
+
+.adm-side-content .text-contain h1 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.adm-side-content .text-contain p {
+  color: white;
+  font-family: Playfair Display;
+  font-size: 20px;
+  text-align: right;
+}
+
+.adm-side-content .cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.adm-side-content .cards .card {
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  color: rgb(39, 32, 32);
+  margin: 15px;
+  overflow: hidden;
+  padding: 70px;
+  position: relative;
+  text-align: center;
+  width: 35%;
+}
+
+.adm-side-content .cards .card .overlay {
+  width: 22px;
+  position: absolute;
+  height: 22px;
+  border-radius: 50%;
+  background: linear-gradient(
+    to right,
+    rgba(234, 25, 25, 0.7),
+    rgb(4, 46, 161)
+  );
+  transform: translate(-50%, -50%);
+  z-index: -0;
+  top: 38%;
+  left: 50%;
+  transition: transform 0.3s ease-out;
+}
+
+.adm-side-content .cards .card:hover .overlay {
+  transform: scale(20) translateZ(0);
+}
+
+.adm-side-content .cards .card:hover {
+  transform: translateY(-5px) scale(1.005) translateZ(0);
+  box-shadow: 0 24px 36px rgba(0, 0, 0, 0.11),
+    0 24px 46px var(--box-shadow-color);
+  box-shadow: 0 20px 10px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  transition: all ease-in-out 0.3s;
+}
+
+.adm-side-content .cards .card i {
+  background: linear-gradient(
+    to right,
+    rgba(234, 25, 25, 0.7),
+    rgb(4, 46, 161)
+  );
+  font-size: 20px;
+  margin-bottom: 3px;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  z-index: 1000;
+}
+
+.adm-side-content .cards .card h4 {
+  font-size: 20px;
+  text-transform: uppercase;
+  z-index: 10000;
+}
+
+.dashboard .copy-text {
+  font-weight: bold;
+  margin-bottom: -20px;
+  text-align: center;
+}
+
+.adm-side-content .form-contain {
+  align-self: center;
+  background-color: white;
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  /* justify-content: flex-start; */
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 40px;
+  width: 60%;
+}
+
+.adm-side-content .form-contain .create-text {
+  color: rgb(39, 32, 32);
+  font-size: 24px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.adm-side-content .form-contain .form-group {
+  display: flex;
+}
+
+.adm-side-content .form-contain input {
+  border: 1px solid #ccc;
+  width: 100% !important;
+  padding: 10px 20px;
+}
+
+.adm-side-content .form-contain .upld-btn {
+  background: linear-gradient(
+    to right,
+    rgba(234, 25, 25, 0.7),
+    rgb(4, 46, 161)
+  );
+  border-radius: 50px;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 10px 30px;
+  text-align: center;
+  width: 100%;
+}
+
+/* Manage Posts */
+.adm-side-content .pst-contain {
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  padding: 20px;
+  width: 100%;
+}
+
+.adm-side-content .pst-contain .pst-title {
+  color: rgb(39, 32, 32);
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  font-weight: bold;
+  width: 80%;
+}
+
+.adm-side-content .pst-contain .buttons-contain {
+  display: flex;
+}
+
+.adm-side-content .pst-contain .buttons-contain .btn {
+  border-radius: 3px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  margin: 0 10px;
+  padding: 10px;
+  width: 100px;
+}
+
+.adm-side-content .pst-contain .buttons-contain .btn.edit {
+  background-color: rgb(65, 232, 39);
+}
+
+.adm-side-content .pst-contain .buttons-contain .btn.dlt {
+  background-color: rgb(234, 25, 25);
 }

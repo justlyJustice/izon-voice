@@ -3,6 +3,7 @@ import http from "./httpService";
 import JwtDecode from "jwt-decode";
 
 const tokenKey = "token";
+const adminTokenKey = "adminTokenKey";
 
 export const getJwt = () => {
   return localStorage.getItem(tokenKey);
@@ -16,7 +17,16 @@ export const login = async (userObj) => {
     password: userObj.password,
   });
 
-  localStorage.setItem(tokenKey, response.data.token);
+  switch (response.data.email) {
+    case "admin@izonvoice.ng":
+      localStorage.setItem(adminTokenKey, response.data.token);
+      break;
+
+    default:
+      const jwt = response.data.token;
+      localStorage.setItem(tokenKey, jwt);
+      break;
+  }
 
   return response;
 };
@@ -33,6 +43,18 @@ function getCurrentUser() {
 
 const currentUser = getCurrentUser();
 
+// Getting the admin
+function getAdmin() {
+  try {
+    const jwt = localStorage.getItem(adminTokenKey);
+    return JwtDecode(jwt);
+  } catch (ex) {
+    return null;
+  }
+}
+
+const admin = getAdmin();
+
 export const loginWithJwt = (jwt) => {
   localStorage.setItem(tokenKey, jwt);
 };
@@ -48,6 +70,7 @@ export const googleAuth = (tokenId) => {
 };
 
 export default {
+  admin,
   login,
   googleAuth,
   loginWithJwt,
