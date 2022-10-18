@@ -20,8 +20,8 @@ export const likePost = async (id) => {
   return await http.post(`posts/${id}/likes`);
 };
 
-export const uploadBlogPost = (value) => {
-  const { author, category, description, title, images } = value;
+export const uploadBlogPost = (values) => {
+  const { author, category, description, title, images } = values;
 
   const formData = new FormData();
 

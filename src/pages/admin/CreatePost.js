@@ -1,51 +1,38 @@
 import DashboardWrapper from "components/admin/Wrapper";
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
+import * as Yup from "yup";
 
 import { uploadBlogPost } from "services/postService";
 import { categories } from "utils/options";
 
-import {
-  Button,
-  Contain,
-  FormContainer,
-  Group,
-} from "../../styles/blogUploadStyles";
-import StatusPlaceholder from "components/common/StatusPlaceholder";
-import { Form, Input, SubmitButton, TextArea } from "components/forms";
+import { Form, Input, Select, SubmitButton, TextArea } from "components/forms";
+import ImageInput from "components/forms/ImageInput";
 
-const initialValues = {
-  author: "",
-  title: "",
-  description: "",
-  category: "",
-};
+const validationSchema = Yup.object().shape({
+  author: Yup.string().required().label(`Author`),
+  category: Yup.string().required().label(`Category`),
+  description: Yup.string().required().label("Description"),
+  title: Yup.string().required().label("Title"),
+  images: Yup.array().min(1, "Please select at least one image."),
+});
 
 const CreatePost = () => {
-  const [values, setValues] = useState(initialValues);
-  const [images, setImages] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setValues({
-      ...values,
-      [name]: value,
-    });
-  };
-
-  const handleSelectImages = (e) => {
-    setImages(e.target.files);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const postData = {
+  const handleSubmit = async (values) => {
+    /*  setLoading(true);
+    const res = await uploadBlogPost(values);
+    setLoading(false); */
+    /*  if(res.ok) {
+      if(res.status === 201) {
+        resetForm()
+      }
+    } */
+    /*  const postData = {
       ...values,
       images,
     };
@@ -70,7 +57,7 @@ const CreatePost = () => {
         setLoading(false);
         return setError(true);
       }
-    }
+    } */
   };
 
   return (
@@ -78,16 +65,26 @@ const CreatePost = () => {
       <div className="form-contain">
         <h3 className="create-text">Create new post</h3>
 
-        <Form initialValues={{}} onSubmit={(e) => e.preventDefault()}>
+        <Form
+          initialValues={{
+            author: "",
+            title: "",
+            description: "",
+            category: "",
+            images: [],
+          }}
+          onSubmit={handleSubmit}
+          validationSchema={validationSchema}
+        >
           <Input name={`title`} placeholder={`Enter post title`} />
 
           <div className="form-group">
-            <Input name={`title`} placeholder={`Enter post title`} />
+            <ImageInput name={`images`} />
 
-            <Input name={`title`} placeholder={`Enter post title`} />
+            <Select options={categories} name={`category`} />
           </div>
 
-          <Input name={`title`} placeholder={`Enter post title`} />
+          <Input name={`author`} placeholder={`Enter post author`} />
 
           <TextArea
             name={`description`}

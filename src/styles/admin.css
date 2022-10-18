@@ -35,15 +35,12 @@
 }
 
 .dashboard .aside-bar .menu-contain .menu-item {
-  background: linear-gradient(
-    to right,
-    rgba(234, 25, 25, 0.7),
-    rgb(4, 46, 161)
-  );
+  background: linear-gradient(to right, rgb(234, 25, 25), rgb(4, 46, 161));
   border-radius: 50px;
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
   color: #fff;
+  font-size: 14px;
   font-weight: bold;
   padding: 10px 30px;
   text-align: center;
@@ -83,8 +80,16 @@
 }
 
 .adm-side-content .text-contain {
-  align-self: flex-end;
+  align-items: center;
+  /* align-self: flex-end; */
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 30px;
+}
+
+.adm-side-content .text-contain i {
+  cursor: pointer;
+  font-size: 40px;
 }
 
 .adm-side-content .text-contain h1 {
@@ -106,38 +111,44 @@
 }
 
 .adm-side-content .cards .card {
+  align-items: center;
   background-color: white;
   border-radius: 20px;
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
   color: rgb(39, 32, 32);
+  display: flex;
+  flex-direction: column;
   margin: 15px;
+  justify-content: center;
   overflow: hidden;
-  padding: 70px;
+  padding: 60px;
   position: relative;
   text-align: center;
   width: 35%;
+  /* width: 50%; */
 }
 
 .adm-side-content .cards .card .overlay {
-  width: 22px;
+  width: 30px;
   position: absolute;
-  height: 22px;
+  height: 30px;
   border-radius: 50%;
-  background: linear-gradient(
-    to right,
-    rgba(234, 25, 25, 0.7),
-    rgb(4, 46, 161)
-  );
+  background: linear-gradient(to right, rgb(234, 25, 25), rgb(4, 46, 161));
   transform: translate(-50%, -50%);
-  z-index: -0;
-  top: 38%;
+  z-index: 0;
+  padding: 20px;
+  top: 44%;
   left: 50%;
   transition: transform 0.3s ease-out;
 }
 
 .adm-side-content .cards .card:hover .overlay {
   transform: scale(20) translateZ(0);
+}
+
+.adm-side-content .cards .card:hover h4 {
+  color: white;
 }
 
 .adm-side-content .cards .card:hover {
@@ -149,28 +160,39 @@
   transition: all ease-in-out 0.3s;
 }
 
-.adm-side-content .cards .card i {
+.adm-side-content .cards .card .circle {
+  align-items: center;
+  display: flex;
+  border-radius: 50%;
   background: linear-gradient(
     to right,
     rgba(234, 25, 25, 0.7),
     rgb(4, 46, 161)
   );
-  font-size: 20px;
+  height: 30px;
+  justify-content: center;
+  padding: 20px;
+  margin: 5px auto;
+  width: 30px;
+}
+
+.adm-side-content .cards .card .circle i {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
   margin-bottom: 3px;
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
   z-index: 1000;
 }
 
 .adm-side-content .cards .card h4 {
   font-size: 20px;
   text-transform: uppercase;
-  z-index: 10000;
+  z-index: 1000;
 }
 
-.dashboard .copy-text {
+.dashboard .adm-side-content .copy-text {
   font-weight: bold;
-  margin-bottom: -20px;
+  margin-top: 30px;
   text-align: center;
 }
 
@@ -198,10 +220,31 @@
   display: flex;
 }
 
-.adm-side-content .form-contain input {
+.adm-side-content .form-contain input,
+select,
+input[type="file"] {
+  color: #000;
+  background: #ffffff;
+  border-radius: 20px;
+  /* padding: 15px; */
+  font-weight: 600;
   border: 1px solid #ccc;
-  width: 100% !important;
+  width: 100%;
   padding: 10px 20px;
+}
+
+.adm-side-content .form-contain option {
+  color: #000;
+}
+
+.adm-side-content .form-contain input[type="file"] {
+  color: #000;
+  font-size: 8px;
+  border-radius: 20px;
+  /* height: 30px; */
+  width: 100% !important;
+  padding: 10px 20px !important;
+  position: relative;
 }
 
 .adm-side-content .form-contain .upld-btn {
@@ -228,11 +271,32 @@
   border-radius: 10px;
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  /* cursor: pointer; */
   display: flex;
   justify-content: space-between;
   margin: 10px 0;
-  padding: 20px;
+  /* overflow-y: hidden; */
+  /* padding: 20px; */
+  transition: transform, all ease-in-out 0.3s;
   width: 100%;
+  z-index: 100;
+}
+
+.adm-side-content .pst-contain:hover {
+  transform: translateY(-4px);
+}
+
+.adm-side-content .pst-contain .icon-contain {
+  /* background-color: rgb(39, 32, 32); */
+  background: linear-gradient(to left, rgb(234, 25, 25), rgb(4, 46, 161));
+  color: white;
+  padding: 30px;
+  text-align: center;
+  width: 15%;
+}
+
+.adm-side-content .pst-contain .icon-contain i {
+  font-size: 20px;
 }
 
 .adm-side-content .pst-contain .pst-title {
@@ -242,11 +306,14 @@
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   font-weight: bold;
+  margin-left: 30px;
+  text-transform: uppercase;
   width: 80%;
 }
 
 .adm-side-content .pst-contain .buttons-contain {
   display: flex;
+  margin-right: 30px;
 }
 
 .adm-side-content .pst-contain .buttons-contain .btn {
@@ -256,6 +323,7 @@
   font-weight: bold;
   margin: 0 10px;
   padding: 10px;
+  transition: all ease-in-out 0.3s;
   width: 100px;
 }
 
@@ -263,6 +331,116 @@
   background-color: rgb(65, 232, 39);
 }
 
+.adm-side-content .pst-contain .buttons-contain .btn.edit:hover {
+  background-color: rgb(73, 255, 45);
+}
+
 .adm-side-content .pst-contain .buttons-contain .btn.dlt {
-  background-color: rgb(234, 25, 25);
+  background-color: rgb(233, 0, 0);
+}
+
+.adm-side-content .pst-contain .buttons-contain .btn.dlt:hover {
+  background-color: rgb(199, 0, 0);
+}
+
+@media screen and (max-width: 768px) {
+  .dashboard {
+    /* height: 100vh; */
+  }
+
+  .dashboard .aside-bar {
+    height: 100%;
+    width: 40%;
+  }
+
+  .dashboard .aside-bar .menu-contain {
+    height: 40%;
+    width: 100%;
+  }
+
+  .dashboard .aside-bar .menu-contain .menu-item {
+  }
+
+  .dashboard .aside-bar .sign-out-contain {
+    align-self: flex-end;
+    background-color: rgba(0, 0, 0, 0.24);
+    justify-self: center;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    top: 30%;
+    width: 100%;
+  }
+
+  .dashboard .aside-bar .sign-out-contain .link {
+    color: #000;
+    font-weight: bold;
+  }
+
+  .adm-side-content {
+    display: none;
+    width: 100%;
+    height: 100%;
+  }
+
+  .adm-side-content .text-contain {
+    align-self: flex-start;
+  }
+
+  .adm-side-content .text-contain h1 {
+    font-size: 30px;
+  }
+
+  .adm-side-content .text-contain p {
+    font-size: 18px;
+    text-align: left;
+  }
+
+  .adm-side-content .cards {
+    flex-wrap: wrap;
+  }
+
+  .adm-side-content .cards .card {
+    width: 100%;
+  }
+
+  /* Manage Posts */
+  .adm-side-content .pst-contain {
+    flex-direction: column;
+    padding: 30px;
+  }
+
+  .adm-side-content .pst-contain .icon-contain {
+    background: transparent;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .adm-side-content .pst-contain .icon-contain i {
+    color: rgb(39, 32, 32);
+    font-size: 40px;
+  }
+
+  .adm-side-content .pst-contain .pst-title {
+    font-size: medium;
+    font-weight: bold;
+    margin: 0 !important;
+    text-align: center;
+    width: 100%;
+    -webkit-line-clamp: 2;
+  }
+
+  .adm-side-content .pst-contain .buttons-contain {
+    flex-direction: column;
+    margin: 10px 0;
+    width: 100%;
+  }
+
+  .adm-side-content .pst-contain .buttons-contain .btn {
+    font-size: 10px;
+    margin: 3px 0;
+    width: 100% !important;
+  }
 }

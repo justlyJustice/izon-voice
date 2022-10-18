@@ -1,11 +1,11 @@
+/* eslint-disable no-unused-vars */
 import { useFormikContext } from "formik";
 import styled from "styled-components";
 
-const InputField = styled.input`
+const SelectField = styled.select`
   width: 100%;
   background: #ffffff;
   border-radius: 20px;
-  padding: 15px;
   font-weight: 600;
 
   &::placeholder {
@@ -39,28 +39,9 @@ const InputGroup = styled.div`
     letter-spacing: 0em;
     margin-left: 20px;
   }
-
-  .icon-div {
-    align-self: flex-end;
-    position: relative;
-  }
-
-  #icon {
-    position: absolute;
-    right: 15px;
-    bottom: 15px;
-  }
-
-  .error-icon {
-    color: red;
-  }
-
-  .check-icon {
-    color: green;
-  }
 `;
 
-const Input = ({ name, label, labelStyle, ...otherProps }) => {
+const Select = ({ name, options, label, labelStyle, ...otherProps }) => {
   const { errors, touched, values, setFieldValue, setFieldTouched } =
     useFormikContext();
 
@@ -72,19 +53,29 @@ const Input = ({ name, label, labelStyle, ...otherProps }) => {
         </label>
       )}
 
-      <InputField
+      <SelectField
         name={name}
         onBlur={() => setFieldTouched(name)}
         onChange={({ target: { value } }) => setFieldValue(name, value)}
         value={values[name]}
         id={name}
         style={{
-          border: errors[name] && touched[name] ? "1px solid red" : "",
+          border: errors[name] && "1px solid red",
         }}
         {...otherProps}
-      />
+      >
+        <option value="">Select Option</option>
+
+        {options &&
+          options.length > 0 &&
+          options.map((opt) => (
+            <option key={opt.value} value={opt.value}>
+              {options.label}
+            </option>
+          ))}
+      </SelectField>
     </InputGroup>
   );
 };
 
-export default Input;
+export default Select;

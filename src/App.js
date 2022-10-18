@@ -18,7 +18,7 @@ import ManagePosts from "pages/admin/ManagePosts";
 const App = () => {
   return (
     <>
-      <ToastContainer autoClose />
+      <ToastContainer />
 
       <Routes>
         {/* Admin Routes */}

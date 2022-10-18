@@ -23,7 +23,7 @@ const InputField = styled.input`
   }
 `;
 
-const InputGroup = styled.div`
+const Group = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -39,33 +39,19 @@ const InputGroup = styled.div`
     letter-spacing: 0em;
     margin-left: 20px;
   }
-
-  .icon-div {
-    align-self: flex-end;
-    position: relative;
-  }
-
-  #icon {
-    position: absolute;
-    right: 15px;
-    bottom: 15px;
-  }
-
-  .error-icon {
-    color: red;
-  }
-
-  .check-icon {
-    color: green;
-  }
 `;
 
-const Input = ({ name, label, labelStyle, ...otherProps }) => {
+const ImageInput = ({ name, label, labelStyle, ...otherProps }) => {
   const { errors, touched, values, setFieldValue, setFieldTouched } =
     useFormikContext();
+  const images = values[name];
+
+  const handleChange = (e) => {
+    setFieldValue(name, [...images, ...e.currentTarget.files]);
+  };
 
   return (
-    <InputGroup>
+    <Group>
       {label && (
         <label className="label" style={labelStyle} htmlFor={name}>
           {label}
@@ -73,18 +59,20 @@ const Input = ({ name, label, labelStyle, ...otherProps }) => {
       )}
 
       <InputField
+        accept="image/*"
         name={name}
         onBlur={() => setFieldTouched(name)}
-        onChange={({ target: { value } }) => setFieldValue(name, value)}
-        value={values[name]}
-        id={name}
+        onChange={handleChange}
+        /* value={JSON.stringify(images)} */
         style={{
           border: errors[name] && touched[name] ? "1px solid red" : "",
         }}
+        type={`file`}
+        multiple
         {...otherProps}
       />
-    </InputGroup>
+    </Group>
   );
 };
 
-export default Input;
+export default ImageInput;

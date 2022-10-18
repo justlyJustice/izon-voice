@@ -1,9 +1,14 @@
-const TopTextContain = ({ topText }) => {
+const TopTextContain = ({ topText, onClickIcon }) => {
   return (
-    <div className="text-contain">
-      <h1>Admin Dashboard</h1>
-      <p>{topText ? topText : `Monitor blog`}</p>
-    </div>
+    <>
+      <div className="text-contain">
+        <i className="fa-solid fa-bars-staggered" onClick={onClickIcon}></i>
+        <div>
+          <h1>Admin Dashboard</h1>
+          <p>{topText ? topText : `Monitor blog`}</p>
+        </div>
+      </div>
+    </>
   );
 };
 

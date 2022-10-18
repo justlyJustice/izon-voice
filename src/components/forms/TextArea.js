@@ -39,11 +39,11 @@ const TextArea = ({ name, ...otherProps }) => {
         onChange={({ target: { value } }) => setFieldValue(name, value)}
         value={values[name]}
         id={name}
-        /* style={{ border: errors[name] ? "1px solid red" : "" }} */
+        style={{ border: errors[name] ? "1px solid red" : "" }}
         {...otherProps}
       />
 
-      <FormError error={errors[name]} />
+      {/*  <FormError error={errors[name]} /> */}
     </div>
   );
 };
