@@ -12,9 +12,9 @@ const Footer = () => {
       </div>
 
       <div className="social-contain">
-        <a>
+        {/*  <a>
           <i className="fa-solid fa-facebook-f"></i>
-        </a>
+        </a> */}
       </div>
     </section>
   );

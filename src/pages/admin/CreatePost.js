@@ -8,55 +8,49 @@ import { categories } from "utils/options";
 
 import { Form, Input, Select, SubmitButton, TextArea } from "components/forms";
 import ImageInput from "components/forms/ImageInput";
+import { toast } from "react-toastify";
+import useSubmit from "hooks/useSubmit";
 
 const validationSchema = Yup.object().shape({
-  author: Yup.string().required().label(`Author`),
-  category: Yup.string().required().label(`Category`),
+  author: Yup.string().required().label("Author"),
+  category: Yup.string().required().label("Category"),
   description: Yup.string().required().label("Description"),
   title: Yup.string().required().label("Title"),
   images: Yup.array().min(1, "Please select at least one image."),
 });
 
 const CreatePost = () => {
-  const [loading, setLoading] = useState(false);
+  const { data, error, submitting, submit, success } =
+    useSubmit(uploadBlogPost);
 
-  const [error, setError] = useState(false);
-  const [success, setSuccess] = useState(false);
+  /*  const mapToViewModel = (post) => {
+    return {};
+  }; */
 
-  const handleSubmit = async (values) => {
-    /*  setLoading(true);
-    const res = await uploadBlogPost(values);
-    setLoading(false); */
-    /*  if(res.ok) {
-      if(res.status === 201) {
-        resetForm()
-      }
-    } */
-    /*  const postData = {
-      ...values,
-      images,
-    };
+  const handleSubmit = (values, { resetForm }) => {
+    submit(values);
 
-    try {
-      setLoading(true);
-      const res = await uploadBlogPost(postData);
-      setLoading(false);
+    if (data && data.title) {
+      resetForm();
+      toast.success(`Post uploaded successful!`);
+    }
 
-      if (res.status === 201) {
-        setValues(initialValues);
+    if (error) {
+      toast.error(`${data.message} with post upload!`);
+    }
 
-        setImages(null);
-        setSuccess(true);
+    /*  if (res.ok) {
+      resetForm();
+      setSuccess(true);
 
-        setTimeout(() => {
-          setSuccess(false);
-        }, 4000);
-      }
-    } catch (ex) {
-      if (ex.response && !ex.response.ok) {
-        setLoading(false);
-        return setError(true);
-      }
+      setTimeout(() => {
+        setSuccess(false);
+      }, 7000);
+      toast.success(`Post uploaded successful!`);
+    }
+
+    if (!res.ok) {
+      return toast.error(`${res.data.message} with post upload!`);
     } */
   };
 
@@ -91,7 +85,16 @@ const CreatePost = () => {
             placeholder={`Enter post description`}
           />
 
-          <SubmitButton className={`upld-btn`}>Upload Post</SubmitButton>
+          <SubmitButton
+            className={`upld-btn ${success ? `success` : ``}`}
+            disabled={submitting}
+          >
+            {submitting ? (
+              <i className="fa-solid fa-spinner fa-spin"></i>
+            ) : (
+              `Upload Post`
+            )}{" "}
+          </SubmitButton>
         </Form>
       </div>
     </DashboardWrapper>

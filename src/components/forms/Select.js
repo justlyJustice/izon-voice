@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useFormikContext } from "formik";
 import styled from "styled-components";
+/* import FormError from "./FormError"; */
 
 const SelectField = styled.select`
   width: 100%;
@@ -39,6 +40,10 @@ const InputGroup = styled.div`
     letter-spacing: 0em;
     margin-left: 20px;
   }
+
+  option {
+    color: red;
+  }
 `;
 
 const Select = ({ name, options, label, labelStyle, ...otherProps }) => {
@@ -55,24 +60,22 @@ const Select = ({ name, options, label, labelStyle, ...otherProps }) => {
 
       <SelectField
         name={name}
-        onBlur={() => setFieldTouched(name)}
+        /*  onBlur={() => setFieldTouched(name)} */
         onChange={({ target: { value } }) => setFieldValue(name, value)}
         value={values[name]}
         id={name}
-        style={{
-          border: errors[name] && "1px solid red",
-        }}
+        style={{ border: errors[name] && touched[name] ? "1px solid red" : "" }}
         {...otherProps}
       >
         <option value="">Select Option</option>
 
-        {options &&
-          options.length > 0 &&
-          options.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {options.label}
-            </option>
-          ))}
+        {options && options.length > 0
+          ? options.map((opt) => (
+              <option key={opt.value} value={opt.value}>
+                {opt.label}
+              </option>
+            ))
+          : null}
       </SelectField>
     </InputGroup>
   );

@@ -1,7 +1,8 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Linkify from "linkify-react";
 import ReactModal from "react-modal";
 
@@ -24,6 +25,7 @@ const Blog = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
   const { name } = useParams();
+  const navigate = useNavigate();
 
   function openModal(imgUrl) {
     setIsModalOpen(true);

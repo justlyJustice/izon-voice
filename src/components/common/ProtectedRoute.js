@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Navigate, useLocation } from "react-router-dom";
 import useAdmin from "hooks/useAdmin";
 import useUser from "hooks/useUser";

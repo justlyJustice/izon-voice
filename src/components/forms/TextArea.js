@@ -29,7 +29,8 @@ const TextAreaField = styled.textarea`
 `;
 
 const TextArea = ({ name, ...otherProps }) => {
-  const { errors, setFieldTouched, values, setFieldValue } = useFormikContext();
+  const { errors, setFieldTouched, values, setFieldValue, touched } =
+    useFormikContext();
 
   return (
     <div style={{ marginBottom: "15px" }}>
@@ -39,7 +40,7 @@ const TextArea = ({ name, ...otherProps }) => {
         onChange={({ target: { value } }) => setFieldValue(name, value)}
         value={values[name]}
         id={name}
-        style={{ border: errors[name] ? "1px solid red" : "" }}
+        style={{ border: errors[name] && touched[name] ? "1px solid red" : "" }}
         {...otherProps}
       />
 

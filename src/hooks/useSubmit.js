@@ -12,15 +12,6 @@ const useSubmit = (apiFunc) => {
     const res = await apiFunc(...args);
     setSubmitting(false);
 
-    if (res.ok) {
-      setSuccess(true);
-      setData(res.data);
-
-      setTimeout(() => {
-        setSuccess(false);
-      }, 5000);
-    }
-
     if (!res.ok) {
       setError(true);
 
@@ -30,6 +21,9 @@ const useSubmit = (apiFunc) => {
         setError(false);
       }, 5000);
     }
+
+    setSuccess(true);
+    setData(res.data);
 
     return res;
   };

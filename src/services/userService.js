@@ -7,3 +7,7 @@ export async function register(user) {
     password: user.password,
   });
 }
+
+export const getUsers = async () => {
+  return await http.get(`/users`);
+};

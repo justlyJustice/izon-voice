@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -14,6 +13,7 @@ import AdminLogin from "pages/admin/Login";
 import AdminDashboard from "pages/admin/Dashboard";
 import CreatePost from "pages/admin/CreatePost";
 import ManagePosts from "pages/admin/ManagePosts";
+import ManageUsers from "pages/admin/ManageUsers";
 
 const App = () => {
   return (
@@ -27,6 +27,7 @@ const App = () => {
         <Route exact path="/auth/admin" element={<AdminLogin />} />
         <Route exact path="/posts/create-post" element={<CreatePost />} />
         <Route exact path="/posts/manage-posts" element={<ManagePosts />} />
+        <Route exact path="/users/manage-users" element={<ManageUsers />} />
 
         <Route
           exact
@@ -38,13 +39,13 @@ const App = () => {
           }
         />
 
+        <Route exact path="/:name" element={<Blog />} />
         <Route exact path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/login" element={<Login />} />
+        <Route exact path="/category/:name" element={<BlogCategory />} />
         <Route exact path="/home" element={<Blogs />} />
         <Route exact path="/" element={<Main />} />
-        <Route exact path="/:name" element={<Blog />} />
-        <Route exact path="/category/:name" element={<BlogCategory />} />
 
         <Route exact path="*" element={<NotFound />} />
       </Routes>

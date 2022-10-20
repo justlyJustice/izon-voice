@@ -872,7 +872,7 @@
 }
 
 .right-contain .form__contain .success {
-  color: rgb(14, 228, 13);
+  color: rgb(14, 228, 13) !important;
 }
 
 .right-contain .form__contain .input {

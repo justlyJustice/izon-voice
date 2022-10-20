@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useFormikContext } from "formik";
 import styled from "styled-components";
 
@@ -30,7 +31,7 @@ const InputGroup = styled.div`
   margin: 10px 0px;
 
   .label {
-    color: black;
+    color: white;
     margin: 5px;
     font-size: 16px;
     font-style: normal;
@@ -64,6 +65,8 @@ const Input = ({ name, label, labelStyle, ...otherProps }) => {
   const { errors, touched, values, setFieldValue, setFieldTouched } =
     useFormikContext();
 
+  console.log(errors);
+
   return (
     <InputGroup>
       {label && (
@@ -74,7 +77,7 @@ const Input = ({ name, label, labelStyle, ...otherProps }) => {
 
       <InputField
         name={name}
-        onBlur={() => setFieldTouched(name)}
+        /*   onBlur={() => setFieldTouched(name)} */
         onChange={({ target: { value } }) => setFieldValue(name, value)}
         value={values[name]}
         id={name}

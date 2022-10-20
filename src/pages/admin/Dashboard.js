@@ -24,7 +24,7 @@ const AdminDashboard = () => {
           <h4>Manage all Posts</h4>
         </Link>
 
-        <Link className="card" to={`/users/manage`}>
+        <Link className="card" to={`/users/manage-users`}>
           <div className="overlay"></div>
 
           <div className="circle">
@@ -34,8 +34,6 @@ const AdminDashboard = () => {
           <h4>Manage Users</h4>
         </Link>
       </div>
-
-      <p className="copy-text">Copyright &copy; Izon Voice</p>
     </DashboardWrapper>
   );
 };

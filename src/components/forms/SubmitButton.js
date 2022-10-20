@@ -1,6 +1,6 @@
 import { useFormikContext } from "formik";
 
-const SubmitButton = ({ className, icon, style, children, ...otherProps }) => {
+const SubmitButton = ({ className, style, children, ...otherProps }) => {
   const { handleSubmit } = useFormikContext();
 
   return (
