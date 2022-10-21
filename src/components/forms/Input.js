@@ -65,8 +65,6 @@ const Input = ({ name, label, labelStyle, ...otherProps }) => {
   const { errors, touched, values, setFieldValue, setFieldTouched } =
     useFormikContext();
 
-  console.log(errors);
-
   return (
     <InputGroup>
       {label && (

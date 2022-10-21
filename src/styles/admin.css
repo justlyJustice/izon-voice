@@ -206,10 +206,34 @@
   z-index: 1000;
 }
 
-.dashboard .adm-side-content .copy-text {
+.dashboard .copy-text {
   font-weight: bold;
   margin-top: 30px;
   text-align: center;
+}
+
+.dashboard .scrl-top-btn {
+  background: linear-gradient(to right, rgb(234, 25, 25), rgb(4, 46, 161));
+  border-radius: 50px;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 50%;
+  bottom: 70px;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  height: 60px;
+  position: fixed;
+  right: 50px;
+  opacity: 0;
+  transition: 0.5s ease-in-out all;
+  width: 60px;
+  z-index: 100;
+}
+
+.dashboard .scrl-top-btn.show-scrl-btn {
+  opacity: 1;
 }
 
 .adm-side-content .form-contain {
@@ -264,11 +288,7 @@ input[type="file"] {
 }
 
 .adm-side-content .form-contain .upld-btn {
-  background: linear-gradient(
-    to right,
-    rgba(234, 25, 25, 0.7),
-    rgb(4, 46, 161)
-  );
+  background: linear-gradient(to right, rgb(234, 25, 25), rgb(4, 46, 161));
   border-radius: 50px;
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
@@ -289,8 +309,10 @@ input[type="file"] {
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
   /* cursor: pointer; */
   display: flex;
+  height: 90px;
   justify-content: space-between;
   margin: 10px 0;
+  overflow: hidden;
   /* overflow-y: hidden; */
   /* padding: 20px; */
   transition: transform, all ease-in-out 0.3s;
@@ -306,6 +328,7 @@ input[type="file"] {
   /* background-color: rgb(39, 32, 32); */
   background: linear-gradient(to left, rgb(234, 25, 25), rgb(4, 46, 161));
   color: white;
+  height: 100%;
   padding: 30px;
   text-align: center;
   width: 15%;
@@ -455,6 +478,7 @@ input[type="file"] {
   /* Manage Posts */
   .adm-side-content .pst-contain {
     flex-direction: column;
+    height: auto;
     padding: 30px;
   }
 

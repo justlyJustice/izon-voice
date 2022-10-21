@@ -63,6 +63,10 @@ export const logout = () => {
   localStorage.removeItem(tokenKey);
 };
 
+export const logoutAdmin = () => {
+  localStorage.removeItem(adminTokenKey);
+};
+
 export const googleAuth = (tokenId) => {
   return http.post("/google-auth", {
     token: tokenId,
@@ -71,10 +75,11 @@ export const googleAuth = (tokenId) => {
 
 export default {
   admin,
-  login,
-  googleAuth,
-  loginWithJwt,
-  logout,
   currentUser,
   getJwt,
+  googleAuth,
+  login,
+  loginWithJwt,
+  logout,
+  logoutAdmin,
 };

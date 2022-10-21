@@ -864,7 +864,7 @@
 .right-contain .form__contain .text-div h2 {
   color: rgba(234, 25, 25, 0.7);
   font-size: 28px;
-  font-weight: 600;
+  font-weight: bold;
 }
 
 .right-contain .form__contain .text-div h4 {
@@ -901,6 +901,22 @@
   box-shadow: 0 12px 12px 0 rgba(0, 0, 0, 0.24),
     0 17px 50px 0 rgba(0, 0, 0, 0.19);
   transform: translateY(-3px);
+}
+
+.error {
+  color: red;
+  transition: ease-in-out 0.3s all;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: left !important;
+}
+
+.text-success {
+  color: rgb(0, 180, 0);
+  transition: ease-in-out 0.3s all;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: left !important;
 }
 
 /* 
@@ -1429,11 +1445,19 @@
         rgba(234, 25, 25, 0.7)
       ),
       url("assets/images/background.jpeg");
-    flex: 2 !important;
     height: 100%;
+    padding: 30px;
+  }
+
+  .auth-contain .right-contain .form__contain {
+    width: 100%;
   }
 
   .auth-contain .right-contain .text-div {
     text-align: center;
+  }
+
+  .auth-contain .right-contain .text-div h4 {
+    font-size: 18px;
   }
 }

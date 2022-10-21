@@ -3,7 +3,8 @@ import Sidebar from "./Sidebar";
 import TopTextContain from "./TopTextContain";
 
 const DashboardWrapper = ({ children, topText }) => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
+  const [showtopBtn, setShowTopBtn] = useState(false);
 
   const handleClick = () => {
     setIsOpen(true);
@@ -15,6 +16,20 @@ const DashboardWrapper = ({ children, topText }) => {
 
   useEffect(() => {
     setIsOpen(JSON.parse(sessionStorage.getItem("isOpen")));
+  }, []);
+
+  useEffect(() => {
+    const handleScrollVisibility = () => {
+      document.documentElement.scrollTop > 400
+        ? setShowTopBtn(true)
+        : setShowTopBtn(false);
+    };
+
+    window.addEventListener(`scroll`, handleScrollVisibility);
+
+    return () => {
+      window.removeEventListener(`scroll`, handleScrollVisibility);
+    };
   }, []);
 
   useEffect(() => {
@@ -35,6 +50,13 @@ const DashboardWrapper = ({ children, topText }) => {
         {children}
 
         <p className="copy-text">Copyright &copy; Izon Voice</p>
+
+        <button
+          className={`scrl-top-btn ${showtopBtn ? `show-scrl-btn` : ``}`}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        >
+          <i className="fa-solid fa-chevron-up"></i>
+        </button>
       </div>
     </section>
   );

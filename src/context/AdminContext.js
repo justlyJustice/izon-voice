@@ -5,7 +5,7 @@ import auth from "services/authService";
 export const AdminContext = createContext();
 
 export const AdminProvider = ({ children }) => {
-  const [admin, setAdmin] = useState(auth.adminUser);
+  const [admin, setAdmin] = useState(auth.admin);
 
   return (
     <AdminContext.Provider value={[admin, setAdmin]}>

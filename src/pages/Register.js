@@ -58,7 +58,7 @@ const Register = () => {
     }
   };
 
-  if (auth.currentUser) return <Navigate to="/blog" />;
+  if (auth.currentUser) return <Navigate to="/home" />;
 
   return (
     <>
@@ -94,14 +94,22 @@ const Register = () => {
                 onSubmit={handleSubmit}
                 validationSchema={validationSchema}
               >
-                <Input name="name" label="Name" placeholder="Provide name" />
+                <Input
+                  name="name"
+                  label="Name"
+                  placeholder="Enter your name..."
+                />
 
-                <Input name="email" label="Email" placeholder="Provide email" />
+                <Input
+                  name="email"
+                  label="Email"
+                  placeholder="Enter email address..."
+                />
 
                 <Input
                   name="password"
                   label="Password"
-                  placeholder="Provide password"
+                  placeholder="Enter password..."
                   type="password"
                 />
 

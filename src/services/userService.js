@@ -11,3 +11,7 @@ export async function register(user) {
 export const getUsers = async () => {
   return await http.get(`/users`);
 };
+
+export const deleteUser = async (userId) => {
+  return await http.delete(`/users/${userId}`);
+};

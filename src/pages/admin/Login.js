@@ -5,6 +5,7 @@ import { Form, Input, SubmitButton } from "components/forms";
 
 import authService from "services/authService";
 import useSubmit from "hooks/useSubmit";
+import { useNavigate } from "react-router-dom";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -13,21 +14,15 @@ const validationSchema = Yup.object().shape({
 
 const AdminLogin = () => {
   const {
-    data,
     submit: login,
     submitting,
     error,
+    success,
     status,
   } = useSubmit(authService.login);
 
   const handleSubmit = (values) => {
-    console.log(values);
-    /*  login(values);
-
-    if (data && data)
-      setTimeout(() => {
-        window.location = "/admin";
-      }, 2000); */
+    login(`/dashboard`, values);
   };
 
   return (
@@ -46,6 +41,8 @@ const AdminLogin = () => {
           </div>
 
           {error && <span className="error">{status}</span>}
+
+          {success && <span className="text-success">Login Successful!</span>}
 
           <Form
             initialValues={{ email: "", password: "" }}

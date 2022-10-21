@@ -7,7 +7,8 @@ import DashboardWrapper from "components/admin/Wrapper";
 import useApi from "hooks/useApi";
 import { deletePost, getPosts } from "services/postService";
 import { useEffect } from "react";
-import LoadingAnimation from "components/common/LoadingAnimation";
+
+import LoadingPlaceHolder from "components/common/LoadingPlaceHolder";
 
 const ManagePosts = () => {
   const { loading, data: posts, request, setData: setPosts } = useApi(getPosts);
@@ -32,38 +33,56 @@ const ManagePosts = () => {
     }
   };
 
-  const handleEdit = (id) => {
-    console.log(id);
-  };
-
-  if (loading) return <LoadingAnimation loading={loading} />;
-
   return (
-    <DashboardWrapper topText={`Manage existing blog posts.`}>
-      {posts &&
-        posts.length > 0 &&
-        posts.map((post) => (
-          <div className="pst-contain" key={post._id}>
-            <div className="icon-contain">
-              <i className="fa-solid fa-clone"></i>
-            </div>
-
-            <p className="pst-title">{post.title}</p>
-
-            <div className="buttons-contain">
-              <button className="btn edit">
-                Edit <i className="fa-solid fa-edit"></i>
-              </button>
-
-              <button
-                className="btn dlt"
-                onClick={() => handleDelete(post._id)}
-              >
-                Delete <i className="fa-solid fa-trash"></i>
-              </button>
-            </div>
+    <DashboardWrapper topText={`Manage existing blog posts .`}>
+      {loading ? (
+        <>
+          <div className="pst-contain">
+            <LoadingPlaceHolder extraStyles={{ height: `100%` }} />
           </div>
-        ))}
+
+          <div className="pst-contain">
+            <LoadingPlaceHolder extraStyles={{ height: `100%` }} />
+          </div>
+
+          <div className="pst-contain">
+            <LoadingPlaceHolder extraStyles={{ height: `100%` }} />
+          </div>
+
+          <div className="pst-contain">
+            <LoadingPlaceHolder extraStyles={{ height: `100%` }} />
+          </div>
+
+          <div className="pst-contain">
+            <LoadingPlaceHolder extraStyles={{ height: `100%` }} />
+          </div>
+        </>
+      ) : (
+        <div>
+          {posts && posts.length > 0 ? (
+            posts.map((post) => (
+              <div className="pst-contain" key={post._id}>
+                <div className="icon-contain">
+                  <i className="fa-solid fa-clone"></i>
+                </div>
+
+                <p className="pst-title">{post.title}</p>
+
+                <div className="buttons-contain">
+                  <button
+                    className="btn dlt"
+                    onClick={() => handleDelete(post._id)}
+                  >
+                    Delete <i className="fa-solid fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            ))
+          ) : (
+            <h2>No Posts!</h2>
+          )}
+        </div>
+      )}
     </DashboardWrapper>
   );
 };

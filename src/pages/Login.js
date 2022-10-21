@@ -41,6 +41,7 @@ const Login = () => {
     const res = await login(values);
 
     if (data && data.token) {
+      resetForm();
       Alert.success("Successful!", "Login successful!");
 
       /* window.location = state ? state.from : "/home"; */
@@ -86,14 +87,14 @@ const Login = () => {
             >
               <Input
                 name="email"
-                label="Username"
-                placeholder="Provide username"
+                label="Email"
+                placeholder="Enter your email..."
               />
 
               <Input
                 name="password"
                 label="Password"
-                placeholder="Provide password"
+                placeholder="Enter your password..."
                 type="password"
               />
 

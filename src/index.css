@@ -83,4 +83,10 @@ textarea {
   .container {
     width: 100%;
   }
+
+  /*  .loadingSwipes {
+    background: red !important;
+    height: 100% !important;
+    width: 100% !important;
+  } */
 }

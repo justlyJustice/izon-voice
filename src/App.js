@@ -23,11 +23,46 @@ const App = () => {
       <Routes>
         {/* Admin Routes */}
         <Route exact path="/auth/admin" element={<AdminLogin />} />
-        <Route exact path="/dashboard" element={<AdminDashboard />} />
-        <Route exact path="/auth/admin" element={<AdminLogin />} />
-        <Route exact path="/posts/create-post" element={<CreatePost />} />
-        <Route exact path="/posts/manage-posts" element={<ManagePosts />} />
-        <Route exact path="/users/manage-users" element={<ManageUsers />} />
+
+        <Route
+          exact
+          path="/dashboard"
+          element={
+            <ProtectedRoute>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          exact
+          path="/posts/create-post"
+          element={
+            <ProtectedRoute>
+              <CreatePost />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          exact
+          path="/posts/manage-posts"
+          element={
+            <ProtectedRoute>
+              <ManagePosts />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          exact
+          path="/users/manage-users"
+          element={
+            <ProtectedRoute>
+              <ManageUsers />
+            </ProtectedRoute>
+          }
+        />
 
         <Route
           exact

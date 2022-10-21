@@ -70,9 +70,9 @@ const Select = ({ name, options, label, labelStyle, ...otherProps }) => {
         <option value="">Select Option</option>
 
         {options && options.length > 0
-          ? options.map((opt) => (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
+          ? options.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
               </option>
             ))
           : null}

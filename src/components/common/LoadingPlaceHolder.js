@@ -3,6 +3,7 @@ import React from "react";
 function LoadingPlaceHolder(props) {
   const loaderStyles = {
     backgroundColor: "#eee",
+    height: "100%",
     width: "100%",
     overflow: "hidden",
     position: "relative",
@@ -21,7 +22,7 @@ function LoadingPlaceHolder(props) {
   };
 
   return (
-    <div style={loaderStyles}>
+    <div style={loaderStyles} className={`loadingSwipes`}>
       <div style={loaderSwipeStyles}></div>
     </div>
   );

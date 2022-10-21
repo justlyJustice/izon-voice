@@ -1,7 +1,15 @@
 import { logo } from "assets/images";
 import { Link, NavLink } from "react-router-dom";
 
+import authService from "services/authService";
+
 const Sidebar = ({ isOpen, handleClose }) => {
+  const handleLogout = () => {
+    authService.logoutAdmin();
+
+    window.location = `/auth/admin`;
+  };
+
   return (
     <div className={isOpen ? "aside-bar slide" : "aside-bar"}>
       <div className="img-contain">
@@ -43,7 +51,7 @@ const Sidebar = ({ isOpen, handleClose }) => {
       </div>
 
       <div className="sign-out-contain">
-        <Link to={`#`} className={`link`}>
+        <Link to={`#`} onClick={handleLogout} className={`link`}>
           Logout, Admin <i className="fa-solid fa-arrow-right-from-bracket"></i>
         </Link>
       </div>
