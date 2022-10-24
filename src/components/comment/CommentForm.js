@@ -69,7 +69,7 @@ const CommentForm = ({ post, user, setPost }) => {
   const [loading, setLoading] = useState(false);
   const [shown, setShown] = useState(false);
 
-  const location = useLocation();
+  const { pathname } = useLocation();
 
   const handleSubmit = async ({ desc }, { resetForm }) => {
     try {
@@ -130,11 +130,7 @@ const CommentForm = ({ post, user, setPost }) => {
           validationSchema={validationSchema}
         >
           {shown && (
-            <Link
-              to="/login"
-              className="to_login"
-              state={{ from: location.pathname }}
-            >
+            <Link to="/login" className="to_login" state={{ from: pathname }}>
               <span>You must login to comment.</span>
             </Link>
           )}

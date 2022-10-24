@@ -2,10 +2,10 @@
 import { create } from "apisauce";
 import { toast } from "react-toastify";
 
-import url from "config/url";
+import baseURL from "config/url";
 
 const apiClient = create({
-  baseURL: url,
+  baseURL,
 });
 
 apiClient.axiosInstance.interceptors.response.use(null, (error) => {

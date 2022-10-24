@@ -7,10 +7,12 @@ import Search from "../Search";
 import useUser from "hooks/useUser";
 
 import { logout } from "services/authService";
+import useAdmin from "hooks/useAdmin";
 
 const Header = () => {
   const [navFixed, setNavFixed] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const { admin } = useAdmin();
   const { user } = useUser();
   const node = useRef();
 
@@ -67,7 +69,7 @@ const Header = () => {
                     className="user-image"
                     onClick={open}
                     ref={node}
-                    alt="Izon voice"
+                    alt="User-Img"
                   />
                 )}
 
@@ -88,15 +90,11 @@ const Header = () => {
                     <span>{user.name}</span>
                   </div>
 
-                  {user.email === "admin@izonvoice.ng" && (
+                  {admin && (
                     <>
                       <hr />
 
-                      <Link
-                        to={`/upload/post`}
-                        className={`logout-link`}
-                        /* onClick={() => open()} */
-                      >
+                      <Link to={`/posts/create-post`} className={`logout-link`}>
                         <i className="fa-solid fa-upload"></i> Upload New Post
                       </Link>
                     </>

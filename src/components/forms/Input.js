@@ -40,25 +40,6 @@ const InputGroup = styled.div`
     letter-spacing: 0em;
     margin-left: 20px;
   }
-
-  .icon-div {
-    align-self: flex-end;
-    position: relative;
-  }
-
-  #icon {
-    position: absolute;
-    right: 15px;
-    bottom: 15px;
-  }
-
-  .error-icon {
-    color: red;
-  }
-
-  .check-icon {
-    color: green;
-  }
 `;
 
 const Input = ({ name, label, labelStyle, ...otherProps }) => {

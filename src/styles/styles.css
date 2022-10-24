@@ -987,6 +987,10 @@
     margin: 0px auto;
   }
 
+  .left_div .top-links-contain .link {
+    text-align: center;
+  }
+
   .content_div {
     align-items: center;
     display: flex;
@@ -997,7 +1001,6 @@
   .content_div .top-links-contain {
     align-items: center;
     justify-content: center;
-    background-color: orange;
   }
 
   .content_div .cards-contain {

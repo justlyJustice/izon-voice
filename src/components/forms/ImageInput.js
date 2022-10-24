@@ -42,8 +42,7 @@ const Group = styled.div`
 `;
 
 const ImageInput = ({ name, label, labelStyle, ...otherProps }) => {
-  const { errors, touched, values, setFieldValue, setFieldTouched } =
-    useFormikContext();
+  const { errors, touched, values, setFieldValue } = useFormikContext();
   const images = values[name];
 
   const handleChange = (e) => {
@@ -61,9 +60,7 @@ const ImageInput = ({ name, label, labelStyle, ...otherProps }) => {
       <InputField
         accept="image/*"
         name={name}
-        onBlur={() => setFieldTouched(name)}
         onChange={handleChange}
-        /* value={JSON.stringify(images)} */
         style={{
           border: errors[name] && touched[name] ? "1px solid red" : "",
         }}

@@ -9,6 +9,7 @@ import { deletePost, getPosts } from "services/postService";
 import { useEffect } from "react";
 
 import LoadingPlaceHolder from "components/common/LoadingPlaceHolder";
+import { Link } from "react-router-dom";
 
 const ManagePosts = () => {
   const { loading, data: posts, request, setData: setPosts } = useApi(getPosts);
@@ -24,7 +25,7 @@ const ManagePosts = () => {
     const res = await deletePost(id);
 
     if (res.ok) {
-      toast.success(`Post with title ${res.data.post.title} has been deleted.`);
+      toast.success(`Post has been deleted successfully!`);
     }
 
     if (!res.ok) {
@@ -69,6 +70,10 @@ const ManagePosts = () => {
                 <p className="pst-title">{post.title}</p>
 
                 <div className="buttons-contain">
+                  <Link to={`/posts/manage/${post.slug}`} className="btn edit">
+                    Edit <i className="fa-solid fa-trash"></i>
+                  </Link>
+
                   <button
                     className="btn dlt"
                     onClick={() => handleDelete(post._id)}

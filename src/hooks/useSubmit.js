@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
+
 import logger from "utils/logger";
 import { getStatus } from "utils/statusCodes";
 
@@ -9,15 +11,22 @@ const useSubmit = (apiFunc) => {
   const [status, setStatus] = useState(null);
   const [error, setError] = useState(false);
 
-  const submit = async (redirectTo = "", ...args) => {
+  const submit = async (
+    param,
+    navigateTo,
+    successMessage = `Submitted successfully!`,
+    resetForm
+  ) => {
     setSubmitting(true);
-    const res = await apiFunc(...args);
+    const res = await apiFunc(param);
     setSubmitting(false);
 
     if (!res.ok) {
       setError(true);
       logger(res);
       setStatus(getStatus(res.problem));
+
+      toast.error(res.data.message);
 
       setTimeout(() => {
         setError(false);
@@ -27,10 +36,20 @@ const useSubmit = (apiFunc) => {
     if (res.ok) {
       setSuccess(true);
       setData(res.data);
+      toast.success(successMessage);
+
+      if (resetForm) {
+        resetForm();
+      }
+
+      if (navigateTo) {
+        setTimeout(() => {
+          window.location.href = navigateTo;
+        }, 4000);
+      }
 
       setTimeout(() => {
         setSuccess(false);
-        window.location.href = redirectTo ? redirectTo : ``;
       }, 4000);
     }
 

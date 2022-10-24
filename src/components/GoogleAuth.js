@@ -3,8 +3,10 @@ import GoogleLogin from "react-google-login";
 
 import { Button, SuccessButton } from "styles/loginStyles";
 import auth from "services/authService";
+/* import useSubmit from "hooks/useSubmit"; */
 
 const GoogleAuth = ({ text, state }) => {
+  /*  */
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 

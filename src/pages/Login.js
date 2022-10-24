@@ -26,37 +26,16 @@ const validationSchema = Yup.object().shape({
 });
 
 const Login = () => {
-  /* const [success, setSuccess] = useState(false); */
   const { state } = useLocation();
   const { user } = useUser();
   const {
-    data,
-    error,
     submit: login,
     submitting: isSubmitting,
     success,
   } = useSubmit(auth.login);
 
-  const loginUser = async (values, { resetForm }) => {
-    const res = await login(values);
-
-    if (data && data.token) {
-      resetForm();
-      Alert.success("Successful!", "Login successful!");
-
-      /* window.location = state ? state.from : "/home"; */
-    }
-
-    if (error) {
-      Alert.error("Error logging in user!", res.data.message);
-    }
-    /* catch (ex) {
-      if (ex.response && ex.response.status === 400) {
-        Alert.error("Error logging in user!", ex.response.data.message);
-      }
-
-      setisSubmitting(false);
-    } */
+  const loginUser = (values, { resetForm }) => {
+    login(values, state ? state.from : "/home", `Login successful`, resetForm);
   };
 
   if (user) return <Navigate to="/home" />;

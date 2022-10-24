@@ -8,13 +8,17 @@ import { useEffect } from "react";
 import LoadingPlaceHolder from "components/common/LoadingPlaceHolder";
 
 const ManageUsers = () => {
-  const { data, loading, request } = useApi(getUsers);
+  const { data, loading, request, setData } = useApi(getUsers);
 
   useEffect(() => {
     request();
   }, []);
 
-  const handleDelete = (id) => {};
+  const handleDelete = (id) => {
+    const users = data.users.filter((user) => user._id !== id);
+
+    setData({ users });
+  };
 
   return (
     <DashboardWrapper topText={`View/Manage users.`}>
@@ -44,8 +48,8 @@ const ManageUsers = () => {
         data.users
           .filter((user) => user.name !== `Admin`)
           .map((user) => (
-            <div>
-              <div className="pst-contain" key={user._id}>
+            <div key={user._id}>
+              <div className="pst-contain">
                 <div className="icon-contain">
                   <i className="fa-solid fa-user"></i>
                 </div>

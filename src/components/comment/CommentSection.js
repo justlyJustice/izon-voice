@@ -8,14 +8,38 @@ import { formateTime } from "utils/helpers";
 import useUser from "hooks/useUser";
 
 const CommentSection = ({ post, setPost }) => {
-  const elementRef = useRef();
-  const [likes, setLikes] = useState(post && post.likes);
-  const { user } = useUser();
+  /*   const [likes, setLikes] = useState(post && post.likes); */
   const [shown, setShown] = useState(false);
 
+  const { user } = useUser();
+
   const handleLike = async () => {
-    const res = await likePost(post && post.id);
+    const res = await likePost(post && post._id);
+
+    console.log(res);
+
+    /* if(res.ok) {
+      if(post._id === )
+    } */
+
+    /* .then((res) => res.json())
+      .then((result) => {
+        //   console.log(result)
+        const newData = data.map((item) => {
+          if (item._id == result._id) {
+            return result;
+          } else {
+            return item;
+          }
+        });
+        setData(newData);
+      })
+      .catch((err) => {
+        console.log(err);
+      }); */
   };
+
+  console.log(post);
 
   return (
     <>
@@ -34,11 +58,40 @@ const CommentSection = ({ post, setPost }) => {
               </div>
 
               <div className="item">
-                <i
-                  className={`fa-solid fa-heart icon`}
-                  style={{ cursor: !user && "not-allowed" }}
-                ></i>
-                <span className="text">{likes} likes</span>
+                {/*  {item.likes.includes(state._id) ? (
+                  <i
+                    className="material-icons"
+                    onClick={() => {
+                      unlikePost(item._id);
+                    }}
+                  >
+                    thumb_down
+                  </i>
+                ) : (
+                  <i
+                    className="material-icons"
+                    onClick={() => {
+                      likePost(item._id);
+                    }}
+                  >
+                    thumb_up
+                  </i>
+                )} */}
+
+                {post.likes.find((like) => like.userId === user._id) ? (
+                  <i
+                    className={`fa-solid fa-heart icon`}
+                    onClick={() => console.log(`Unlike`)}
+                    /*   style={{ cursor: !user && "not-allowed" }} */
+                  ></i>
+                ) : (
+                  <i
+                    className={`fa-regular fa-heart icon`}
+                    onClick={() => handleLike()}
+                  ></i>
+                )}
+
+                <span className="text">{post && post.likes.length} likes</span>
               </div>
             </div>
 

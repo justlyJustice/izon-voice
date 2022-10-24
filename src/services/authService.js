@@ -9,7 +9,11 @@ export const getJwt = () => {
   return localStorage.getItem(tokenKey);
 };
 
-http.setJwt(getJwt());
+export const getAdminJwt = () => {
+  return localStorage.getItem(adminTokenKey);
+};
+
+http.setJwt(getJwt() || getAdminJwt());
 
 export const login = async (userObj) => {
   const response = await http.post(`/auth/signin`, {

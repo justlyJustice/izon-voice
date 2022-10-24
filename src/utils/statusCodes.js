@@ -1,4 +1,5 @@
 const statusCodes = {
+  null: "No problems",
   CLIENT_ERROR: "Invalid email/password combination.",
   SERVER_ERROR: "Server Error, Something went wrong try again",
   TIMEOUT_ERROR: "Server didn't respond in time.",

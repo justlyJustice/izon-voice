@@ -12,6 +12,7 @@ import PrivacyPolicy from "pages/PrivacyPolicy";
 import AdminLogin from "pages/admin/Login";
 import AdminDashboard from "pages/admin/Dashboard";
 import CreatePost from "pages/admin/CreatePost";
+import EditPost from "pages/admin/EditPost";
 import ManagePosts from "pages/admin/ManagePosts";
 import ManageUsers from "pages/admin/ManageUsers";
 
@@ -40,6 +41,16 @@ const App = () => {
           element={
             <ProtectedRoute>
               <CreatePost />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          exact
+          path="/posts/manage/:slug"
+          element={
+            <ProtectedRoute>
+              <EditPost />
             </ProtectedRoute>
           }
         />

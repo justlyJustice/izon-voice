@@ -1,9 +1,7 @@
-import { useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 
 import * as Yup from "yup";
 
-import Alert from "../utils/Alert";
 import AppLink from "components/common/AppLink";
 import { logo } from "assets/images";
 import { Form, Input } from "components/forms";
@@ -15,6 +13,7 @@ import Head from "components/common/Head";
 import { Container, Btn as SubmitButton } from "styles/registerStyles";
 
 import GoogleAuth from "components/GoogleAuth";
+import useSubmit from "hooks/useSubmit";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().label("Email"),
@@ -27,35 +26,20 @@ const validationSchema = Yup.object().shape({
 });
 
 const Register = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [success, setSuccess] = useState(false);
   const { state } = useLocation();
+  const {
+    submit: registerUser,
+    submitting: registering,
+    success,
+  } = useSubmit(register);
 
-  const handleSubmit = async (values, { resetForm }) => {
-    try {
-      setIsLoading(true);
-      const res = await register(values);
-      auth.loginWithJwt(res.data.token);
-
-      Alert.success("Registration", "Was successful, redirecting...");
-
-      setSuccess(true);
-      setIsLoading(false);
-
-      setTimeout(() => {
-        window.location = state ? state.from : "/home";
-
-        setSuccess(false);
-      }, 3000);
-      resetForm();
-    } catch (ex) {
-      if (ex.response && ex.response.status === 400) {
-        Alert.error("Error registering user!", ex.response.data.message);
-      }
-
-      setSuccess(false);
-      setIsLoading(false);
-    }
+  const handleSubmit = (values, { resetForm }) => {
+    registerUser(
+      values,
+      state ? state.from : "/home",
+      `Registration sucessful!`,
+      resetForm
+    );
   };
 
   if (auth.currentUser) return <Navigate to="/home" />;
@@ -121,12 +105,12 @@ const Register = () => {
                 />
 
                 <SubmitButton
-                  disabled={isLoading === true}
+                  disabled={registering}
                   style={{
-                    cursor: isLoading && "not-allowed",
+                    cursor: registering && "not-allowed",
                   }}
                 >
-                  {isLoading ? (
+                  {registering ? (
                     <i className="fa-solid fa-spinner fa-spin"></i>
                   ) : (
                     "REGISTER"

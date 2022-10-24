@@ -15,20 +15,16 @@ const DashboardWrapper = ({ children, topText }) => {
   };
 
   useEffect(() => {
-    setIsOpen(JSON.parse(sessionStorage.getItem("isOpen")));
-  }, []);
-
-  useEffect(() => {
     const handleScrollVisibility = () => {
       document.documentElement.scrollTop > 400
         ? setShowTopBtn(true)
         : setShowTopBtn(false);
     };
 
-    window.addEventListener(`scroll`, handleScrollVisibility);
+    document.addEventListener(`scroll`, handleScrollVisibility);
 
     return () => {
-      window.removeEventListener(`scroll`, handleScrollVisibility);
+      document.removeEventListener(`scroll`, handleScrollVisibility);
     };
   }, []);
 
