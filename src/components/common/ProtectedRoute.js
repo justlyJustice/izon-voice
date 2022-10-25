@@ -1,10 +1,19 @@
 import { Navigate } from "react-router-dom";
-import useAdmin from "hooks/useAdmin";
+
+import useAuth from "hooks/useAuth";
 
 const ProtectedRoute = ({ children }) => {
-  const { admin } = useAdmin();
+  const { user } = useAuth();
 
-  return <div>{admin ? children : <Navigate to="/home" replace />}</div>;
+  return (
+    <div>
+      {user && user.email === `admin@izonvoice.ng` ? (
+        children
+      ) : (
+        <Navigate to="/home" replace />
+      )}
+    </div>
+  );
 };
 
 export default ProtectedRoute;

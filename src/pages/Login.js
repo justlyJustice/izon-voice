@@ -7,7 +7,7 @@ import Alert from "utils/Alert";
 import AppLink from "components/common/AppLink";
 import { Form, Input } from "components/forms";
 
-import useUser from "hooks/useUser";
+import useAuth from "hooks/useAuth";
 import useSubmit from "hooks/useSubmit";
 
 import {
@@ -27,7 +27,7 @@ const validationSchema = Yup.object().shape({
 
 const Login = () => {
   const { state } = useLocation();
-  const { user } = useUser();
+  const { user } = useAuth();
   const {
     submit: login,
     submitting: isSubmitting,

@@ -26,7 +26,7 @@ apiClient.axiosInstance.interceptors.response.use(null, (error) => {
 });
 
 export const setJwt = (jwt) => {
-  apiClient.headers["x-auth-token"] = jwt;
+  apiClient.headers["Authorization"] = "Bearer " + jwt;
 };
 
 export default {

@@ -1,17 +1,19 @@
-import { useState } from "react";
 import GoogleLogin from "react-google-login";
 
 import { Button, SuccessButton } from "styles/loginStyles";
 import auth from "services/authService";
-/* import useSubmit from "hooks/useSubmit"; */
+import useSubmit from "hooks/useSubmit";
 
 const GoogleAuth = ({ text, state }) => {
-  /*  */
-  const [success, setSuccess] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const {
+    submit: googleLogin,
+    success,
+    submitting: loading,
+  } = useSubmit(auth.googleAuth);
 
   const onSuccess = async (res) => {
-    try {
+    googleLogin(res?.tokenId, state ? state.from : "/home");
+    /*  try {
       setLoading(true);
       const result = await auth.googleAuth(res?.tokenId);
       setLoading(false);
@@ -28,7 +30,7 @@ const GoogleAuth = ({ text, state }) => {
       }
     } catch (error) {
       console.log(error);
-    }
+    } */
   };
 
   return (

@@ -53,6 +53,10 @@ const useSubmit = (apiFunc) => {
       }, 4000);
     }
 
+    if (!res) {
+      return setSubmitting(false);
+    }
+
     return res;
   };
 

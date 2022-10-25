@@ -705,9 +705,14 @@
   margin-right: 10px;
 }
 
+.comment-section .comment-detail .content .item .liked {
+  color: #ea0000;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
 .comment-section .comment-detail .content .item .text {
   font-family: inherit;
-
   font-weight: 800;
   font-size: 15px;
   line-height: 18px;
@@ -771,7 +776,6 @@
 
 .comment-section .user_contain .time-stamp span {
   font-family: "Montserrat";
-
   font-weight: 800;
   font-size: 10px;
   color: #393939;

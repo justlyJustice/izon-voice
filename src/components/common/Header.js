@@ -4,16 +4,14 @@ import { Link } from "react-router-dom";
 
 import Navbar from "../Navbar";
 import Search from "../Search";
-import useUser from "hooks/useUser";
+import useAuth from "hooks/useAuth";
 
 import { logout } from "services/authService";
-import useAdmin from "hooks/useAdmin";
 
 const Header = () => {
   const [navFixed, setNavFixed] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
-  const { admin } = useAdmin();
-  const { user } = useUser();
+  const { user } = useAuth();
   const node = useRef();
 
   const setNavbar = () => {
@@ -90,7 +88,7 @@ const Header = () => {
                     <span>{user.name}</span>
                   </div>
 
-                  {admin && (
+                  {user.email === `admin@izonvoice.ng` && (
                     <>
                       <hr />
 

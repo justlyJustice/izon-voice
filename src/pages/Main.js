@@ -11,10 +11,10 @@ import Head from "components/common/Head";
 import LoadingAnimation from "components/common/LoadingAnimation";
 
 import useApi from "../hooks/useApi";
-import useUser from "../hooks/useUser";
 
-import { getWelcomePageStories } from "services/postService";
+import { getPosts } from "services/postService";
 import Footer from "components/Footer";
+import useAuth from "hooks/useAuth";
 
 const Main = () => {
   const {
@@ -22,11 +22,11 @@ const Main = () => {
     data: posts,
     loading,
     request: retrievePosts,
-  } = useApi(getWelcomePageStories);
-  const { user } = useUser();
+  } = useApi(getPosts);
+  const { user } = useAuth();
 
   useEffect(() => {
-    retrievePosts();
+    retrievePosts(`?limit=${3}`);
   }, []);
 
   if (error) {
@@ -105,8 +105,6 @@ const Main = () => {
           </div>
         </div>
       </div>
-
-      <Footer />
     </>
   );
 };

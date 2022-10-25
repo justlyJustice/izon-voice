@@ -13,10 +13,10 @@ export const getAdminJwt = () => {
   return localStorage.getItem(adminTokenKey);
 };
 
-http.setJwt(getJwt() || getAdminJwt());
+http.setJwt(getJwt());
 
 export const login = async (userObj) => {
-  const response = await http.post(`/auth/signin`, {
+  const response = await http.post(`auth/login`, {
     email: userObj.email,
     password: userObj.password,
   });
@@ -71,10 +71,14 @@ export const logoutAdmin = () => {
   localStorage.removeItem(adminTokenKey);
 };
 
-export const googleAuth = (tokenId) => {
-  return http.post("/google-auth", {
+export const googleAuth = async (tokenId) => {
+  const res = await http.post("/google-auth", {
     token: tokenId,
   });
+
+  if (res.ok) {
+    loginWithJwt(res.data.token);
+  }
 };
 
 export default {

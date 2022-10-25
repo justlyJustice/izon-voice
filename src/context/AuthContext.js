@@ -1,14 +1,14 @@
 import { createContext, useState } from "react";
 import auth from "services/authService";
 
-export const UserContext = createContext();
+export const AuthContext = createContext();
 
-export const UserProvider = ({ children }) => {
+export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(auth.currentUser);
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user, setUser }}>
       {children}
-    </UserContext.Provider>
+    </AuthContext.Provider>
   );
 };

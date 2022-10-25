@@ -5,41 +5,38 @@ import CommentForm from "./CommentForm";
 
 import { likePost } from "services/postService";
 import { formateTime } from "utils/helpers";
-import useUser from "hooks/useUser";
+import useAuth from "hooks/useAuth";
 
 const CommentSection = ({ post, setPost }) => {
   /*   const [likes, setLikes] = useState(post && post.likes); */
   const [shown, setShown] = useState(false);
+  const [isLiked, setIsLiked] = useState(post && post.likes);
 
-  const { user } = useUser();
+  const { user } = useAuth();
 
-  const handleLike = async () => {
-    const res = await likePost(post && post._id);
+  const handleLike = async (postId) => {
+    const res = await likePost(postId);
 
-    console.log(res);
-
-    /* if(res.ok) {
-      if(post._id === )
-    } */
-
-    /* .then((res) => res.json())
-      .then((result) => {
-        //   console.log(result)
-        const newData = data.map((item) => {
-          if (item._id == result._id) {
-            return result;
-          } else {
-            return item;
-          }
+    if (res.ok) {
+      if (res.data !== null) {
+        setPost({
+          ...post,
+          likes: [...post.likes, res.data],
         });
-        setData(newData);
-      })
-      .catch((err) => {
-        console.log(err);
-      }); */
-  };
+        setIsLiked(true);
+      }
 
-  console.log(post);
+      if (res.data === null) {
+        setPost({
+          ...post,
+          likes: post.likes.filter((like) => like._id !== res.data._id),
+        });
+        setIsLiked(false);
+      }
+    }
+
+    return res;
+  };
 
   return (
     <>
@@ -58,36 +55,16 @@ const CommentSection = ({ post, setPost }) => {
               </div>
 
               <div className="item">
-                {/*  {item.likes.includes(state._id) ? (
-                  <i
-                    className="material-icons"
-                    onClick={() => {
-                      unlikePost(item._id);
-                    }}
-                  >
-                    thumb_down
-                  </i>
-                ) : (
-                  <i
-                    className="material-icons"
-                    onClick={() => {
-                      likePost(item._id);
-                    }}
-                  >
-                    thumb_up
-                  </i>
-                )} */}
-
-                {post.likes.find((like) => like.userId === user._id) ? (
+                {!isLiked ? (
                   <i
                     className={`fa-solid fa-heart icon`}
-                    onClick={() => console.log(`Unlike`)}
-                    /*   style={{ cursor: !user && "not-allowed" }} */
+                    onClick={() => handleLike(post._id)}
                   ></i>
                 ) : (
                   <i
-                    className={`fa-regular fa-heart icon`}
-                    onClick={() => handleLike()}
+                    className={`fa-regular fa-heart liked`}
+                    onClick={() => handleLike(post._id)}
+                    style={{ cursor: !user && "not-allowed" }}
                   ></i>
                 )}
 

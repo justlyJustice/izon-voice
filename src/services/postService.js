@@ -8,16 +8,12 @@ export const getPost = async (id) => {
   return await http.get(`posts/${id}`);
 };
 
-export const getWelcomePageStories = async () => {
-  return await http.get("posts/welcome-page-stories");
-};
-
 export const getPostsCategory = async (category) => {
   return await http.get(`posts/?category=${category}`);
 };
 
-export const likePost = async (id) => {
-  return await http.post(`posts/${id}/likes`);
+export const likePost = async (postId) => {
+  return await http.post(`posts/${postId}/likes`);
 };
 
 export const uploadBlogPost = (values) => {
