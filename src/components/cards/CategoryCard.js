@@ -79,12 +79,13 @@ const CardContainer = styled.div`
 const CategoryCard = ({ data }) => {
   return (
     <CardContainer>
-      <Link to={`/${data.slug || data._id}`}>
+      <Link to={`/${data.slug}`}>
         <img
           className="card-image"
           src={data.images[0] || data.urlToImage}
-          alt="Category"
+          alt="category-img"
         />
+
         <div>
           <h3 className="title">{data.title}</h3>
           <p className="para-text">{data.paraText}</p>
@@ -95,6 +96,7 @@ const CategoryCard = ({ data }) => {
             <i className="fa fa-comment"></i>{" "}
             <span>{data.comments.length}</span>
           </div>
+
           <div className="content">
             <i className="fa fa-heart"></i> <span>{data.likes.length}</span>
           </div>

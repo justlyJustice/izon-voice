@@ -741,7 +741,7 @@
 }
 
 .comment-section .user_contain .user .name-contain .username {
-  font-family: "Montserrat";
+  font-family: Montserrat;
   font-weight: 700;
   font-size: 18px;
   line-height: 22px;
@@ -775,7 +775,7 @@
 }
 
 .comment-section .user_contain .time-stamp span {
-  font-family: "Montserrat";
+  font-family: Montserrat;
   font-weight: 800;
   font-size: 10px;
   color: #393939;
@@ -793,7 +793,7 @@
 
 .blog-category-section .top-contain .category {
   color: rgba(17, 55, 254, 0.7);
-  font-family: "Montserrat";
+  font-family: Montserrat;
   font-weight: 800;
   font-size: 35px;
   line-height: 43px;
@@ -1187,7 +1187,7 @@
   }
 
   .comment-section .user_contain .user .name-contain .username {
-    font-family: "Montserrat";
+    font-family: Montserrat;
     font-weight: 700;
     font-size: 18px;
     line-height: 22px;
@@ -1225,7 +1225,7 @@
   }
 
   .comment-section .user_contain .time-stamp span {
-    font-family: "Montserrat";
+    font-family: Montserrat;
     font-weight: 800;
     font-size: 10px;
     color: #393939;
@@ -1242,7 +1242,7 @@
 
   .blog-category-section .top-contain .category {
     color: rgba(17, 55, 254, 0.7);
-    font-family: "Montserrat";
+    font-family: Montserrat;
     font-weight: 800;
     font-size: 35px;
     line-height: 43px;
