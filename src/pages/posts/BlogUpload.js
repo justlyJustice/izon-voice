@@ -10,7 +10,7 @@ import {
   Form,
   FormContainer,
   Group,
-} from "../../styles/blogUploadStyles";
+} from "styles/blogUploadStyles";
 import StatusPlaceholder from "components/common/StatusPlaceholder";
 
 const initialValues = {

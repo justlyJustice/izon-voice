@@ -16,6 +16,10 @@ export const likePost = async (postId) => {
   return await http.post(`posts/${postId}/likes`);
 };
 
+export const unlikePost = async (postId) => {
+  return await http.delete(`posts/${postId}/likes`);
+};
+
 export const uploadBlogPost = (values) => {
   const { author, category, description, title, images } = values;
 

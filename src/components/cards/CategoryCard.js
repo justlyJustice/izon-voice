@@ -96,7 +96,7 @@ const CategoryCard = ({ data }) => {
             <span>{data.comments.length}</span>
           </div>
           <div className="content">
-            <i className="fa fa-heart"></i> <span>{data.likes}</span>
+            <i className="fa fa-heart"></i> <span>{data.likes.length}</span>
           </div>
         </div>
       </Link>

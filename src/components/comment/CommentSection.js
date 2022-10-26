@@ -1,38 +1,64 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import CustomIcon from "components/common/CustomIcon";
 import CommentForm from "./CommentForm";
 
-import { likePost } from "services/postService";
+import { likePost, unlikePost } from "services/postService";
 import { formateTime } from "utils/helpers";
 import useAuth from "hooks/useAuth";
 
 const CommentSection = ({ post, setPost }) => {
-  /*   const [likes, setLikes] = useState(post && post.likes); */
-  const [shown, setShown] = useState(false);
-  const [isLiked, setIsLiked] = useState(post && post.likes);
-
+  const [isLiked, setIsLiked] = useState(false);
   const { user } = useAuth();
 
+  const likedPost = post && post.likes.find((el) => el.user === user.id);
+
+  useEffect(() => {
+    if (likedPost) {
+      setIsLiked(true);
+    }
+  }, []);
+
   const handleLike = async (postId) => {
-    const res = await likePost(postId);
+    const res = await unlikePost(postId);
+
+    if (res.data) {
+      setPost({
+        ...post,
+        likes: [...post.likes, res.data],
+      });
+      setIsLiked(true);
+    } /*  else {
+      setPost({
+        ...post,
+        likes: originalLikes,
+      });
+
+      setIsLiked(false);
+    } */
+
+    if (res.data === null) {
+    }
+
+    return res;
+  };
+
+  const handleUnLike = async (postId) => {
+    const orignalLikes = [...post.likes];
+
+    const res = await unlikePost(postId);
 
     if (res.ok) {
-      if (res.data !== null) {
-        setPost({
-          ...post,
-          likes: [...post.likes, res.data],
-        });
-        setIsLiked(true);
-      }
+      setPost({
+        ...post,
+        likes: post.likes.filter((el) => el._id !== res.data._id),
+      });
+      setIsLiked(false);
+    }
 
-      if (res.data === null) {
-        setPost({
-          ...post,
-          likes: post.likes.filter((like) => like._id !== res.data._id),
-        });
-        setIsLiked(false);
-      }
+    if (!res.ok) {
+      setPost({ ...post, likes: orignalLikes });
     }
 
     return res;
@@ -57,14 +83,14 @@ const CommentSection = ({ post, setPost }) => {
               <div className="item">
                 {!isLiked ? (
                   <i
-                    className={`fa-solid fa-heart icon`}
+                    className={`fa-regular fa-heart icon`}
                     onClick={() => handleLike(post._id)}
+                    style={{ cursor: !user && "not-allowed" }}
                   ></i>
                 ) : (
                   <i
-                    className={`fa-regular fa-heart liked`}
-                    onClick={() => handleLike(post._id)}
-                    style={{ cursor: !user && "not-allowed" }}
+                    className={`fa-solid fa-heart liked`}
+                    onClick={() => handleUnLike(post._id)}
                   ></i>
                 )}
 

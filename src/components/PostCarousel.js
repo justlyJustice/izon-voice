@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 
-const BlogCarousel = ({ posts }) => {
+const PostCarousel = ({ posts }) => {
   const CustomNextArrow = (props) => {
     const { className, style, onClick } = props;
 
@@ -96,4 +96,4 @@ const BlogCarousel = ({ posts }) => {
   );
 };
 
-export default BlogCarousel;
+export default PostCarousel;

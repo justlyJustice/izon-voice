@@ -21,7 +21,7 @@ import { getPost } from "services/postService";
 import useApi from "hooks/useApi";
 import { adImageOne, treasuresColdRoom } from "assets/images";
 
-const Blog = () => {
+const Post = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
   const { name } = useParams();
@@ -250,4 +250,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default Post;

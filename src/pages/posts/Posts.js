@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
-import BlogCarousel from "components/BlogCarousel";
+import PostCarousel from "components/PostCarousel";
 import Header from "components/common/Header";
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,7 @@ import LoadingAnimation from "components/common/LoadingAnimation";
 import Head from "components/common/Head";
 import { formateTime } from "utils/helpers";
 
-const Blogs = () => {
+const Posts = () => {
   const { data: posts, loading, request: retrievePosts } = useApi(getPosts);
 
   useEffect(() => {
@@ -21,14 +21,14 @@ const Blogs = () => {
     <div>
       <section>
         <Head
-          title="Izon Voice | Blog"
+          title="Izon Voice | Posts"
           description="Return right in and hear from some cool voices around the globe"
         />
         <LoadingAnimation loading={loading} />
         <Header />
         <div className="container">
           <div className="carousel_contain">
-            <BlogCarousel posts={posts} />
+            <PostCarousel posts={posts} />
           </div>
 
           <div className="news_feed_contain">
@@ -138,4 +138,4 @@ const Blogs = () => {
   );
 };
 
-export default Blogs;
+export default Posts;

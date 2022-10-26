@@ -12,7 +12,7 @@ import LoadingAnimation from "components/common/LoadingAnimation";
 import NoResults from "components/common/NoResults";
 import Head from "components/common/Head";
 
-const BlogCategory = () => {
+const PostCategory = () => {
   const { name } = useParams();
 
   const { data: posts, loading, request } = useApi(getPostsCategory);
@@ -23,7 +23,7 @@ const BlogCategory = () => {
 
   return (
     <section className="blog-category-section">
-      <Head title="Izon Voice | Category" />
+      <Head title={"Izon Voice | " + name.toUpperCase()} />
       <LoadingAnimation loading={loading} />
 
       <Header />
@@ -49,4 +49,4 @@ const BlogCategory = () => {
   );
 };
 
-export default BlogCategory;
+export default PostCategory;
