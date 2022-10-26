@@ -379,6 +379,45 @@
   /* width: 250px; */
 }
 
+.posts-flex {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 40px;
+  position: relative;
+}
+
+.posts-flex .trending-posts {
+  align-items: center;
+  /* background-color: #f8f8f8; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  /*   position: absolute; */
+  /* width: 200%; */
+  z-index: 1000;
+}
+
+.posts-flex .trending-posts .trends {
+  align-items: center;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.posts-flex .trending-posts .trends .trend {
+  background: orange;
+  cursor: pointer;
+  border: 3px solid #e0e0e0;
+  height: 68px;
+  width: 100%;
+  border-radius: 20px;
+  margin: 15px 0;
+  transition: ease-in-out 0.3s all;
+  z-index: 10000;
+}
+
 .news_feed_contain {
   margin: 10px 0px;
 }
@@ -523,54 +562,6 @@
   line-height: 27px;
   color: #ea1919;
   margin-bottom: 20px;
-}
-
-.news_feed_contain .section2 .trends-container .trend {
-  position: relative !important;
-  cursor: pointer;
-  border: 3px solid #e0e0e0;
-  height: 68px;
-  width: 100%;
-  border-radius: 20px;
-  margin: 15px 0;
-  transition: ease-in-out 0.3s all;
-}
-
-.news_feed_contain .section2 .trends-container .trend:hover {
-  transform: scale(1.1);
-}
-
-.news_feed_contain .section2 .trends-container .trend .trend-pic-contain {
-  width: 100%;
-  border-radius: 20px;
-  height: 100px;
-  overflow: hidden;
-  position: relative;
-}
-
-.news_feed_contain .section2 .trends-container .trend img {
-  width: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: -70px;
-}
-
-.news_feed_contain .section2 .trends-container .trend .trend-text {
-  font-family: Montserrat;
-  display: -webkit-box !important;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  font-weight: 800;
-  font-size: 16px;
-  text-align: center;
-  color: #000000;
-  /*  top: 50%;
-  bottom: 0;
-  right: 0;
-  left: 50%;
-  width: 100%;
-  transform: translate(-50%, -50%); */
 }
 
 /* Blog on Id */

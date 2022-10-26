@@ -2,7 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-import LogRocket from "logrocket";
+import logrocketConfig from "config/logrocket";
 
 import App from "./App";
 import ErrorBoundary from "components/ErrorBoundaryComponent";
@@ -14,12 +14,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { AuthProvider } from "context/AuthContext";
 
-/* LogRocket.init("pbnfxi/izon-voice");
-
-LogRocket.identify("f6d5211e-302e-470b-bd42-fbef963cd14", {
-  subscriptionType: "pro",
-});
- */
+logrocketConfig();
 
 ReactDOM.render(
   <AuthProvider>

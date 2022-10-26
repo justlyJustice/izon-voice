@@ -21,27 +21,15 @@ const CommentSection = ({ post, setPost }) => {
   }, []);
 
   const handleLike = async (postId) => {
-    const res = await unlikePost(postId);
+    const res = await likePost(postId);
 
-    if (res.data) {
+    if (res.ok)
       setPost({
         ...post,
-        likes: [...post.likes, res.data],
-      });
-      setIsLiked(true);
-    } /*  else {
-      setPost({
-        ...post,
-        likes: originalLikes,
+        likes: [...post.likes, res.data.data],
       });
 
-      setIsLiked(false);
-    } */
-
-    if (res.data === null) {
-    }
-
-    return res;
+    setIsLiked(true);
   };
 
   const handleUnLike = async (postId) => {
@@ -50,15 +38,24 @@ const CommentSection = ({ post, setPost }) => {
     const res = await unlikePost(postId);
 
     if (res.ok) {
+      const likes = post.likes.filter(
+        (like) => like._id !== res.data.data.like
+      );
+
       setPost({
         ...post,
-        likes: post.likes.filter((el) => el._id !== res.data._id),
+        likes,
       });
       setIsLiked(false);
     }
 
     if (!res.ok) {
-      setPost({ ...post, likes: orignalLikes });
+      setPost({
+        ...post,
+        likes: orignalLikes,
+      });
+
+      /* setIsLiked(true); */
     }
 
     return res;

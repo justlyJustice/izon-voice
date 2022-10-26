@@ -13,11 +13,11 @@ export const getPostsCategory = async (category) => {
 };
 
 export const likePost = async (postId) => {
-  return await http.post(`posts/${postId}/likes`);
+  return await http.post(`posts/${postId}/likes/add-like`);
 };
 
 export const unlikePost = async (postId) => {
-  return await http.delete(`posts/${postId}/likes`);
+  return await http.post(`posts/${postId}/likes/remove-like`);
 };
 
 export const uploadBlogPost = (values) => {
