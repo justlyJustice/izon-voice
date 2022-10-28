@@ -10,6 +10,7 @@ import useAuth from "hooks/useAuth";
 
 const CommentSection = ({ post, setPost }) => {
   const [isLiked, setIsLiked] = useState(false);
+  const [commentId, setCommentId] = useState();
   const { user } = useAuth();
 
   const likedPost = post && post.likes.find((el) => el.user === user.id);
@@ -96,6 +97,37 @@ const CommentSection = ({ post, setPost }) => {
             </div>
 
             <hr className="comment-rule" />
+          </div>
+
+          <div className="user_contain">
+            <div className="user">
+              <div className="icon_container">
+                <CustomIcon />
+
+                <hr className="user-rule" />
+              </div>
+
+              <div className="name-contain">
+                <div>
+                  <h2 className="username">James Peremobowei</h2>
+
+                  <p className="comment">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Reprehenderit voluptates tenetur laudantium ab. Maxime
+                    labore accusamus, reiciendis ducimus exercitationem
+                    pariatur!
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="time-stamp">
+              <span>{formateTime(Date.now())}</span>
+            </div>
+
+            <div className="reply-div">
+              <i className="fa-solid fa-reply"></i> <span>Reply</span>
+            </div>
           </div>
 
           {post.comments.length > 0 &&

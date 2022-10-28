@@ -720,7 +720,7 @@
 .comment-section .user_contain .user {
   align-items: center;
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 
 .comment-section .user_contain .user .user-rule {
@@ -746,11 +746,11 @@
   line-height: 19px;
   text-align: justify;
   color: #393939;
+  width: 90%;
 }
 
-.comment-section .user_contain .user .name-contain .reply .reply-link {
-  color: #dbdbdb !important;
-  font-size: 12px;
+.comment-section .user_contain .user .reply-div {
+  background-color: orange;
 }
 
 .comment-section .user_contain .user .name-contain .reply .reply-link:hover {
