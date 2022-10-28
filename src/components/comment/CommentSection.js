@@ -7,13 +7,16 @@ import CommentForm from "./CommentForm";
 import { likePost, unlikePost } from "services/postService";
 import { formateTime } from "utils/helpers";
 import useAuth from "hooks/useAuth";
+import { toast } from "react-toastify";
+import SingleComment from "./SingleComment";
+import ReplyForm from "./ReplyForm";
 
 const CommentSection = ({ post, setPost }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [commentId, setCommentId] = useState();
   const { user } = useAuth();
 
-  const likedPost = post && post.likes.find((el) => el.user === user.id);
+  let likedPost = post && post.likes.find((el) => el.user === user.id);
 
   useEffect(() => {
     if (likedPost) {
@@ -24,13 +27,17 @@ const CommentSection = ({ post, setPost }) => {
   const handleLike = async (postId) => {
     const res = await likePost(postId);
 
-    if (res.ok)
+    if (res.ok) {
       setPost({
         ...post,
         likes: [...post.likes, res.data.data],
       });
+      setIsLiked(true);
+    }
 
-    setIsLiked(true);
+    if (!res.ok) {
+      toast.error(res.data.message);
+    }
   };
 
   const handleUnLike = async (postId) => {
@@ -55,12 +62,12 @@ const CommentSection = ({ post, setPost }) => {
         ...post,
         likes: orignalLikes,
       });
-
-      /* setIsLiked(true); */
     }
 
     return res;
   };
+
+  const handleShow = () => {};
 
   return (
     <>
@@ -99,62 +106,44 @@ const CommentSection = ({ post, setPost }) => {
             <hr className="comment-rule" />
           </div>
 
-          <div className="user_contain">
-            <div className="user">
-              <div className="icon_container">
-                <CustomIcon />
+          <div className="single-comment">
+            <div className="user_contain">
+              <div className="user">
+                <div className="icon_container">
+                  <CustomIcon />
 
-                <hr className="user-rule" />
-              </div>
+                  <hr className="user-rule" />
+                </div>
 
-              <div className="name-contain">
-                <div>
-                  <h2 className="username">James Peremobowei</h2>
+                <div className="name-contain">
+                  <div>
+                    <h2 className="username">James Peremobowei</h2>
 
-                  <p className="comment">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Reprehenderit voluptates tenetur laudantium ab. Maxime
-                    labore accusamus, reiciendis ducimus exercitationem
-                    pariatur!
-                  </p>
+                    <p className="comment">
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                      Reprehenderit voluptates tenetur laudantium ab. Maxime
+                      labore accusamus, reiciendis ducimus exercitationem
+                      pariatur!
+                    </p>
+                  </div>
+
+                  <div className="reply-div">
+                    <span onClick={() => handleShow()}>
+                      <i className="fa-solid fa-reply"></i> Reply
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="time-stamp">
-              <span>{formateTime(Date.now())}</span>
-            </div>
-
-            <div className="reply-div">
-              <i className="fa-solid fa-reply"></i> <span>Reply</span>
+              <div className="time-stamp">
+                <span>{formateTime(Date.now())}</span>
+              </div>
             </div>
           </div>
 
           {post.comments.length > 0 &&
             post.comments.map((comment, i) => (
-              <div className="user_contain" key={i}>
-                <div className="user">
-                  <div className="icon_container">
-                    <i className="fa-solid fa-user"></i>
-
-                    <hr className="user-rule" />
-                  </div>
-
-                  <div className="name-contain">
-                    <div>
-                      <h2 className="username">{comment.user}</h2>
-
-                      <p className="comment">
-                        {comment.desc || comment.message}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="time-stamp">
-                  <span>{formateTime(comment.createdAt)}</span>
-                </div>
-              </div>
+              <SingleComment comment={comment} key={i} />
             ))}
         </section>
       )}

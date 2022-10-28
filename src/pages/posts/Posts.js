@@ -24,6 +24,7 @@ const Posts = () => {
           title="Izon Voice | Home"
           description="Return right in and hear from some cool voices around the globe"
         />
+
         <LoadingAnimation loading={loading} />
         <Header />
         <div className="container">

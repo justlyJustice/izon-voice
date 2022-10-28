@@ -5,7 +5,7 @@ import styled from "styled-components";
 const InputField = styled.input`
   width: 100%;
   background: #ffffff;
-  border-radius: 20px;
+  border-radius: 20px;G
   padding: 15px;
   font-weight: 600;
 
@@ -43,8 +43,7 @@ const InputGroup = styled.div`
 `;
 
 const Input = ({ name, label, labelStyle, ...otherProps }) => {
-  const { errors, touched, values, setFieldValue, setFieldTouched } =
-    useFormikContext();
+  const { errors, touched, values, setFieldValue } = useFormikContext();
 
   return (
     <InputGroup>

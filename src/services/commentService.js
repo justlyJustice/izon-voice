@@ -6,6 +6,12 @@ const postComment = (postId, desc) =>
     desc,
   });
 
+const addReply = (commentId, message) =>
+  http.post(`comments/${commentId}/replies`, {
+    message,
+  });
+
 export default {
+  addReply,
   postComment,
 };
