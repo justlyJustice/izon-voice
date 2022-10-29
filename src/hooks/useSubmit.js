@@ -21,18 +21,6 @@ const useSubmit = (apiFunc) => {
     const res = await apiFunc(param);
     setSubmitting(false);
 
-    if (!res.ok) {
-      setError(true);
-      logger(res);
-      setStatus(getStatus(res.problem));
-
-      toast.error(res.data.message);
-
-      setTimeout(() => {
-        setError(false);
-      }, 4000);
-    }
-
     if (res.ok) {
       setSuccess(true);
       setData(res.data);
@@ -50,6 +38,18 @@ const useSubmit = (apiFunc) => {
 
       setTimeout(() => {
         setSuccess(false);
+      }, 4000);
+    }
+
+    if (!res.ok) {
+      setError(true);
+      logger(res);
+      setStatus(getStatus(res.problem));
+
+      toast.error(res.data.message);
+
+      setTimeout(() => {
+        setError(false);
       }, 4000);
     }
 
