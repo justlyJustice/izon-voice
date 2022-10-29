@@ -15,7 +15,7 @@ apiClient.axiosInstance.interceptors.response.use(null, (error) => {
     error.response.status < 500;
 
   if (!expectedError) {
-    toast.error("An unexpected error occured", {
+    toast.error("Internal server error", {
       autoClose: true,
       closeButton: true,
       type: "error",

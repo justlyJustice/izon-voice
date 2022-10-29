@@ -5,7 +5,7 @@ import styled from "styled-components";
 const InputField = styled.input`
   width: 100%;
   background: #ffffff;
-  border-radius: 20px;G
+  border-radius: 20px;
   padding: 15px;
   font-weight: 600;
 

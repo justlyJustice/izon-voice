@@ -43,70 +43,70 @@ const Posts = () => {
               <div className="section1">
                 {posts &&
                   posts.length > 0 &&
-                  posts
-                    .filter((post) => post._id !== "62b4cdaec10f2800dbe62cd1")
-                    .slice(10, posts.length)
-                    .map((post, i) => (
-                      <Link to={`/${post.slug}`} key={i}>
-                        <div className="div1">
-                          <div className="div1-image-contain">
-                            <img
-                              src={post.urlToImage || post.images[0]}
-                              alt="Item pic"
-                            />
-                          </div>
+                  posts.slice(10, posts.length).map((post, i) => (
+                    <Link to={`/${post.slug}`} key={i}>
+                      <div className="post-contain">
+                        <div className="post-contain-image-contain">
+                          <img
+                            src={post.urlToImage || post.images[0]}
+                            alt="Item pic"
+                          />
+                        </div>
 
-                          <div className="text-div">
-                            <div className="text-group-one">
+                        <div className="text-div">
+                          <div className="text-group-one">
+                            <div className="category">
+                              <i
+                                className="fa-solid fa-badge"
+                                style={{ color: `white !imporant` }}
+                              ></i>
                               <span className="first-span">
                                 {post.category.toUpperCase()}
                               </span>
+                            </div>
 
-                              <i
-                                className="fa fa-circle fa-sm"
-                                style={{ color: "#c4c4c4", fontSize: "8px" }}
-                              ></i>
-
+                            <div className="createdAt">
                               <span className="second-span">
                                 {formateTime(post.createdAt)}
                               </span>
                             </div>
+                          </div>
 
-                            <p className="blog-title">
-                              {post.title.toUpperCase()}
-                            </p>
+                          <p className="blog-title">
+                            {post.title.toUpperCase()}
+                          </p>
 
-                            <div className="tags-contain">
-                              <span className="comment-contain">
-                                <i
-                                  className="fa-solid fa-comment"
-                                  style={{
-                                    color: "#C4C4C4",
-                                    fontSize: "12px",
-                                  }}
-                                />{" "}
-                                <small>{post.comments.length}</small>
-                              </span>
+                          <div className="tags-contain">
+                            <span className="comment-contain">
+                              <i
+                                className="fa-solid fa-comment"
+                                style={{
+                                  color: "#C4C4C4",
+                                  fontSize: "12px",
+                                }}
+                              />{" "}
+                              <small>{post.comments.length}</small>
+                            </span>
 
-                              <span className="comment-contain">
-                                <i
-                                  className="fa-solid fa-heart"
-                                  style={{
-                                    color: "#C4C4C4",
-                                    fontSize: "12px",
-                                  }}
-                                />
+                            <span className="comment-contain">
+                              <i
+                                className="fa-solid fa-heart"
+                                style={{
+                                  color: "#C4C4C4",
+                                  fontSize: "12px",
+                                }}
+                              />
 
-                                <small>0</small>
-                              </span>
-                            </div>
+                              <small>0</small>
+                            </span>
                           </div>
                         </div>
-                      </Link>
-                    ))}
+                      </div>
+                    </Link>
+                  ))}
               </div>
 
-              <div className="section2">
+              {/* <div className="section2">
                 <div className="top-trend-text">
                   <p>
                     TRENDING <i className="fa-solid fa-arrow-trend-up"></i>
@@ -130,7 +130,7 @@ const Posts = () => {
                         </div>
                       ))}
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

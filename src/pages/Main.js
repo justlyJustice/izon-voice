@@ -10,11 +10,12 @@ import CategoryButtonsSlide from "components/CategoryButtonsSlide";
 import Head from "components/common/Head";
 import LoadingAnimation from "components/common/LoadingAnimation";
 
-import useApi from "../hooks/useApi";
+import useApi from "hooks/useApi";
 
 import { getPosts } from "services/postService";
 import Footer from "components/Footer";
 import useAuth from "hooks/useAuth";
+import ErrorBoundary from "components/ErrorBoundaryComponent";
 
 const Main = () => {
   const {
@@ -30,13 +31,25 @@ const Main = () => {
   }, []);
 
   if (error) {
-    return <h2>Error Occurred!</h2>;
+    return <ErrorBoundary />;
   }
 
   return (
     <>
       <Head title={`Izon Voice | Home`} description="Izon Voice Homepage" />
       <LoadingAnimation loading={loading} />
+
+      {/*  <amp-ad
+        width="100vw"
+        height="320"
+        type="adsense"
+        data-ad-client="ca-pub-4441614518245290"
+        data-ad-slot="8861658459"
+        data-auto-format="rspv"
+        data-full-width=""
+      >
+        <div overflow=""></div>
+      </amp-ad> */}
 
       <div className="main-grid">
         <div className="left_div">

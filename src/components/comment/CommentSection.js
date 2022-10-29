@@ -1,6 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import ReactTooltip from "react-tooltip";
+
 import CustomIcon from "components/common/CustomIcon";
 import CommentForm from "./CommentForm";
 
@@ -87,16 +89,24 @@ const CommentSection = ({ post, setPost }) => {
 
               <div className="item">
                 {!isLiked ? (
-                  <i
-                    className={`fa-regular fa-heart icon`}
-                    onClick={() => handleLike(post._id)}
-                    style={{ cursor: !user && "not-allowed" }}
-                  ></i>
+                  <>
+                    <ReactTooltip type={user && "success"} />
+                    <i
+                      data-tip={user ? `Like 👍` : `You need to login to like!`}
+                      className={`fa-regular fa-heart icon`}
+                      onClick={() => handleLike(post._id)}
+                      style={{ cursor: !user && "not-allowed" }}
+                    ></i>
+                  </>
                 ) : (
-                  <i
-                    className={`fa-solid fa-heart liked`}
-                    onClick={() => handleUnLike(post._id)}
-                  ></i>
+                  <>
+                    <ReactTooltip />
+                    <i
+                      data-tip={`Unlike 👎`}
+                      className={`fa-solid fa-heart liked`}
+                      onClick={() => handleUnLike(post._id)}
+                    ></i>
+                  </>
                 )}
 
                 <span className="text">{post && post.likes.length} likes</span>
@@ -106,7 +116,7 @@ const CommentSection = ({ post, setPost }) => {
             <hr className="comment-rule" />
           </div>
 
-          <div className="single-comment">
+          {/*   <div className="single-comment">
             <div className="user_contain">
               <div className="user">
                 <div className="icon_container">
@@ -140,7 +150,7 @@ const CommentSection = ({ post, setPost }) => {
               </div>
             </div>
           </div>
-
+ */}
           {post.comments.length > 0 &&
             post.comments.map((comment, i) => (
               <SingleComment comment={comment} key={i} />

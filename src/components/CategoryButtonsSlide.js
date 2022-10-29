@@ -4,11 +4,15 @@ const CategoryLinksSlide = () => {
   return (
     <div>
       <div className="button-groups">
-        <Link to="/category/agriculture" className="button">
+        <Link
+          data-tip="hello world"
+          to="/category/agriculture"
+          className="button"
+        >
           Agriculture
         </Link>
 
-        <Link className="button" to="/category/culture">
+        <Link data-tip="welcome" className="button" to="/category/culture">
           Culture
         </Link>
 

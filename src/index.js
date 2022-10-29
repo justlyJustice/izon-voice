@@ -3,6 +3,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import logrocketConfig from "config/logrocket";
+import "react-tooltip/dist/index";
 
 import App from "./App";
 import ErrorBoundary from "components/ErrorBoundaryComponent";
