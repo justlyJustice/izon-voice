@@ -16,6 +16,7 @@ import { getPosts } from "services/postService";
 import Footer from "components/Footer";
 import useAuth from "hooks/useAuth";
 import ErrorBoundary from "components/ErrorBoundaryComponent";
+import { toast } from "react-toastify";
 
 const Main = () => {
   const {
@@ -34,22 +35,16 @@ const Main = () => {
     return <ErrorBoundary />;
   }
 
+  const displayToast = () => {
+    if (posts && posts.length > 0) {
+      toast.success(`Welcome`);
+    }
+  };
+
   return (
     <>
       <Head title={`Izon Voice | Home`} description="Izon Voice Homepage" />
       <LoadingAnimation loading={loading} />
-
-      {/*  <amp-ad
-        width="100vw"
-        height="320"
-        type="adsense"
-        data-ad-client="ca-pub-4441614518245290"
-        data-ad-slot="8861658459"
-        data-auto-format="rspv"
-        data-full-width=""
-      >
-        <div overflow=""></div>
-      </amp-ad> */}
 
       <div className="main-grid">
         <div className="left_div">
