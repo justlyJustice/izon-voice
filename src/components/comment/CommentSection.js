@@ -16,9 +16,10 @@ import ReplyForm from "./ReplyForm";
 const CommentSection = ({ post, setPost }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [commentId, setCommentId] = useState();
+  const [showReply, setShowReply] = useState(false);
   const { user } = useAuth();
 
-  let likedPost = post && post.likes.find((el) => el.user === user.id);
+  let likedPost = post && post.likes.find((el) => el.user === user && user.id);
 
   useEffect(() => {
     if (likedPost) {
@@ -69,14 +70,18 @@ const CommentSection = ({ post, setPost }) => {
     return res;
   };
 
-  const handleShow = () => {};
+  const handleShowReply = (commentId) => {
+    if (commentId) {
+      setShowReply(!showReply);
+      setCommentId(commentId);
+    }
+  };
 
   return (
     <>
       {post && (
         <section className="comment-section">
           <CommentForm post={post} user={user} setPost={setPost} />
-
           <div className="comment-detail">
             <hr className="comment-rule" />
 
@@ -116,7 +121,7 @@ const CommentSection = ({ post, setPost }) => {
             <hr className="comment-rule" />
           </div>
 
-          {/*   <div className="single-comment">
+          <div className="single-comment">
             <div className="user_contain">
               <div className="user">
                 <div className="icon_container">
@@ -138,7 +143,7 @@ const CommentSection = ({ post, setPost }) => {
                   </div>
 
                   <div className="reply-div">
-                    <span onClick={() => handleShow()}>
+                    <span onClick={() => handleShowReply(Math.random(300))}>
                       <i className="fa-solid fa-reply"></i> Reply
                     </span>
                   </div>
@@ -149,8 +154,14 @@ const CommentSection = ({ post, setPost }) => {
                 <span>{formateTime(Date.now())}</span>
               </div>
             </div>
+
+            <ReplyForm
+              showReply={showReply}
+              key={commentId}
+              commentId={commentId}
+            />
           </div>
- */}
+
           {post.comments.length > 0 &&
             post.comments.map((comment, i) => (
               <SingleComment comment={comment} key={i} />

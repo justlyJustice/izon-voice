@@ -2,8 +2,10 @@ import * as Yup from "yup";
 
 import { Form, Input } from "components/forms";
 import commentService from "services/commentService";
+import { useRef } from "react";
 
-const ReplyForm = () => {
+const ReplyForm = ({ showReply }) => {
+  const elRef = useRef();
   const handleSubmit = async (values) => {
     const res = await commentService.addReply(values);
 
@@ -22,14 +24,16 @@ const ReplyForm = () => {
     message: Yup.string().required().label(`Message`),
   });
 
+  if (!showReply) return null;
+
   return (
-    <div className="reply-form">
+    <div className="reply-form" ref={elRef}>
       <Form
         initialValues={{ message: `` }}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
-        <Input name={`message`} />
+        <Input name={`message`} placeholder={`Enter reply...`} />
       </Form>
     </div>
   );

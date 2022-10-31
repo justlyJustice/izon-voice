@@ -6,7 +6,7 @@ const postComment = (postId, desc) =>
     desc,
   });
 
-const addReply = (commentId, message) =>
+const addReply = (message, commentId) =>
   http.post(`comments/${commentId}/replies`, {
     message,
   });

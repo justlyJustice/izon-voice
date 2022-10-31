@@ -77,7 +77,7 @@ export const googleAuth = async (tokenId) => {
   });
 
   if (res.ok) {
-    loginWithJwt(res.data.token);
+    loginWithJwt(res.data.userToken);
   }
 };
 

@@ -2,6 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
 import { logo } from "assets/images";
 
@@ -35,11 +36,11 @@ const Main = () => {
     return <ErrorBoundary />;
   }
 
-  const displayToast = () => {
-    if (posts && posts.length > 0) {
-      toast.success(`Welcome`);
-    }
+  const logCookie = () => {
+    console.log(Cookies.get(`token`));
   };
+
+  logCookie();
 
   return (
     <>
