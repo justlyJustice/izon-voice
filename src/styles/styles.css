@@ -457,7 +457,6 @@
 }
 
 .news_feed_contain .section1 .post-contain {
-  /*   background-color: red; */
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -692,11 +691,6 @@
   padding-bottom: 40px;
 }
 
-.comment-section .single-comment {
-  display: flex;
-  flex-direction: column;
-}
-
 .comment-section .comment-detail .comment-rule {
   height: 2px;
   background: #f2f2f2;
@@ -734,52 +728,57 @@
   color: #c4c4c4;
 }
 
-.comment-section .user_contain {
-  align-items: center;
+/*  Single Comment */
+.comment-section .single-comment {
   display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px 0;
 }
 
-.comment-section .user_contain .user {
-  align-items: center;
-  display: flex;
-  /* flex-wrap: wrap; */
-}
-
-.comment-section .user_contain .user .user-rule {
-  display: none;
-}
-
-.comment-section .user_contain .user .name-contain {
-  margin-left: 15px;
-  width: 100%;
-}
-
-.comment-section .user_contain .user .name-contain .username {
+.comment-section .single-comment .username {
   font-family: Montserrat;
   font-weight: 700;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 20px;
   color: rgba(17, 55, 254, 0.7);
 }
 
-.comment-section .user_contain .user .name-contain .comment {
+.comment-section .single-comment .content {
+  display: flex;
+  margin-top: -10px;
+  justify-content: space-between;
+}
+
+.comment-section .single-comment .content .comment {
   font-family: Playfair Display;
   font-weight: 600;
   font-size: 13px;
   line-height: 19px;
   text-align: justify;
   color: #393939;
-  width: 90%;
+}
+
+.comment-section .single-comment .content .time-stamp {
+  background: rgba(196, 196, 196, 0.3);
+  border-radius: 5px;
+  display: flex;
+  height: fit-content;
+  justify-content: center;
+  padding: 8px;
+  text-align: center;
+  width: 18%;
+}
+
+.comment-section .single-comment .reply-link {
+  cursor: pointer;
 }
 
 .comment-section .reply-form {
   align-items: center;
-  /*   background-color: blue; */
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  margin-left: 40px;
+  /* width: 100%; */
 }
 
 .comment-section .reply-div span {
@@ -795,31 +794,14 @@
 }
 
 .comment-section .reply-form .reply-btn {
-  background-color: red;
+  background: transparent;
+  /* background-color: rgb(0, 34, 171); */
+  border: 1px solid rgba(17, 55, 254, 0.7);
   border-radius: 20px;
-  color: white;
+  color: rgba(17, 55, 254, 0.7);
   cursor: pointer;
   padding: 8px;
   width: 20%;
-}
-
-.comment-section .user_contain .user .name-contain .reply .reply-link:hover {
-  text-decoration: underline;
-}
-
-.comment-section .user_contain .time-stamp {
-  width: 120px;
-  text-align: center;
-  /* height: 19px; */
-  background: rgba(196, 196, 196, 0.3);
-  border-radius: 5px;
-}
-
-.comment-section .user_contain .time-stamp span {
-  font-family: Montserrat;
-  font-weight: 800;
-  font-size: 10px;
-  color: #393939;
 }
 
 .comment-section .comment-box {
@@ -1204,12 +1186,20 @@
     color: #c4c4c4;
   }
 
+  .comment-section .reply-form {
+    flex-direction: column;
+  }
+
+  .comment-section .reply-form input {
+    width: 100%;
+  }
+
+  .comment-section .reply-form .reply-btn {
+    width: 100%;
+  }
+
   .comment-section .user_contain {
-    align-items: flex-start;
-    background-color: orange;
-    flex-direction: column !important;
-    /* width: 100%; */
-    width: fit-content;
+    width: 100%;
   }
 
   .comment-section .user_contain .user {

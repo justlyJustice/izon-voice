@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import logrocketConfig from "config/logrocket";
 import "react-tooltip/dist/index";
+import { AuthProvider } from "context/AuthContext";
 
 import App from "./App";
 import ErrorBoundary from "components/ErrorBoundaryComponent";
@@ -13,7 +14,6 @@ import "./styles/styles.css";
 import "./styles/admin.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { AuthProvider } from "context/AuthContext";
 
 logrocketConfig();
 

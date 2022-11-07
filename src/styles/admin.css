@@ -1,6 +1,6 @@
 .dashboard {
   display: flex;
-  height: 100vh;
+  height: 100vh !important;
 }
 
 .dashboard .aside-bar {
@@ -16,14 +16,9 @@
   flex-direction: column;
   height: 100%;
   padding: 20px;
-  /* position: relative; */
   transition: transform, 0.5s ease-in-out all;
   width: 20%;
 }
-
-/* .dashboard .aside-bar.slide {
-  width: 10%;
-} */
 
 .dashboard .aside-bar .img-contain {
   align-items: center;

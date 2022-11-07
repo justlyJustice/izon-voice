@@ -7,10 +7,12 @@ const ProtectedRoute = ({ children }) => {
 
   return (
     <div>
-      {user && user.email === `admin@izonvoice.ng` ? (
+      {user &&
+      (user.email === `admin@izonvoice.ng` ||
+        user.email === `admin.local@izonvoice.ng`) ? (
         children
       ) : (
-        <Navigate to="/home" replace />
+        <Navigate to="/auth/admin" replace />
       )}
     </div>
   );

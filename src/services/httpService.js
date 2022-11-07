@@ -6,6 +6,9 @@ import baseURL from "config/url";
 
 const apiClient = create({
   baseURL,
+  headers: {
+    credentials: "same-origin",
+  },
 });
 
 apiClient.axiosInstance.interceptors.response.use(null, (error) => {

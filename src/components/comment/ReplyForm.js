@@ -1,20 +1,24 @@
 import * as Yup from "yup";
 
-import { Form, Input } from "components/forms";
+import { Form, Input, SubmitButton } from "components/forms";
 import commentService from "services/commentService";
-import { useRef } from "react";
 
-const ReplyForm = ({ showReply }) => {
-  const elRef = useRef();
-  const handleSubmit = async (values) => {
-    const res = await commentService.addReply(values);
+const ReplyForm = ({ comment, setComment }) => {
+  const handleSubmit = async ({ message }, { resetForm }) => {
+    const res = await commentService.addReply(message, comment._id);
 
     if (res.ok) {
-      console.log(res.data);
+      setComment({
+        ...comment,
+        replies: [res.data.data, ...comment.replies],
+      });
+
+      resetForm();
     }
 
     if (!res.ok) {
-      console.log(res.data.message);
+      alert(`Failed`);
+      console.log(res);
     }
 
     return res;
@@ -24,16 +28,16 @@ const ReplyForm = ({ showReply }) => {
     message: Yup.string().required().label(`Message`),
   });
 
-  if (!showReply) return null;
-
   return (
-    <div className="reply-form" ref={elRef}>
+    <div className="reply-form" style={{ marginLeft: `70px` }}>
       <Form
         initialValues={{ message: `` }}
         onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
         <Input name={`message`} placeholder={`Enter reply...`} />
+
+        <SubmitButton className="reply-btn">Reply</SubmitButton>
       </Form>
     </div>
   );

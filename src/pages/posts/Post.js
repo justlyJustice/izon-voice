@@ -90,6 +90,7 @@ const Post = () => {
           }
         `}
       </style>
+
       <Head title={`Izon Voice | ${post && post.title}`} />
       <LoadingAnimation loading={loading} />
 
@@ -109,7 +110,7 @@ const Post = () => {
                   <div className="user-details-contain">
                     <span className="author">
                       <i className="fa-solid fa-user"></i>{" "}
-                      {post.author ? post.author : "A. T. Francis"}
+                      {post.author ? post.author : "AWUDUMAPU JOEL IRENE"}
                     </span>
 
                     <span className="time">
@@ -118,10 +119,7 @@ const Post = () => {
                     </span>
 
                     <span className="category">
-                      <i className="fa-brands fa-instalod"></i>{" "}
-                      {post.category
-                        ? post.category.toUpperCase()
-                        : "Trending News"}
+                      <i className="fa-brands fa-instalod"></i> {post.category}
                     </span>
                   </div>
 

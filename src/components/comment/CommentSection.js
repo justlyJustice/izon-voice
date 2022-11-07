@@ -2,29 +2,32 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 import ReactTooltip from "react-tooltip";
-
-import CustomIcon from "components/common/CustomIcon";
-import CommentForm from "./CommentForm";
+import { toast } from "react-toastify";
 
 import { likePost, unlikePost } from "services/postService";
-import { formateTime } from "utils/helpers";
+import CommentForm from "./CommentForm";
 import useAuth from "hooks/useAuth";
-import { toast } from "react-toastify";
 import SingleComment from "./SingleComment";
-import ReplyForm from "./ReplyForm";
+import useApi from "hooks/useApi";
+import commentService from "services/commentService";
 
 const CommentSection = ({ post, setPost }) => {
   const [isLiked, setIsLiked] = useState(false);
-  const [commentId, setCommentId] = useState();
-  const [showReply, setShowReply] = useState(false);
   const { user } = useAuth();
+  const {
+    request: fetchComments,
+    data: comments,
+    error,
+  } = useApi(commentService.getComments);
 
-  let likedPost = post && post.likes.find((el) => el.user === user && user.id);
+  let likedPost = post && user && post.likes.find((el) => el.user === user.id);
 
   useEffect(() => {
     if (likedPost) {
       setIsLiked(true);
     }
+
+    fetchComments(post._id);
   }, []);
 
   const handleLike = async (postId) => {
@@ -70,18 +73,16 @@ const CommentSection = ({ post, setPost }) => {
     return res;
   };
 
-  const handleShowReply = (commentId) => {
-    if (commentId) {
-      setShowReply(!showReply);
-      setCommentId(commentId);
-    }
-  };
+  if (error) {
+    return <span>Could not load comments!</span>;
+  }
 
   return (
     <>
       {post && (
         <section className="comment-section">
           <CommentForm post={post} user={user} setPost={setPost} />
+
           <div className="comment-detail">
             <hr className="comment-rule" />
 
@@ -121,50 +122,10 @@ const CommentSection = ({ post, setPost }) => {
             <hr className="comment-rule" />
           </div>
 
-          <div className="single-comment">
-            <div className="user_contain">
-              <div className="user">
-                <div className="icon_container">
-                  <CustomIcon />
-
-                  <hr className="user-rule" />
-                </div>
-
-                <div className="name-contain">
-                  <div>
-                    <h2 className="username">James Peremobowei</h2>
-
-                    <p className="comment">
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Reprehenderit voluptates tenetur laudantium ab. Maxime
-                      labore accusamus, reiciendis ducimus exercitationem
-                      pariatur!
-                    </p>
-                  </div>
-
-                  <div className="reply-div">
-                    <span onClick={() => handleShowReply(Math.random(300))}>
-                      <i className="fa-solid fa-reply"></i> Reply
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="time-stamp">
-                <span>{formateTime(Date.now())}</span>
-              </div>
-            </div>
-
-            <ReplyForm
-              showReply={showReply}
-              key={commentId}
-              commentId={commentId}
-            />
-          </div>
-
-          {post.comments.length > 0 &&
-            post.comments.map((comment, i) => (
-              <SingleComment comment={comment} key={i} />
+          {comments &&
+            comments.length > 0 &&
+            comments.map((comment) => (
+              <SingleComment initialComment={comment} key={comment._id} />
             ))}
         </section>
       )}

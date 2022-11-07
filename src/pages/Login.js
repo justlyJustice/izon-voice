@@ -35,7 +35,7 @@ const Login = () => {
   } = useSubmit(auth.login);
 
   const loginUser = (values, { resetForm }) => {
-    login(values);
+    login(values, state ? state.from : "/home", `Login sucessful!`, resetForm);
   };
 
   if (user) return <Navigate to="/home" />;

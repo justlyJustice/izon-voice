@@ -21,7 +21,7 @@ const useSubmit = (apiFunc) => {
     const res = await apiFunc(param);
     setSubmitting(false);
 
-    if (res.ok) {
+    if (res && res.ok) {
       setSuccess(true);
       setData(res.data);
       toast.success(successMessage);
@@ -41,7 +41,7 @@ const useSubmit = (apiFunc) => {
       }, 4000);
     }
 
-    if (!res.ok) {
+    if (res && !res.ok) {
       setError(true);
       logger(res);
       setStatus(getStatus(res.problem));

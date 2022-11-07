@@ -8,7 +8,7 @@ import commentService from "services/commentService";
 import StatusAnimation from "components/common/StatusAnimation";
 
 const validationSchema = Yup.object().shape({
-  desc: Yup.string().required().min(8).label("Comment"),
+  message: Yup.string().required().min(8).label("Comment"),
 });
 
 const CustomTextArea = styled(TextArea)`
@@ -71,10 +71,10 @@ const CommentForm = ({ post, user, setPost }) => {
 
   const { pathname } = useLocation();
 
-  const handleSubmit = async ({ desc }, { resetForm }) => {
+  const handleSubmit = async ({ message }, { resetForm }) => {
     try {
       setLoading(true);
-      const res = await commentService.postComment(post._id, desc);
+      const res = await commentService.createComment(post._id, message);
       setLoading(false);
 
       if (res.ok) {
@@ -82,7 +82,7 @@ const CommentForm = ({ post, user, setPost }) => {
 
         setPost({
           ...post,
-          comments: [res.data.comment, ...post.comments],
+          comments: [res.data, ...post.comments],
         });
 
         resetForm();
@@ -124,7 +124,7 @@ const CommentForm = ({ post, user, setPost }) => {
       <div className="comment-box">
         <Form
           initialValues={{
-            desc: "",
+            messsage: "",
           }}
           onSubmit={handleSubmit}
           validationSchema={validationSchema}
@@ -137,7 +137,7 @@ const CommentForm = ({ post, user, setPost }) => {
 
           <CustomTextArea
             placeholder="What are your thoughts?"
-            name="desc"
+            name="message"
             onClick={() => verifyUser()}
           />
 

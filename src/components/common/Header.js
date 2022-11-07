@@ -88,7 +88,8 @@ const Header = () => {
                     <span>{user.name}</span>
                   </div>
 
-                  {user.email === `admin@izonvoice.ng` && (
+                  {(user.email === `admin@izonvoice.ng` ||
+                    user.email === `admin.local@izonvoice.ng`) && (
                     <>
                       <hr />
 

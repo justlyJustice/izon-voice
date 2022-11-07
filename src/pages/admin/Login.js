@@ -22,7 +22,7 @@ const AdminLogin = () => {
   } = useSubmit(authService.login);
 
   const handleSubmit = (values) => {
-    login(values, `/dashboard`, ``);
+    login(values, `/dashboard`);
   };
 
   return (
