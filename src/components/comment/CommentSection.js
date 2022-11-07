@@ -14,11 +14,9 @@ import commentService from "services/commentService";
 const CommentSection = ({ post, setPost }) => {
   const [isLiked, setIsLiked] = useState(false);
   const { user } = useAuth();
-  const {
-    request: fetchComments,
-    data: comments,
-    error,
-  } = useApi(commentService.getComments);
+  const { request: fetchComments, data: comments } = useApi(
+    commentService.getComments
+  );
 
   let likedPost = post && user && post.likes.find((el) => el.user === user.id);
 
@@ -73,10 +71,6 @@ const CommentSection = ({ post, setPost }) => {
     return res;
   };
 
-  if (error) {
-    return <span>Could not load comments!</span>;
-  }
-
   return (
     <>
       {post && (
@@ -90,7 +84,9 @@ const CommentSection = ({ post, setPost }) => {
               <div className="item">
                 <i className="fa fa-comment icon"></i>
 
-                <span className="text">{post.comments.length} comments</span>
+                <span className="text">
+                  {comments && comments.length} comments
+                </span>
               </div>
 
               <div className="item">

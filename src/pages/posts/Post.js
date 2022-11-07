@@ -119,7 +119,8 @@ const Post = () => {
                     </span>
 
                     <span className="category">
-                      <i className="fa-brands fa-instalod"></i> {post.category}
+                      <i className="fa-brands fa-instalod"></i>{" "}
+                      {post.category.toUpperCase()}
                     </span>
                   </div>
 
