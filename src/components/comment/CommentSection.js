@@ -93,6 +93,7 @@ const CommentSection = ({ post, setPost }) => {
                 {!isLiked ? (
                   <>
                     <ReactTooltip type={user && "success"} />
+
                     <i
                       data-tip={user ? `Like 👍` : `You need to login to like!`}
                       className={`fa-regular fa-heart icon`}
@@ -121,7 +122,11 @@ const CommentSection = ({ post, setPost }) => {
           {comments &&
             comments.length > 0 &&
             comments.map((comment) => (
-              <SingleComment initialComment={comment} key={comment._id} />
+              <SingleComment
+                initialComment={comment}
+                user={user}
+                key={comment._id}
+              />
             ))}
         </section>
       )}

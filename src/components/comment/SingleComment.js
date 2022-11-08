@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
+import ReactTooltip from "react-tooltip";
 import { Comment } from "antd";
+
 import "antd/dist/antd.css";
 
 import { formateTime } from "utils/helpers";
@@ -8,7 +10,7 @@ import CustomIcon from "components/common/CustomIcon";
 import ReplyForm from "./ReplyForm";
 import SingleReply from "./SingleReply";
 
-const SingleComment = ({ initialComment }) => {
+const SingleComment = ({ user, initialComment }) => {
   const [comment, setComment] = useState(initialComment);
 
   const [openReply, setOpenReply] = useState(false);
@@ -18,7 +20,13 @@ const SingleComment = ({ initialComment }) => {
   };
 
   const action = [
-    <span onClick={showReply} className={`reply-link`}>
+    <span
+      data-tip={user ? `Reply` : `You need to login to reply!`}
+      onClick={showReply}
+      style={{ cursor: !user && `none` }}
+      className={`reply-link`}
+    >
+      <ReactTooltip />
       Reply
     </span>,
   ];
@@ -37,11 +45,19 @@ const SingleComment = ({ initialComment }) => {
             </div>
           }
         >
+          {openReply && (
+            <ReplyForm
+              comment={comment}
+              setComment={setComment}
+              setShowReply={setOpenReply}
+            />
+          )}
+
           <div className="replies-contain">
             <div className="r-length">
               <span className="count">
                 {comment && comment.replies.length} Replies
-              </span>{" "}
+              </span>
               <hr className="reply-rule" />
             </div>
 
@@ -53,14 +69,6 @@ const SingleComment = ({ initialComment }) => {
           </div>
         </Comment>
       </div>
-
-      {openReply && (
-        <ReplyForm
-          comment={comment}
-          setComment={setComment}
-          setShowReply={setOpenReply}
-        />
-      )}
     </div>
   );
 };

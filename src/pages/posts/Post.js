@@ -110,7 +110,7 @@ const Post = () => {
                   <div className="user-details-contain">
                     <span className="author">
                       <i className="fa-solid fa-user"></i>{" "}
-                      {post.author ? post.author : "AWUDUMAPU JOEL IRENE"}
+                      {post.author ? post.author : "JOEL AWUDUMAPU IRENE"}
                     </span>
 
                     <span className="time">
