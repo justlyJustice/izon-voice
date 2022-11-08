@@ -803,6 +803,37 @@
   width: 20%;
 }
 
+/* Single Reply */
+.comment-section .replies-contain {
+  margin-left: 30px;
+}
+
+.comment-section .replies-contain .reply-username {
+  font-family: Montserrat;
+  font-weight: 700;
+  font-size: 14px;
+  color: rgba(17, 55, 254, 0.7);
+}
+
+.comment-section .replies-contain .r-length .count {
+  color: #999;
+  font-size: 12px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.comment-section .replies-contain .r-length {
+  align-items: center;
+  display: flex;
+}
+
+.comment-section .replies-contain .reply-rule {
+  height: 2px;
+  background: #f2f2f2;
+  border-radius: 20px;
+  width: 90%;
+}
+
 .comment-section .comment-box {
   margin-top: 30px;
   position: relative;
@@ -1191,7 +1222,7 @@
 
   .comment-section .single-comment .content .comment {
     font-size: 13px;
-    line-height: 19px;
+    line-height: auto;
     text-align: justify;
     color: #393939;
   }
@@ -1210,6 +1241,21 @@
 
   .comment-section .comment-box {
     margin-top: 30px;
+  }
+
+  /* Single Reply */
+  .comment-section .replies-contain {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .comment-section .replies-contain .r-length {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .comment-section .replies-contain .reply-rule {
+    width: 100%;
   }
 
   /* Blog on Category */
@@ -1339,7 +1385,6 @@
     .text-group-one
     .second-span {
     font-family: Playfair Display;
-
     font-weight: normal;
     font-size: 15px;
     line-height: 20px;

@@ -37,15 +37,30 @@ const SingleComment = ({ initialComment }) => {
             </div>
           }
         >
-          {/*  {comment.replies &&
-            comment.replies.length > 0 &&
-            comment.replies.map((el) => (
-              <SingleReply key={el._id} reply={el} />
-            ))} */}
+          <div className="replies-contain">
+            <div className="r-length">
+              <span className="count">
+                {comment && comment.replies.length} Replies
+              </span>{" "}
+              <hr className="reply-rule" />
+            </div>
+
+            {comment.replies &&
+              comment.replies.length > 0 &&
+              comment.replies.map((el) => (
+                <SingleReply key={el._id} reply={el} />
+              ))}
+          </div>
         </Comment>
       </div>
-      {/* 
-      {openReply && <ReplyForm comment={comment} setComment={setComment} />} */}
+
+      {openReply && (
+        <ReplyForm
+          comment={comment}
+          setComment={setComment}
+          setShowReply={setOpenReply}
+        />
+      )}
     </div>
   );
 };

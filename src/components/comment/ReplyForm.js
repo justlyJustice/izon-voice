@@ -2,8 +2,9 @@ import * as Yup from "yup";
 
 import { Form, Input, SubmitButton } from "components/forms";
 import commentService from "services/commentService";
+import logger from "utils/logger";
 
-const ReplyForm = ({ comment, setComment }) => {
+const ReplyForm = ({ comment, setComment, setShowReply }) => {
   const handleSubmit = async ({ message }, { resetForm }) => {
     const res = await commentService.addReply(message, comment._id);
 
@@ -13,15 +14,16 @@ const ReplyForm = ({ comment, setComment }) => {
         replies: [res.data.data, ...comment.replies],
       });
 
+      setShowReply(false);
+
       resetForm();
     }
 
     if (!res.ok) {
       alert(`Failed`);
-      console.log(res);
     }
 
-    return res;
+    return logger(res);
   };
 
   const validationSchema = Yup.object().shape({

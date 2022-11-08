@@ -36,12 +36,6 @@ const Main = () => {
     return <ErrorBoundary />;
   }
 
-  const logCookie = () => {
-    console.log(Cookies.get(`token`));
-  };
-
-  logCookie();
-
   return (
     <>
       <Head title={`Izon Voice | Home`} description="Izon Voice Homepage" />

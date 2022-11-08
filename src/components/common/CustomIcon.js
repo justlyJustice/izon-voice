@@ -11,6 +11,7 @@ const IconDiv = styled.div`
 
   i {
     color: #393939;
+    font-size: 20px;
   }
 
   @media screen and (max-width: 768px) {
