@@ -91,7 +91,10 @@ const Post = () => {
         `}
       </style>
 
-      <Head title={`Izon Voice | ${post && post.title}`} />
+      <Head
+        title={`Izon Voice | ${post && post.title}`}
+        href={post && (post.urlToImage || post.images[0])}
+      />
       <LoadingAnimation loading={loading} />
 
       <Header />

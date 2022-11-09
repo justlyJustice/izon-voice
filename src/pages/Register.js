@@ -123,7 +123,7 @@ const Register = () => {
               <hr className="rule" />
 
               <div className="button-group flex">
-                <GoogleAuth text="Register With" state={state} />
+                <GoogleAuth text="Continue With" state={state} />
               </div>
 
               <AppLink to="/login" state={{ from: state?.from }}>

@@ -12,16 +12,16 @@ const useSubmit = (apiFunc) => {
   const [error, setError] = useState(false);
 
   const submit = async (
-    param,
+    urlParam,
     navigateTo,
     successMessage = `Submitted successfully!`,
     resetForm
   ) => {
     setSubmitting(true);
-    const res = await apiFunc(param);
+    const res = await apiFunc(urlParam);
     setSubmitting(false);
 
-    if (res && res.ok) {
+    if (res.ok) {
       setSuccess(true);
       setData(res.data);
       toast.success(successMessage);
@@ -41,12 +41,12 @@ const useSubmit = (apiFunc) => {
       }, 4000);
     }
 
-    if (res && !res.ok) {
+    if (!res.ok) {
       setError(true);
       logger(res);
       setStatus(getStatus(res.problem));
 
-      toast.error(res.data.message);
+      toast.error(status);
 
       setTimeout(() => {
         setError(false);
