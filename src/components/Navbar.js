@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+
 import { logo } from "assets/images";
+import useAuth from "hooks/useAuth";
 
 const Navbar = ({ fixed }) => {
   const [shown, setShown] = useState(false);
+  const { user } = useAuth();
 
   const location = useLocation();
   const node = useRef();
@@ -135,6 +138,26 @@ const Navbar = ({ fixed }) => {
           >
             Politics
           </Link>
+
+          {!user && (
+            <>
+              <Link
+                onClick={() => setShown(false)}
+                className={"link"}
+                to="/login"
+              >
+                Login
+              </Link>
+
+              <Link
+                onClick={() => setShown(false)}
+                className={"link"}
+                to="/sign-up"
+              >
+                Register
+              </Link>
+            </>
+          )}
         </div>
       </nav>
     </>

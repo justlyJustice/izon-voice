@@ -102,7 +102,7 @@ const Login = () => {
               <GoogleAuth text="Continue with" state={state} />
             </div>
 
-            <AppLink to="/register" state={{ from: state?.from }}>
+            <AppLink to="/sign-up" state={{ from: state?.from }}>
               Don’t own an account yet? Register
             </AppLink>
           </div>

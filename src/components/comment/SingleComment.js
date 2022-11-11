@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import ReactTooltip from "react-tooltip";
-import { Comment } from "antd";
 
+import { Comment } from "antd";
 import "antd/dist/antd.css";
 
 import { formateTime } from "utils/helpers";

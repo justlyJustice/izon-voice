@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
-import PostCarousel from "components/PostCarousel";
-import Header from "components/common/Header";
 import { Link } from "react-router-dom";
 
+import PostCarousel from "components/PostCarousel";
+import Header from "components/common/Header";
 import { getPosts } from "services/postService";
 import useApi from "hooks/useApi";
 import LoadingAnimation from "components/common/LoadingAnimation";

@@ -79,6 +79,8 @@ export const googleAuth = async (tokenId) => {
   if (res.ok) {
     loginWithJwt(res.data.data);
   }
+
+  return res;
 };
 
 export default {

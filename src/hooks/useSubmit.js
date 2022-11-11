@@ -14,7 +14,7 @@ const useSubmit = (apiFunc) => {
   const submit = async (
     urlParam,
     navigateTo,
-    successMessage = `Submitted successfully!`,
+    successMessage = `Success!`,
     resetForm
   ) => {
     setSubmitting(true);
@@ -46,7 +46,7 @@ const useSubmit = (apiFunc) => {
       logger(res);
       setStatus(getStatus(res.problem));
 
-      toast.error(status);
+      toast.error(res.data.message);
 
       setTimeout(() => {
         setError(false);

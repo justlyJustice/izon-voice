@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Linkify from "linkify-react";
+import { FacebookSelector } from "@charkour/react-reactions";
 import ReactModal from "react-modal";
 
 import Header from "components/common/Header";
@@ -241,6 +242,12 @@ const Post = () => {
                 </>
               </div>
             </div>
+
+            {/*    <FacebookSelector
+              onSelect={(e) => console.log(e)}
+              variant={`facebook`}
+              iconSize={20}
+            /> */}
 
             <CommentSection post={post} setPost={setPost} />
           </div>

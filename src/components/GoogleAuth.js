@@ -13,24 +13,6 @@ const GoogleAuth = ({ text, state }) => {
 
   const onSuccess = async (res) => {
     googleLogin(res?.tokenId, state ? state.from : "/home");
-    /*  try {
-      setLoading(true);
-      const result = await auth.googleAuth(res?.tokenId);
-      setLoading(false);
-
-      if (result.ok) {
-        setSuccess(true);
-        auth.loginWithJwt(result.data.token);
-
-        setTimeout(() => {
-          window.location = state ? state.from : "/home";
-
-          setSuccess(false);
-        }, 3000);
-      }
-    } catch (error) {
-      console.log(error);
-    } */
   };
 
   return (

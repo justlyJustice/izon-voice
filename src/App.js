@@ -86,7 +86,7 @@ const App = () => (
 
       <Route exact path="/:name" element={<Post />} />
       <Route exact path="/privacy-policy" element={<PrivacyPolicy />} />
-      <Route exact path="/register" element={<Register />} />
+      <Route exact path="/sign-up" element={<Register />} />
       <Route exact path="/login" element={<Login />} />
       <Route exact path="/category/:name" element={<PostCategory />} />
       <Route exact path="/home" element={<Posts />} />
