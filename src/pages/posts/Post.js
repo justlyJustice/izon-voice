@@ -2,9 +2,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Linkify from "linkify-react";
-import { FacebookSelector } from "@charkour/react-reactions";
 import ReactModal from "react-modal";
 
 import Header from "components/common/Header";
@@ -26,7 +25,6 @@ const Post = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [imageUrl, setImageUrl] = useState("");
   const { name } = useParams();
-  const navigate = useNavigate();
 
   function openModal(imgUrl) {
     setIsModalOpen(true);
@@ -92,10 +90,7 @@ const Post = () => {
         `}
       </style>
 
-      <Head
-        title={`Izon Voice | ${post && post.title}`}
-        href={post && (post.urlToImage || post.images[0])}
-      />
+      <Head title={`Izon Voice | ${post && post.title}`} />
       <LoadingAnimation loading={loading} />
 
       <Header />

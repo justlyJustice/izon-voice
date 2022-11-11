@@ -9,8 +9,6 @@ import { categories } from "utils/options";
 import { Form, Input, Select, SubmitButton, TextArea } from "components/forms";
 import ImageInput from "components/forms/ImageInput";
 import useSubmit from "hooks/useSubmit";
-import { useEffect } from "react";
-import { toast } from "react-toastify";
 
 const validationSchema = Yup.object().shape({
   author: Yup.string().required().label("Author"),
@@ -22,7 +20,6 @@ const validationSchema = Yup.object().shape({
 
 const CreatePost = () => {
   const {
-    data,
     submitting: uploading,
     submit: uploadPost,
     success,
@@ -30,22 +27,6 @@ const CreatePost = () => {
 
   const handleSubmit = (values, { resetForm }) => {
     uploadPost(values, ``, `Post created successfully!`, resetForm);
-  };
-
-  useEffect(() => {
-    copyToClipboard();
-  }, [data.data]);
-
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(
-      `${
-        process.env.NODE_ENV === "development"
-          ? `http://localhost:8000`
-          : `http://izonvoice.ng`
-      }/${data.data && data.data.slug}`
-    );
-
-    toast.success(`URL copied to clipboard!`);
   };
 
   return (

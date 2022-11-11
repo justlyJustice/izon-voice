@@ -5,6 +5,7 @@ import styled from "styled-components";
 import FormError from "./FormError";
 
 const TextAreaField = styled.textarea`
+  color: black !important;
   width: 100%;
   background: #ffffff;
   border-radius: 20px;
