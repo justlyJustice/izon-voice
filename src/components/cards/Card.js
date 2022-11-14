@@ -23,6 +23,7 @@ const CardContainer = styled.div`
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     text-transform: uppercase;
+    text-align: justify;
   }
 
   .link {

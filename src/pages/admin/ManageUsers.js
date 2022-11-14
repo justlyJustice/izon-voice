@@ -8,16 +8,14 @@ import { useEffect } from "react";
 import LoadingPlaceHolder from "components/common/LoadingPlaceHolder";
 
 const ManageUsers = () => {
-  const { data, loading, request, setData } = useApi(getUsers);
+  const { data: users, loading, request, setData: setUsers } = useApi(getUsers);
 
   useEffect(() => {
     request();
   }, []);
 
   const handleDelete = (id) => {
-    const users = data.users.filter((user) => user._id !== id);
-
-    setData({ users });
+    setUsers(users.filter((user) => user._id !== id));
   };
 
   return (
@@ -44,8 +42,8 @@ const ManageUsers = () => {
             <LoadingPlaceHolder extraStyles={{ height: `100%` }} />
           </div>
         </>
-      ) : data && data.users.length > 0 ? (
-        data.users
+      ) : users && users.length > 0 ? (
+        users
           .filter((user) => user.name !== `Admin`)
           .map((user) => (
             <div key={user._id}>
