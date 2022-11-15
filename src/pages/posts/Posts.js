@@ -9,6 +9,7 @@ import useApi from "hooks/useApi";
 import LoadingAnimation from "components/common/LoadingAnimation";
 import Head from "components/common/Head";
 import { formateTime } from "utils/helpers";
+import { logo } from "assets/images";
 
 const Posts = () => {
   const { data: posts, loading, request: retrievePosts } = useApi(getPosts);
@@ -23,6 +24,7 @@ const Posts = () => {
         <Head
           title="Izon Voice | Home"
           description="Return right in and hear from some cool voices around the globe"
+          image={logo}
         />
 
         <LoadingAnimation loading={loading} />

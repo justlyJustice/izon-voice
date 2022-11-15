@@ -51,6 +51,7 @@ const Register = () => {
       <Head
         title="Izon Voice | Register"
         description="Own a space real quick and get to know what the voices speaks about"
+        image={logo}
       />
 
       <Container>

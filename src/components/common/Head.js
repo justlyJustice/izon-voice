@@ -1,19 +1,17 @@
 import Proptypes from "prop-types";
 import { Helmet } from "react-helmet";
 
-const Head = ({ description, title, href }) => {
+const Head = ({ description, title, image }) => {
   return (
     <Helmet>
-      <title>{title ? title : "Loading..."}</title>
-
+      <title>{title}</title>
+      <meta property="og:image" content={image} />
+      <meta property="og:description" content={description} />
       <meta
-        name="keywords"
-        content="Izon Voice, Ict, Fashion, Blog, Boungbai Blog, Izon, News, Emmanuel Abraham, Clark Benneth, Justice Johnson, who-be-who-in-ict, Ijaw, Voice, izon voice, ijaw voice, social, Social"
+        property="og:url"
+        content={window.location + window.location.search}
       />
-
-      {href && <link rel="apple-touch-icon" href={href} />}
-
-      <meta name="description" content={description} />
+      <meta property="og:title" content={title} />
     </Helmet>
   );
 };

@@ -90,12 +90,17 @@ const Post = () => {
         `}
       </style>
 
-      <Head title={`Izon Voice | ${post && post.title}`} />
       <LoadingAnimation loading={loading} />
 
       <Header />
       {post && (
         <>
+          <Head
+            description={post.description}
+            title={`Izon Voice | ${post.title}`}
+            image={post.images[0] || post.urlToImage}
+          />
+
           <div className="container">
             <div className="blog-section">
               <div className="blog-image-contain">
@@ -152,6 +157,7 @@ const Post = () => {
                     <img className="modal-pic" src={imageUrl} alt="Modal Pic" />
                   )}
                 </ReactModal>
+
                 <>
                   {(description &&
                     description[0].map((des, i) => (

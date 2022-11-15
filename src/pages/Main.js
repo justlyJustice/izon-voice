@@ -38,7 +38,12 @@ const Main = () => {
 
   return (
     <>
-      <Head title={`Izon Voice | Home`} description="Izon Voice Homepage" />
+      <Head
+        title={`Izon Voice | Home`}
+        description="Izon Voice Homepage"
+        image={logo}
+      />
+
       <LoadingAnimation loading={loading} />
 
       <div className="main-grid">

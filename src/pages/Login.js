@@ -19,6 +19,7 @@ import auth from "services/authService";
 import { logo } from "assets/images";
 
 import GoogleAuth from "components/GoogleAuth";
+import Head from "components/common/Head";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().label("Email"),
@@ -42,6 +43,12 @@ const Login = () => {
 
   return (
     <LoginContainer>
+      <Head
+        title="IzonVoice | Login"
+        description="Return right in and hear from some cool voices around the globe"
+        image={logo}
+      />
+
       <div className="container grid">
         <div className="left-div">
           <img src={logo} alt="Izon voice logo" className="logo" />
