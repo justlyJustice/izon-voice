@@ -19,7 +19,7 @@ import {
 } from "utils/helpers";
 import { getPost } from "services/postService";
 import useApi from "hooks/useApi";
-import { adImageOne, treasuresColdRoom } from "assets/images";
+import { adImageOne, logo, treasuresColdRoom } from "assets/images";
 
 const Post = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -98,7 +98,7 @@ const Post = () => {
           <Head
             description={post.description}
             title={`Izon Voice | ${post.title}`}
-            image={post.images[0] || post.urlToImage}
+            image={post.urlToImage || post.images[0]}
           />
 
           <div className="container">
@@ -243,12 +243,6 @@ const Post = () => {
                 </>
               </div>
             </div>
-
-            {/*    <FacebookSelector
-              onSelect={(e) => console.log(e)}
-              variant={`facebook`}
-              iconSize={20}
-            /> */}
 
             <CommentSection post={post} setPost={setPost} />
           </div>
