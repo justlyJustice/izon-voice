@@ -39,7 +39,7 @@ const Main = () => {
   return (
     <>
       <Head
-        title={`Izon Voice | Home`}
+        title={`IzonVoice | Home`}
         description="Izon Voice Homepage"
         image={logo}
       />

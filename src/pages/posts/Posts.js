@@ -22,7 +22,7 @@ const Posts = () => {
     <div>
       <section>
         <Head
-          title="Izon Voice | Home"
+          title="IzonVoice | Home"
           description="Return right in and hear from some cool voices around the globe"
           image={logo}
         />
