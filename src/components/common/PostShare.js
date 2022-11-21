@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import {
   EmailShareButton,
@@ -66,4 +67,11 @@ function PostShare({ url, title, hashtags }) {
     </Wrapper>
   );
 }
+
+PostShare.propTypes = {
+  url: PropTypes.string.isRequired,
+  hashtags: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};
+
 export default PostShare;

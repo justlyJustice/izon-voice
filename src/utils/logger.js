@@ -1,10 +1,10 @@
 /* eslint-disable import/no-anonymous-default-export */
-import Bugsnag from "@bugsnag/js";
+import LogRocket from "logrocket";
 
-const logger = (error) => {
+const logger = (...params) => {
   process.env.NODE_ENV === "development"
-    ? console.log(error)
-    : Bugsnag.notify(error);
+    ? console.log(...params)
+    : LogRocket.log(...params);
 };
 
 export default logger;

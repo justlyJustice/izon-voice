@@ -22,8 +22,8 @@ const Posts = () => {
     <div>
       <section>
         <Head
-          title="IzonVoice | Home"
-          description="Return right in and hear from some cool voices around the globe"
+          description="Izonvoice homepage"
+          title="IzonVoice - Home"
           image={logo}
         />
 

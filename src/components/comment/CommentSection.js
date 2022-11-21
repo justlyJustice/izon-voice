@@ -12,6 +12,7 @@ import useApi from "hooks/useApi";
 import commentService from "services/commentService";
 
 const CommentSection = ({ post, setPost }) => {
+  const [likesCount, setLikesCount] = useState(post && post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   const { user } = useAuth();
   const { request: fetchComments, data: comments } = useApi(
@@ -29,23 +30,33 @@ const CommentSection = ({ post, setPost }) => {
   }, []);
 
   const handleLike = async (postId) => {
+    // Create our initial likes variable
+    const initialLikes = likesCount;
+
+    // Increment Likes and setIsLiked to `true`
+    setLikesCount((prevCount) => prevCount + 1);
+    setIsLiked(true);
+
     const res = await likePost(postId);
 
     if (res.ok) {
-      setPost({
-        ...post,
-        likes: [...post.likes, res.data.data],
-      });
       setIsLiked(true);
     }
 
     if (!res.ok) {
+      setLikesCount(initialLikes);
+      setIsLiked(false);
+
       toast.error(res.data.message);
     }
   };
 
   const handleUnLike = async (postId) => {
     const orignalLikes = [...post.likes];
+    const initialLikesCount = orignalLikes.length;
+
+    setLikesCount((prevCount) => prevCount - 1);
+    setIsLiked(false);
 
     const res = await unlikePost(postId);
 
@@ -58,7 +69,6 @@ const CommentSection = ({ post, setPost }) => {
         ...post,
         likes,
       });
-      setIsLiked(false);
     }
 
     if (!res.ok) {
@@ -66,6 +76,8 @@ const CommentSection = ({ post, setPost }) => {
         ...post,
         likes: orignalLikes,
       });
+
+      setLikesCount(initialLikesCount);
     }
 
     return res;
@@ -82,22 +94,26 @@ const CommentSection = ({ post, setPost }) => {
 
             <div className="content">
               <div className="item">
-                <i className="fa fa-comment icon"></i>
+                <i className="fa fa-xl fa-comment icon"></i>
 
                 <span className="text">
                   {comments && comments.length} comments
                 </span>
               </div>
 
-              <div className="item">
+              <div
+                className="item"
+                onClick={() =>
+                  !isLiked ? handleLike(post._id) : handleUnLike(post._id)
+                }
+              >
                 {!isLiked ? (
                   <>
-                    <ReactTooltip type={user && "success"} />
+                    <ReactTooltip />
 
                     <i
                       data-tip={user ? `Like 👍` : `You need to login to like!`}
-                      className={`fa-regular fa-heart icon`}
-                      onClick={() => handleLike(post._id)}
+                      className={`fa-regular fa-heart fa-xl icon`}
                       style={{ cursor: !user && "not-allowed" }}
                     ></i>
                   </>
@@ -106,13 +122,12 @@ const CommentSection = ({ post, setPost }) => {
                     <ReactTooltip />
                     <i
                       data-tip={`Unlike 👎`}
-                      className={`fa-solid fa-heart liked`}
-                      onClick={() => handleUnLike(post._id)}
+                      className={`fa-solid fa-xl fa-heart liked`}
                     ></i>
                   </>
                 )}
 
-                <span className="text">{post && post.likes.length} likes</span>
+                <span className="text">{likesCount} likes</span>
               </div>
             </div>
 

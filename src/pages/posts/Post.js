@@ -1,10 +1,12 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
 import Linkify from "linkify-react";
 import ReactModal from "react-modal";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 import Header from "components/common/Header";
 import Head from "components/common/Head";
@@ -19,7 +21,7 @@ import {
 } from "utils/helpers";
 import { getPost } from "services/postService";
 import useApi from "hooks/useApi";
-import { adImageOne, logo, treasuresColdRoom } from "assets/images";
+import { adImageOne, treasuresColdRoom } from "assets/images";
 
 const Post = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -35,7 +37,7 @@ const Post = () => {
     setIsModalOpen(false);
   }
 
-  ReactModal.setAppElement("#root");
+  ReactModal.setAppElement("#app-root");
 
   const {
     data: post,
@@ -93,18 +95,23 @@ const Post = () => {
       <LoadingAnimation loading={loading} />
 
       <Header />
+
+      <Head
+        title={`Izon Voice | ${post && post.title}`}
+        description={post && post.description}
+        image={post && (post.urlToImage || post.images[0])}
+      />
+
       {post && (
         <>
-          <Head
-            description={post.description}
-            title={`Izon Voice | ${post.title}`}
-            image={post.urlToImage || post.images[0]}
-          />
-
           <div className="container">
             <div className="blog-section">
               <div className="blog-image-contain">
-                <img src={post.urlToImage || post.images[0]} alt="Post img" />
+                <LazyLoadImage
+                  effect="blur"
+                  src={post.urlToImage || post.images[0]}
+                  alt="Post img"
+                />
               </div>
 
               <div className="blog-text-contain">
@@ -247,7 +254,11 @@ const Post = () => {
             <CommentSection post={post} setPost={setPost} />
           </div>
 
-          <PostShare url={window.location.href} />
+          <PostShare
+            title={post.title}
+            url={window.location.href}
+            hashtags={`#izonvoice`}
+          />
         </>
       )}
     </section>

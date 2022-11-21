@@ -705,6 +705,7 @@
 }
 
 .comment-section .comment-detail .content .item {
+  cursor: pointer;
   margin: 0px 25px;
 }
 

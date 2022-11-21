@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import { logo } from "assets/images";
+import Head from "components/common/Head";
 
 const Container = styled.section`
   display: grid;
@@ -87,6 +88,12 @@ const RightDiv = styled.div`
 const NotFound = () => {
   return (
     <Container>
+      <Head
+        title="Izonvoice - NotFound(404)"
+        description="Not found page you were redirected hear because the page you requested does not exist!"
+        image={window.location.href + logo}
+      />
+
       <LeftDiv>
         <img className="logo" src={logo} alt="Izon voice logo" />
         <p>&copy; Izon voice, 2022</p>

@@ -1,9 +1,6 @@
-/* eslint-disable no-unused-vars */
-import { useState } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import * as Yup from "yup";
 
-import Alert from "utils/Alert";
 import AppLink from "components/common/AppLink";
 import { Form, Input } from "components/forms";
 
@@ -44,7 +41,7 @@ const Login = () => {
   return (
     <LoginContainer>
       <Head
-        title="IzonVoice | Login"
+        title="Izonvoice - Login"
         description="Return right in and hear from some cool voices around the globe"
         image={logo}
       />

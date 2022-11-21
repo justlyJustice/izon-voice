@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import Cookies from "js-cookie";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 import { logo } from "assets/images";
 
@@ -14,10 +14,8 @@ import LoadingAnimation from "components/common/LoadingAnimation";
 import useApi from "hooks/useApi";
 
 import { getPosts } from "services/postService";
-import Footer from "components/Footer";
 import useAuth from "hooks/useAuth";
 import ErrorBoundary from "components/ErrorBoundaryComponent";
-import { toast } from "react-toastify";
 
 const Main = () => {
   const {
@@ -38,17 +36,16 @@ const Main = () => {
 
   return (
     <>
+      <LoadingAnimation loading={loading} />
       <Head
-        title={`IzonVoice | Home`}
-        description="Izon Voice Homepage"
+        title="Izonvoice - Home"
+        description="Get all latest news from around the Niger Delta"
         image={logo}
       />
 
-      <LoadingAnimation loading={loading} />
-
       <div className="main-grid">
         <div className="left_div">
-          <img className="logo" src={logo} alt="Izon voice logo" />
+          <LazyLoadImage className="logo" src={logo} alt="Izon voice logo" />
         </div>
 
         <div className="content_div">

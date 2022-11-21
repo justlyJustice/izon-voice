@@ -5,7 +5,6 @@ import { Form, Input, SubmitButton } from "components/forms";
 
 import authService from "services/authService";
 import useSubmit from "hooks/useSubmit";
-import { useNavigate } from "react-router-dom";
 import Head from "components/common/Head";
 
 const validationSchema = Yup.object().shape({
@@ -29,9 +28,9 @@ const AdminLogin = () => {
   return (
     <>
       <Head
+        title="Izonvoice - Admin Route"
+        description="Manage blog posts"
         image={logo}
-        title="IzonVoice | Admin Login"
-        description="Manage blog"
       />
 
       <div className="auth-contain">
