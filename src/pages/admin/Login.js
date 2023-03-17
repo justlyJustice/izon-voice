@@ -6,6 +6,7 @@ import { Form, Input, SubmitButton } from "components/forms";
 import authService from "services/authService";
 import useSubmit from "hooks/useSubmit";
 import Head from "components/common/Head";
+import { Navigate } from "react-router-dom";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
@@ -24,6 +25,12 @@ const AdminLogin = () => {
   const handleSubmit = (values) => {
     login(values, `/dashboard`);
   };
+
+  if (
+    authService.currentUser.email === `admin@izonvoice.ng` ||
+    `admin.local@izonvoice.ng`
+  )
+    return <Navigate to={`/dashboard`} replace />;
 
   return (
     <>
@@ -72,7 +79,7 @@ const AdminLogin = () => {
               <SubmitButton className={`submit-btn`} disabled={submitting}>
                 {submitting ? (
                   <>
-                    Checking... <i className="fa-solid fa-spinner fa-spin"></i>
+                    Checking <i className="fa-solid fa-spinner fa-spin"></i>
                   </>
                 ) : (
                   <>Login</>

@@ -21,6 +21,8 @@ const useSubmit = (apiFunc) => {
     const res = await apiFunc(urlParam);
     setSubmitting(false);
 
+    if (!res) return setSubmitting(false);
+
     if (res.ok) {
       setSuccess(true);
       setData(res.data);

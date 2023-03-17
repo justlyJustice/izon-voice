@@ -21,7 +21,7 @@ import {
 } from "utils/helpers";
 import { getPost } from "services/postService";
 import useApi from "hooks/useApi";
-import { adImageOne, treasuresColdRoom } from "assets/images";
+import { adImageOne, logo, treasuresColdRoom } from "assets/images";
 
 const Post = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -96,14 +96,14 @@ const Post = () => {
 
       <Header />
 
-      <Head
-        title={`Izon Voice | ${post && post.title}`}
-        description={post && post.description}
-        image={post && (post.urlToImage || post.images[0])}
-      />
-
       {post && (
         <>
+          <Head
+            title={`Izon Voice | ${post.title}`}
+            description={post.description}
+            image={logo}
+          />
+
           <div className="container">
             <div className="blog-section">
               <div className="blog-image-contain">
@@ -121,12 +121,14 @@ const Post = () => {
                   <div className="user-details-contain">
                     <span className="author">
                       <i className="fa-solid fa-user"></i>{" "}
-                      {post.author ? post.author : "JOEL AWUDUMAPU IRENE"}
+                      {post.author
+                        ? post.author.toUpperCase()
+                        : "JOEL AWUDUMAPU IRENE"}
                     </span>
 
                     <span className="time">
                       <i className="fa-solid fa-calendar"></i>{" "}
-                      {formateTime(post.createdAt)}
+                      {formateTime(post.createdAt).toUpperCase()}
                     </span>
 
                     <span className="category">

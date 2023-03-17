@@ -1,0 +1,284 @@
+<html>
+  <body>
+    <ul
+      className="uib-dropdown-menu logged-in dropdown-menu-right no-arrow m-t-sm dropdown-menu"
+      aria-labelledby="user-settings"
+      style="width: 190px; padding: 7.5px 0"
+    >
+      <li>
+        <a
+          ui-sref="app.settings.profile"
+          style="padding: 7.5px 20px"
+          className="ng-binding"
+          href="#/settings/profile"
+        >
+          <i
+            ng:bind-html="renderedIcon"
+            aria-label="user icon"
+            className="inline-icon m-r-sm ng-binding ng-isolate-scope"
+            icon="user"
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.6666 12.25V11.0833C11.6666 10.4645 11.4208 9.871 10.9832 9.43342C10.5456 8.99583 9.95215 8.75 9.33331 8.75H4.66665C4.04781 8.75 3.45432 8.99583 3.01673 9.43342C2.57915 9.871 2.33331 10.4645 2.33331 11.0833V12.25"
+                stroke="#57584E"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M7.00002 6.41667C8.28869 6.41667 9.33335 5.372 9.33335 4.08333C9.33335 2.79467 8.28869 1.75 7.00002 1.75C5.71136 1.75 4.66669 2.79467 4.66669 4.08333C4.66669 5.372 5.71136 6.41667 7.00002 6.41667Z"
+                stroke="#57584E"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+          </i>
+          Profile
+        </a>
+      </li>
+      <li>
+        <a
+          ui-sref="app.permissions"
+          style="padding: 7.5px 20px"
+          className="ng-binding"
+          href="#/permissions"
+        >
+          <i
+            ng:bind-html="renderedIcon"
+            aria-label="userCheck icon"
+            className="inline-icon m-r-sm ng-binding ng-isolate-scope"
+            icon="userCheck"
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0)">
+                <path
+                  d="M9.33331 12.25V11.0833C9.33331 10.4645 9.08748 9.871 8.6499 9.43342C8.21231 8.99583 7.61882 8.75 6.99998 8.75H2.91665C2.29781 8.75 1.70432 8.99583 1.26673 9.43342C0.829146 9.871 0.583313 10.4645 0.583313 11.0833V12.25"
+                  stroke="#57584E"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+                <path
+                  d="M4.95833 6.41667C6.247 6.41667 7.29167 5.372 7.29167 4.08333C7.29167 2.79467 6.247 1.75 4.95833 1.75C3.66967 1.75 2.625 2.79467 2.625 4.08333C2.625 5.372 3.66967 6.41667 4.95833 6.41667Z"
+                  stroke="#57584E"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+                <path
+                  d="M9.91669 6.41667L11.0834 7.58333L13.4167 5.25"
+                  stroke="#57584E"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </g>
+              <defs>
+                <clipPath id="clip0">
+                  <rect width="14" height="14" fill="white"></rect>
+                </clipPath>
+              </defs>
+            </svg>
+          </i>
+          Permissions
+        </a>
+      </li>
+      <li>
+        <a
+          ui-sref="app.settings.preferences"
+          style="padding: 7.5px 20px"
+          className="ng-binding"
+          href="#/settings/preferences"
+        >
+          <i
+            ng:bind-html="renderedIcon"
+            aria-label="sliders icon"
+            className="inline-icon m-r-sm ng-binding ng-isolate-scope"
+            icon="sliders"
+          >
+            <svg
+              width="15"
+              height="14"
+              viewBox="0 0 15 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0)">
+                <path
+                  d="M2.83331 12.25V8.16669"
+                  stroke="#57584E"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+                <path
+                  d="M2.83331 5.83333V1.75"
+                  stroke="#57584E"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+                <path
+                  d="M7.5 12.25V7"
+                  stroke="#57584E"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+                <path
+                  d="M7.5 4.66667V1.75"
+                  stroke="#57584E"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+                <path
+                  d="M12.1667 12.25V9.33331"
+                  stroke="#57584E"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+                <path
+                  d="M12.1667 7V1.75"
+                  stroke="#57584E"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+                <path
+                  d="M1.08331 8.16669H4.58331"
+                  stroke="#57584E"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+                <path
+                  d="M5.75 4.66669H9.25"
+                  stroke="#57584E"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+                <path
+                  d="M10.4167 9.33331H13.9167"
+                  stroke="#57584E"
+                  stroke-width="1.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </g>
+              <defs>
+                <clipPath id="clip0">
+                  <rect
+                    width="14"
+                    height="14"
+                    fill="white"
+                    transform="translate(0.5)"
+                  ></rect>
+                </clipPath>
+              </defs>
+            </svg>
+          </i>
+          Preferences
+        </a>
+      </li>
+      <li>
+        <a
+          ui-sref="support.home"
+          style="padding: 7.5px 20px"
+          className="ng-binding"
+          href="#/support"
+        >
+          <i
+            ng:bind-html="renderedIcon"
+            aria-label="message icon"
+            className="inline-icon m-r-sm ng-binding ng-isolate-scope"
+            icon="message"
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.25 8.75C12.25 9.05942 12.1271 9.35616 11.9083 9.57496C11.6895 9.79375 11.3928 9.91667 11.0833 9.91667H4.08333L1.75 12.25V2.91667C1.75 2.60725 1.87292 2.3105 2.09171 2.09171C2.3105 1.87292 2.60725 1.75 2.91667 1.75H11.0833C11.3928 1.75 11.6895 1.87292 11.9083 2.09171C12.1271 2.3105 12.25 2.60725 12.25 2.91667V8.75Z"
+                stroke="#57584E"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+          </i>
+          Support
+        </a>
+      </li>
+
+      <li className="padder-md">
+        <hr className="m-t-sm m-b-sm" />
+      </li>
+
+      <li>
+        <a
+          className="padder-md padder-v custom-dropdown-link ng-binding"
+          ng-click="logout()"
+          style="padding: 7.5px 20px"
+        >
+          <i
+            ng:bind-html="renderedIcon"
+            aria-label="logout icon"
+            className="inline-icon m-r-sm ng-binding ng-isolate-scope"
+            icon="logout"
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M5.25 12.25H2.91667C2.60725 12.25 2.3105 12.1271 2.09171 11.9083C1.87292 11.6895 1.75 11.3928 1.75 11.0833V2.91667C1.75 2.60725 1.87292 2.3105 2.09171 2.09171C2.3105 1.87292 2.60725 1.75 2.91667 1.75H5.25"
+                stroke="#57584E"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M9.33331 9.91665L12.25 6.99998L9.33331 4.08331"
+                stroke="#57584E"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M12.25 7H5.25"
+                stroke="#57584E"
+                stroke-width="1.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+          </i>
+          Log Out
+        </a>
+      </li>
+    </ul>
+  </body>
+</html>

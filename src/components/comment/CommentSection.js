@@ -1,15 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 import ReactTooltip from "react-tooltip";
 import { toast } from "react-toastify";
 
-import { likePost, unlikePost } from "services/postService";
 import CommentForm from "./CommentForm";
-import useAuth from "hooks/useAuth";
 import SingleComment from "./SingleComment";
+
 import useApi from "hooks/useApi";
+import useAuth from "hooks/useAuth";
+
+import logger from "utils/logger";
 import commentService from "services/commentService";
+import { likePost, unlikePost } from "services/postService";
 
 const CommentSection = ({ post, setPost }) => {
   const [likesCount, setLikesCount] = useState(post && post.likes.length);
@@ -40,7 +42,7 @@ const CommentSection = ({ post, setPost }) => {
     const res = await likePost(postId);
 
     if (res.ok) {
-      setIsLiked(true);
+      logger(res.data.data);
     }
 
     if (!res.ok) {
@@ -61,13 +63,13 @@ const CommentSection = ({ post, setPost }) => {
     const res = await unlikePost(postId);
 
     if (res.ok) {
-      const likes = post.likes.filter(
+      const newLikes = post.likes.filter(
         (like) => like._id !== res.data.data.like
       );
 
       setPost({
         ...post,
-        likes,
+        likes: newLikes,
       });
     }
 
@@ -78,6 +80,7 @@ const CommentSection = ({ post, setPost }) => {
       });
 
       setLikesCount(initialLikesCount);
+      setIsLiked(true);
     }
 
     return res;
